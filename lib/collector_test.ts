@@ -1,6 +1,7 @@
 import { join } from '@std/path/join';
 import { assertEquals, assertIncludes } from './assert.ts';
 import { collectCoreBench } from './collector.ts';
+import { DASHBOARD_OS } from './types.ts';
 
 async function run(command: string, args: string[], cwd: string): Promise<void> {
   const process = new Deno.Command(command, { args, cwd, stdout: 'piped', stderr: 'piped' });
@@ -53,7 +54,7 @@ EOF
 
     const result = await collectCoreBench({
       coreDir,
-      os: 'linux-x64',
+      os: DASHBOARD_OS,
       backends: ['wasm'],
       outDir,
       benchTimeoutSeconds: 10,

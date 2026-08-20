@@ -9,7 +9,14 @@ import {
   Filter,
   filterRows,
 } from './lib/dashboard_data.ts';
-import { CORE_BENCH_BACKENDS, CoreBenchCellState, CoreBenchJsonl, CoreBenchRecord, HistoryIndex } from './lib/types.ts';
+import {
+  CORE_BENCH_BACKENDS,
+  CoreBenchCellState,
+  CoreBenchJsonl,
+  CoreBenchRecord,
+  DASHBOARD_OS,
+  HistoryIndex,
+} from './lib/types.ts';
 
 const STATE_COLORS: Record<CoreBenchCellState, { bg: string; fg: string; border: string }> = {
   regression: { bg: '#fee2e2', fg: '#991b1b', border: '#ef4444' },
@@ -217,7 +224,7 @@ function App() {
   useEffect(() => {
     async function fetchAll() {
       const next = emptyDashboardData();
-      next.current = await readJsonl('data/core-bench/current/linux-x64/data.jsonl');
+      next.current = await readJsonl(`data/core-bench/current/${DASHBOARD_OS}/data.jsonl`);
       next.historyIndex = await readHistoryIndex();
       if (next.historyIndex) {
         next.history = await Promise.all(
@@ -251,7 +258,7 @@ function App() {
       <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 14px;">
         <div>
           <h1 style="margin: 0; font-size: 24px; line-height: 1.15;">Core Benchmark Dashboard</h1>
-          <div style="margin-top: 4px; color: #4b5563; font-size: 13px;">moonbitlang/core main, linux-x64</div>
+          <div style="margin-top: 4px; color: #4b5563; font-size: 13px;">moonbitlang/core main, ${DASHBOARD_OS}</div>
         </div>
         <div
           style="border: 1px solid #d1d5db; border-radius: 6px; background: #ffffff; padding: 8px 10px; min-width: 360px; font-size: 12px;"

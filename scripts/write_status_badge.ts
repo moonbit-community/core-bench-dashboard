@@ -4,7 +4,7 @@ import { join } from '@std/path/join';
 import { emptyDashboardData } from '../lib/dashboard_data.ts';
 import { renderDashboardStatusSvg, summarizeDashboardStatus } from '../lib/dashboard_status.ts';
 import { readCoreBenchJsonl } from '../lib/jsonl.ts';
-import type { HistoryIndex } from '../lib/types.ts';
+import { DASHBOARD_OS, type HistoryIndex } from '../lib/types.ts';
 
 function showHelp() {
   console.log(`
@@ -52,7 +52,7 @@ export async function main(args = Deno.args): Promise<void> {
   const dataDir = parsed['data-dir'] ?? 'data/core-bench';
   const outPath = parsed.out ?? join(dataDir, 'status.svg');
   const data = emptyDashboardData();
-  data.current = await readCoreBenchJsonl(join(dataDir, 'current', 'linux-x64', 'data.jsonl'));
+  data.current = await readCoreBenchJsonl(join(dataDir, 'current', DASHBOARD_OS, 'data.jsonl'));
   data.history = await readHistory(dataDir);
 
   const summary = summarizeDashboardStatus(data);

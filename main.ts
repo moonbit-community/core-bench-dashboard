@@ -39,9 +39,9 @@ USAGE:
 
 OPTIONS:
     --core-dir <PATH>                 Path to a moonbitlang/core checkout
-    --os <OS>                         linux-x64 [default: linux-x64]
+    --os <OS>                         ${DASHBOARD_OS} [default: ${DASHBOARD_OS}]
     --backends <LIST>                 Comma-separated backends [default: wasm,wasm-gc,js,native]
-    --out-dir <PATH>                  Output directory [default: data/core-bench/current/linux-x64]
+    --out-dir <PATH>                  Output directory [default: data/core-bench/current/${DASHBOARD_OS}]
     --bench-timeout-seconds <NUMBER>  Timeout per backend [default: 3600]
     -h, --help                        Show this help message
 `);

@@ -48,9 +48,13 @@ async function readToolchainVersion(): Promise<string[]> {
   }
 }
 
-async function logPaths(outDir: string, backend: CoreBenchBackend): Promise<{ stdout: string; stderr: string }> {
+async function logPaths(
+  outDir: string,
+  os: CoreBenchOS,
+  backend: CoreBenchBackend,
+): Promise<{ stdout: string; stderr: string }> {
   await Deno.mkdir(join(outDir, 'logs'), { recursive: true });
-  const prefix = (await sha256Hex(`core|linux-x64|${backend}`)).slice(0, 16);
+  const prefix = (await sha256Hex(`core|${os}|${backend}`)).slice(0, 16);
   return {
     stdout: join(outDir, 'logs', `${prefix}.${backend}.stdout.log`),
     stderr: join(outDir, 'logs', `${prefix}.${backend}.stderr.log`),
@@ -158,7 +162,7 @@ async function collectBackend(
   backend: CoreBenchBackend,
   tempRoot: string,
 ): Promise<CoreBenchRecord[]> {
-  const paths = await logPaths(options.outDir, backend);
+  const paths = await logPaths(options.outDir, options.os, backend);
   const targetDir = join(tempRoot, backend, 'build');
   await Deno.mkdir(targetDir, { recursive: true });
   const command = commandForBackend(backend, targetDir);

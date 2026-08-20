@@ -3,21 +3,22 @@
 [![Dashboard status](https://moonbit-community.github.io/core-bench-dashboard/data/core-bench/status.svg)](https://moonbit-community.github.io/core-bench-dashboard/)
 
 Core Benchmark Dashboard tracks daily `moon bench` results for the latest `moonbitlang/core` `main` branch on
-`linux-x64`. CI runs the nightly MoonBit toolchain against `wasm`, `wasm-gc`, `js`, and `native`, publishes current
-JSONL data, keeps 14 retained history days, and marks 5% day-over-day changes.
+`darwin-arm64`. Benchmarks run on a self-hosted Apple Silicon runner against the nightly MoonBit toolchain for `wasm`,
+`wasm-gc`, `js`, and `native`. CI publishes current JSONL data, keeps 14 retained history days, and marks 5%
+day-over-day changes.
 
 ## Collect Data
 
 ```sh
 deno run -A main.ts collect \
   --core-dir ../core \
-  --os linux-x64 \
+  --os darwin-arm64 \
   --backends wasm,wasm-gc,js,native \
-  --out-dir data/core-bench/current/linux-x64
+  --out-dir data/core-bench/current/darwin-arm64
 ```
 
-The collector writes `data/core-bench/current/linux-x64/data.jsonl` and backend logs under
-`data/core-bench/current/linux-x64/logs/`.
+The collector writes `data/core-bench/current/darwin-arm64/data.jsonl` and backend logs under
+`data/core-bench/current/darwin-arm64/logs/`.
 
 ## Publish Assets
 

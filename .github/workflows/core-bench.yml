@@ -17,9 +17,12 @@ permissions:
 
 jobs:
   collect-data:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, bench-box]
     steps:
       - uses: actions/checkout@v5
+
+      - name: Clean persistent workspace
+        run: rm -rf core data
 
       - uses: denoland/setup-deno@v2
         with:
@@ -40,15 +43,15 @@ jobs:
         run: |
           deno run -A main.ts collect \
             --core-dir core \
-            --os linux-x64 \
+            --os darwin-arm64 \
             --backends wasm,wasm-gc,js,native \
-            --out-dir data/core-bench/current/linux-x64
+            --out-dir data/core-bench/current/darwin-arm64
 
       - name: Upload current data
         uses: actions/upload-artifact@v4
         with:
-          name: core-bench-current-linux-x64
-          path: data/core-bench/current/linux-x64/
+          name: core-bench-current-darwin-arm64
+          path: data/core-bench/current/darwin-arm64/
           if-no-files-found: error
           retention-days: 1
 
@@ -74,8 +77,8 @@ jobs:
 
       - name: Organize current data
         run: |
-          mkdir -p data/core-bench/current/linux-x64
-          cp -r artifacts/core-bench-current-linux-x64/* data/core-bench/current/linux-x64/
+          mkdir -p data/core-bench/current/darwin-arm64
+          cp -r artifacts/core-bench-current-darwin-arm64/* data/core-bench/current/darwin-arm64/
 
       - name: Update retained history
         run: deno task update-history

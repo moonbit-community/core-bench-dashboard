@@ -1,13 +1,13 @@
 import { assertEquals } from './assert.ts';
 import { buildRows, classifyDelta, countRows, emptyDashboardData, filterRows } from './dashboard_data.ts';
-import type { CoreBenchBackend, CoreBenchMetadata, CoreBenchRecord } from './types.ts';
+import { type CoreBenchBackend, type CoreBenchMetadata, type CoreBenchRecord, DASHBOARD_OS } from './types.ts';
 
 function metadata(date: string): CoreBenchMetadata {
   return {
     generated_at: `${date}T00:00:00.000Z`,
     runId: '1',
     runNumber: '1',
-    os: 'linux-x64',
+    os: DASHBOARD_OS,
     backends: ['wasm', 'wasm-gc', 'js', 'native'],
     toolchainVersion: ['moon test'],
     coreRepo: 'https://github.com/moonbitlang/core',

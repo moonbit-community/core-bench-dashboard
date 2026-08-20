@@ -17,9 +17,9 @@ Single benchmark blocks use an empty `case_name`. Batch benchmark blocks produce
 Published data lives under:
 
 ```text
-data/core-bench/current/linux-x64/data.jsonl
+data/core-bench/current/darwin-arm64/data.jsonl
 data/core-bench/history/index.json
-data/core-bench/history/<YYYY-MM-DD>/linux-x64/data.jsonl
+data/core-bench/history/<YYYY-MM-DD>/darwin-arm64/data.jsonl
 data/core-bench/status.svg
 ```
 

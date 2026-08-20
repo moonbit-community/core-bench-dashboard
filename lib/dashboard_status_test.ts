@@ -1,14 +1,14 @@
 import { assertEquals, assertIncludes } from './assert.ts';
 import { emptyDashboardData } from './dashboard_data.ts';
 import { renderDashboardStatusSvg, summarizeDashboardStatus } from './dashboard_status.ts';
-import type { CoreBenchMetadata, CoreBenchRecord } from './types.ts';
+import { type CoreBenchMetadata, type CoreBenchRecord, DASHBOARD_OS } from './types.ts';
 
 function metadata(date: string): CoreBenchMetadata {
   return {
     generated_at: `${date}T00:00:00.000Z`,
     runId: '1',
     runNumber: '1',
-    os: 'linux-x64',
+    os: DASHBOARD_OS,
     backends: ['wasm'],
     toolchainVersion: [],
     coreRepo: 'https://github.com/moonbitlang/core',

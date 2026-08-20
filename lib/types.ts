@@ -1,5 +1,5 @@
 export const CORE_REPO = 'https://github.com/moonbitlang/core' as const;
-export const DASHBOARD_OS = 'linux-x64' as const;
+export const DASHBOARD_OS = 'darwin-arm64' as const;
 export const CORE_BENCH_BACKENDS = ['wasm', 'wasm-gc', 'js', 'native'] as const;
 
 export type CoreBenchOS = typeof DASHBOARD_OS;
