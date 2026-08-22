@@ -8,7 +8,6 @@ on:
 env:
   GITHUB_ACTION_RUN_ID: ${{ github.run_id }}
   GITHUB_ACTION_RUN_NUMBER: ${{ github.run_number }}
-  MOONC_RC_CONVENTION: borrow
 
 permissions:
   contents: read
@@ -22,14 +21,26 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Clean persistent workspace
-        run: rm -rf core data
+        run: rm -rf core data _build .mooncakes dist dashboard
 
-      - uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+      # The dashboard measures the nightly toolchain, so nightly must not build
+      # it: one compiler regression would otherwise take out the measurement and
+      # the instrument together, and a red badge could no longer be read as a
+      # statement about `moonbitlang/core`. Stable gets its own MOON_HOME, and
+      # nightly is installed afterwards so it owns PATH for `moon bench` alone.
+      - name: Install MoonBit stable
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | MOON_HOME="$HOME/.moon-stable" bash
+          MOON_HOME="$HOME/.moon-stable" "$HOME/.moon-stable/bin/moon" version --all
+
+      - name: Build the dashboard binary
+        run: |
+          export MOON_HOME="$HOME/.moon-stable"
+          export PATH="$MOON_HOME/bin:$PATH"
+          moon build --target native --release
+          cp _build/native/release/build/cmd/dashboard/dashboard.exe dashboard
 
       - name: Install MoonBit nightly
-        shell: bash
         run: |
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s nightly
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
@@ -40,8 +51,10 @@ jobs:
         run: git clone --depth 1 --branch main https://github.com/moonbitlang/core core
 
       - name: Collect benchmark data
+        env:
+          MOONC_RC_CONVENTION: borrow
         run: |
-          deno run -A main.ts collect \
+          ./dashboard collect \
             --core-dir core \
             --os darwin-arm64 \
             --backends wasm,wasm-gc,js,native \
@@ -61,9 +74,19 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+      - name: Install MoonBit stable
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+          "$HOME/.moon/bin/moon" version --all
+
+      - name: Install warren
+        run: moon install moonbit-community/warren
+
+      - name: Build the dashboard binary
+        run: |
+          moon build --target native --release
+          cp _build/native/release/build/cmd/dashboard/dashboard.exe dashboard
 
       - uses: actions/download-artifact@v4
         with:
@@ -73,7 +96,7 @@ jobs:
         env:
           PAGES_BASE_URL: ${{ vars.PAGES_BASE_URL }}
           DEFAULT_PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-        run: deno run -A scripts/restore_history.ts "${PAGES_BASE_URL:-$DEFAULT_PAGES_BASE_URL}"
+        run: ./dashboard restore-history "${PAGES_BASE_URL:-$DEFAULT_PAGES_BASE_URL}"
 
       - name: Organize current data
         run: |
@@ -81,19 +104,18 @@ jobs:
           cp -r artifacts/core-bench-current-darwin-arm64/* data/core-bench/current/darwin-arm64/
 
       - name: Update retained history
-        run: deno task update-history
+        run: ./dashboard update-history
 
       - name: Write dashboard status badge
-        run: deno task status-badge
+        run: ./dashboard status-badge
 
-      - name: Bundle web
-        run: deno task bundle
+      - name: Build the browser bundle
+        run: warren build --server-entry ""
 
       - name: Prepare publish directory
         run: |
           mkdir -p publish
-          cp index.html publish/
-          cp web.js publish/
+          cp dist/index.html dist/index.js publish/
           cp -r data publish/
 
       - name: Upload GitHub Pages artifact
