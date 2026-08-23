@@ -155,6 +155,9 @@ jobs:
           mkdir -p publish
           cp dist/index.html dist/index.js publish/
           cp -r data publish/
+          # `data/` is a checkout of the archive branch by this point. Serving
+          # its `.git` would publish a second copy of everything under it.
+          rm -rf publish/data/.git
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
