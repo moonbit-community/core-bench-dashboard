@@ -37,6 +37,10 @@ jobs:
         run: |
           export MOON_HOME="$HOME/.moon-stable"
           export PATH="$MOON_HOME/bin:$PATH"
+          # A freshly installed MOON_HOME carries no registry index, and
+          # `moon build` will not fetch one: without this the module's
+          # dependencies do not resolve at all.
+          moon update
           moon build --target native --release
           cp _build/native/release/build/cmd/dashboard/dashboard.exe dashboard
 
@@ -79,6 +83,7 @@ jobs:
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
           "$HOME/.moon/bin/moon" version --all
+          "$HOME/.moon/bin/moon" update
 
       - name: Install warren
         run: moon install moonbit-community/warren
