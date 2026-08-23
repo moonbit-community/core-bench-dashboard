@@ -2,6 +2,14 @@ name: MoonBit Core Benchmark Dashboard
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'full re-benchmarks on the bench box; publish-only rebuilds the site from the archive'
+        type: choice
+        default: full
+        options:
+          - full
+          - publish-only
   schedule:
     - cron: '0 18 * * *'
 
@@ -22,6 +30,7 @@ concurrency:
 
 jobs:
   collect-data:
+    if: inputs.mode != 'publish-only'
     runs-on: [self-hosted, bench-box]
     steps:
       - uses: actions/checkout@v5
@@ -80,6 +89,9 @@ jobs:
 
   publish-site:
     needs: collect-data
+    if: >-
+      always() && (needs.collect-data.result == 'success' ||
+      needs.collect-data.result == 'skipped')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -100,6 +112,7 @@ jobs:
           cp _build/native/release/build/cmd/dashboard/dashboard.exe dashboard
 
       - uses: actions/download-artifact@v4
+        if: inputs.mode != 'publish-only'
         with:
           path: artifacts
 
@@ -119,11 +132,18 @@ jobs:
           fi
 
       - name: Organize current data
+        if: inputs.mode != 'publish-only'
         run: |
           mkdir -p data/core-bench/current/darwin-arm64
           cp -r artifacts/core-bench-current-darwin-arm64/* data/core-bench/current/darwin-arm64/
 
+      # `update-history` folds `current/` into history under today's date. In
+      # publish-only mode `current/` is whatever the archive already carries, so
+      # running it would invent a history day out of an older run's numbers and
+      # then compare against it. The guard is on the step, not inferred, so it
+      # stays visible to whoever edits this next.
       - name: Update retained history
+        if: inputs.mode != 'publish-only'
         run: ./dashboard update-history
 
       - name: Update regression events

@@ -43,6 +43,27 @@ The badge is red if any current cell is a 5% or larger regression versus the pre
 benchmark command failed. It is green otherwise. It does not yet reflect outstanding regression events, which are
 shown in their own panel on the site — see [Architecture](architecture.md).
 
+## Rebuilding the site without re-benchmarking
+
+A frontend change, or a change to how events or the badge are computed, does not need new measurements. Dispatch
+the workflow with `mode: publish-only`:
+
+```sh
+gh workflow run core-bench.yml -f mode=publish-only
+```
+
+`collect-data` is skipped entirely, so the bench box is untouched and the run takes about two minutes instead of
+twenty-eight. `publish-site` reads `current/` and `history/` from the archive, regenerates `events.json` and
+`status.svg`, rebuilds the browser bundle, and deploys. That works because the archive carries the whole `data/`
+tree, current day included, not just retained history.
+
+**`update-history` never runs in this mode**, and that guard is the reason the mode is safe. It folds `current/`
+into history under *today's* date; in publish-only mode `current/` is whatever the archive already holds, so
+running it would write a history day out of an older run's numbers — and that fabricated day then becomes the
+baseline the next real run is compared against. The condition sits on the step itself so it stays visible.
+
+Scheduled runs always collect: `inputs.mode` is null outside a manual dispatch, which is not `publish-only`.
+
 ## The benchmark archive
 
 Retained history lives on the `bench-data` branch, not in the published site. Each run clones it, folds the day in,
