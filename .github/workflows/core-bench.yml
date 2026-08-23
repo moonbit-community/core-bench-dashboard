@@ -126,6 +126,9 @@ jobs:
       - name: Update retained history
         run: ./dashboard update-history
 
+      - name: Update regression events
+        run: ./dashboard update-events
+
       - name: Write dashboard status badge
         run: ./dashboard status-badge
 

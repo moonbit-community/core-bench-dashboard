@@ -11,17 +11,22 @@ const CURRENT_PATH : String = "data/core-bench/current/\{@core_bench.DASHBOARD_O
 ///|
 const HISTORY_INDEX_PATH : String = "data/core-bench/history/index.json"
 
+///|
+const EVENTS_PATH : String = "data/core-bench/events.json"
+
 // ---------------------------------------------------------------- data state
 
 ///|
 priv struct DataModel {
   data : @core_bench.DashboardData
+  events : Array[@core_bench.RegressionEvent]
   loading : Bool
   pending_days : Int
 } derive(Eq)
 
 ///|
 priv enum DataMsg {
+  EventsLoaded(Result[String, Error])
   CurrentLoaded(Result[String, Error])
   IndexLoaded(Result[String, Error])
   DayLoaded(String, Result[String, Error])
@@ -33,6 +38,16 @@ fn parse_or_empty(result : Result[String, Error]) -> @core_bench.Jsonl {
   guard result is Ok(text) else { return @core_bench.Jsonl::empty() }
   @core_bench.parse_jsonl(text) catch {
     _ => @core_bench.Jsonl::empty()
+  }
+}
+
+///|
+fn parse_events(
+  result : Result[String, Error],
+) -> Array[@core_bench.RegressionEvent] {
+  guard result is Ok(text) else { return [] }
+  @data_json.from_string(text) catch {
+    _ => []
   }
 }
 
@@ -59,6 +74,11 @@ fn update_data(
   emit : @cmd.Emit[DataMsg],
 ) -> (DataModel, @cmd.Cmd) {
   match msg {
+    EventsLoaded(result) =>
+      (
+        { ..model, events: parse_events(result) },
+        fetch_text(CURRENT_PATH, emit.map(result => CurrentLoaded(result))),
+      )
     CurrentLoaded(result) =>
       (
         { ..model, data: { ..model.data, current: parse_or_empty(result) } },
@@ -100,6 +120,7 @@ fn update_data(
       let pending_days = model.pending_days - 1
       (
         {
+          ..model,
           data: { ..model.data, history, },
           pending_days,
           loading: pending_days > 0,
@@ -537,6 +558,128 @@ fn row_view(
 }
 
 ///|
+/// One outstanding regression: what broke, when, and by how much.
+fn event_row(event : @core_bench.RegressionEvent, today : String) -> @html.Html {
+  let color = state_color(Regression)
+  let age = days_between(event.opened_on, today)
+  let since = if age == 1 {
+    "since \{event.opened_on} (1 day)"
+  } else {
+    "since \{event.opened_on} (\{age} days)"
+  }
+  @html.div(
+    style=[
+      "display: grid", "grid-template-columns: minmax(240px, 1fr) 76px 190px 232px",
+      "gap: 10px", "align-items: baseline", "padding: 7px 10px", "border-top: 1px solid #fecaca",
+    ],
+    [
+      @html.div(
+        title="\{event.pkg} — \{event.file}:\{event.line}",
+        style=[
+          "font-weight: 700", "white-space: nowrap", "overflow: hidden", "text-overflow: ellipsis",
+        ],
+        if event.case_name.is_empty() {
+          event.block_label
+        } else {
+          "\{event.block_label} / \{event.case_name}"
+        },
+      ),
+      @html.div(
+        style=[
+          MONO,
+          "font-size: 11px",
+          "font-weight: 700",
+          "color: \{color.foreground}",
+        ],
+        event.backend.name(),
+      ),
+      @html.div(
+        style=[MONO, "font-size: 11px"],
+        "\{format_time(Some(event.baseline_us))} → \{format_time(Some(event.latest_us))}",
+      ),
+      @html.div(
+        style=["font-size: 11px", "color: #4b5563", "white-space: nowrap"],
+        "\{format_delta(Some(event.delta_percent()))}  \{since}",
+      ),
+    ],
+  )
+}
+
+///|
+/// Whole days between two `YYYY-MM-DD` dates, counted the calendar way.
+fn days_between(from : String, to : String) -> Int {
+  days_from_epoch(to) - days_from_epoch(from)
+}
+
+///|
+fn days_from_epoch(date : String) -> Int {
+  let year = @string.parse_int(date[0:4]) catch { _ => return 0 }
+  let month = @string.parse_int(date[5:7]) catch { _ => return 0 }
+  let day = @string.parse_int(date[8:10]) catch { _ => return 0 }
+  // Howard Hinnant's days-from-civil: exact, and no date library needed.
+  let y = if month <= 2 { year - 1 } else { year }
+  let era = (if y >= 0 { y } else { y - 399 }) / 400
+  let yoe = y - era * 400
+  let mp = (month + 9) % 12
+  let doy = (153 * mp + 2) / 5 + day - 1
+  let doe = yoe * 365 + yoe / 4 - yoe / 100 + doy
+  era * 146097 + doe - 719468
+}
+
+///|
+/// The outstanding regressions, above the table.
+///
+/// A cell only knows what changed last night. This panel is what is still
+/// broken, measured against the value each benchmark broke from — which is why
+/// a regression nobody fixed stays visible instead of going quiet.
+fn events_panel(
+  events : Array[@core_bench.RegressionEvent],
+  today : String,
+) -> @html.Html {
+  if events.is_empty() {
+    return @html.div(
+      style=[
+        BORDER,
+        "border-radius: 6px",
+        "background: #ffffff",
+        "padding: 10px 12px",
+        "margin-bottom: 12px",
+        "font-size: 12px",
+        "color: #4b5563",
+      ],
+      "No outstanding regressions.",
+    )
+  }
+  let color = state_color(Regression)
+  let heading = if events.length() == 1 {
+    "1 outstanding regression"
+  } else {
+    "\{events.length()} outstanding regressions"
+  }
+  @html.div(
+    style=[
+      "border: 1px solid \{color.border}",
+      "border-radius: 6px",
+      "background: \{color.background}",
+      "margin-bottom: 12px",
+      "overflow: hidden",
+    ],
+    [
+      @html.div(
+        style=[
+          "padding: 8px 10px",
+          "font-size: 12px",
+          "font-weight: 800",
+          "color: \{color.foreground}",
+        ],
+        "\{heading} — still slower than before they broke",
+      ),
+      ..events.map(event => event_row(event, today)),
+    ],
+  )
+}
+
+///|
 fn view(
   data : DataModel,
   ui : UiModel,
@@ -574,6 +717,13 @@ fn view(
     ],
     [
       header(data.data.current.metadata),
+      events_panel(
+        data.events,
+        match data.data.current.metadata {
+          Some(metadata) => metadata.generated_at[0:10].to_owned()
+          None => ""
+        },
+      ),
       @html.div(
         style=[
           "display: flex", "flex-wrap: wrap", "gap: 8px", "align-items: stretch",
@@ -655,10 +805,11 @@ fn app() -> @rabbita.Val[@html.Html] {
       (
         {
           data: @core_bench.DashboardData::empty(),
+          events: [],
           loading: true,
           pending_days: 0,
         },
-        fetch_text(CURRENT_PATH, emit.map(result => CurrentLoaded(result))),
+        fetch_text(EVENTS_PATH, emit.map(result => EventsLoaded(result))),
       )
     },
     update=(model, msg, emit) => update_data(model, msg, emit),

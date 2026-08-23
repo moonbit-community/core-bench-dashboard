@@ -5,7 +5,7 @@ The dashboard is a static MoonBit site with a native companion binary. One modul
 ```text
 core_bench/     types, JSONL, row building, badge rendering   every backend
 bench_parser/   the `moon bench` output parser                every backend
-cmd/dashboard/  collect, update-history, status-badge         native
+cmd/dashboard/  collect, update-history, update-events, status-badge   native
 cmd/browser/    the Rabbita dashboard                         js
 ```
 
@@ -36,6 +36,28 @@ data/core-bench/status.svg
 
 The frontend loads current data and retained history directly from those static paths. It compares current records
 with the immediately previous retained calendar day using `mean_us`.
+
+## Regression events
+
+A cell compares today with the previous retained day, which answers "what changed last night" and nothing else.
+Leave a regression unfixed and the next day compares against the regressed value, so the cell goes quiet while the
+benchmark is still slow.
+
+`data/core-bench/events.json` is what is still outstanding. An event stores the value a benchmark broke from, so it
+keeps measuring against that number long after it has aged out of the retained window — which is the point, since a
+fourteen-day window cannot remember a three-week-old regression.
+
+Opening is derived from the retained series and requires a step to survive one night: a value 5% above the running
+reference opens a candidate, and it only becomes an event if the next day is still above the same reference. That
+one-night confirmation is the whole noise defence, and it is why no per-benchmark statistics are needed. An event
+closes when the value comes back within 5% of its baseline.
+
+Because opening is derived, `events.json` is a persistence layer over a pure function rather than a source of
+truth: delete it and the next run rebuilds whatever is still visible in the last fourteen days. Only the baselines
+of older regressions are lost.
+
+Today there is no second way to close an event. An accepted regression — one nobody intends to fix — stays in the
+panel until the number moves. Manual acknowledgement is the intended answer and is not built yet.
 
 ## The archive is not the served copy
 

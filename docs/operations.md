@@ -35,12 +35,13 @@ CI performs five phases:
 3. Clone `https://github.com/moonbitlang/core` at `main`.
 4. Run `moon bench --target <backend> --target-dir <tmp/build> --frozen --no-parallelize` for `wasm`, `wasm-gc`,
    `js`, and `native`.
-5. Clone the `bench-data` archive, add or replace the current day, prune to 14 days, generate `status.svg`,
-   force-push the archive back, build the browser bundle with `warren`, and deploy the static site to GitHub
-   Pages.
+5. Clone the `bench-data` archive, add or replace the current day, prune to 14 days, update the regression
+   events, generate `status.svg`, force-push the archive back, build the browser bundle with `warren`, and deploy
+   the static site to GitHub Pages.
 
 The badge is red if any current cell is a 5% or larger regression versus the previous retained day, or if a backend
-benchmark command failed. It is green otherwise.
+benchmark command failed. It is green otherwise. It does not yet reflect outstanding regression events, which are
+shown in their own panel on the site — see [Architecture](architecture.md).
 
 ## The benchmark archive
 

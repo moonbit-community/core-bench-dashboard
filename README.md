@@ -40,6 +40,7 @@ The collector writes `data/core-bench/current/darwin-arm64/data.jsonl` and backe
 git clone --branch bench-data --single-branch --depth 1 \
   https://github.com/moonbit-community/core-bench-dashboard.git data
 ./dashboard update-history
+./dashboard update-events
 ./dashboard status-badge
 warren build --server-entry ""
 ```

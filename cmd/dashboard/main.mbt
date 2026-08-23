@@ -175,6 +175,31 @@ async fn run_update_history(matches : @argparse.Matches) -> Unit {
 }
 
 ///|
+fn update_events_command() -> @argparse.Command {
+  @argparse.Command(
+    "update-events",
+    about="Open, carry, and close outstanding regression events",
+    options=[
+      @argparse.OptionArg(
+        "data-dir",
+        long="data-dir",
+        about="Core benchmark data directory [default: \{DEFAULT_DATA_DIR}]",
+      ),
+    ],
+  )
+}
+
+///|
+async fn run_update_events(matches : @argparse.Matches) -> Unit {
+  let (events, opened, closed) = update_regression_events(
+    option_or(matches, "data-dir", DEFAULT_DATA_DIR),
+  )
+  println(
+    "\{events.length()} outstanding regressions (\{opened} opened, \{closed} closed).",
+  )
+}
+
+///|
 fn status_badge_command() -> @argparse.Command {
   @argparse.Command("status-badge", about="Write the dashboard status badge", options=[
     @argparse.OptionArg(
@@ -213,6 +238,7 @@ async fn main {
       subcommands=[
         collect_command(),
         update_history_command(),
+        update_events_command(),
         status_badge_command(),
       ],
     ).parse()
@@ -222,6 +248,7 @@ async fn main {
     match name {
       "collect" => run_collect(sub)
       "update-history" => run_update_history(sub)
+      "update-events" => run_update_events(sub)
       "status-badge" => run_status_badge(sub)
       _ => fail("Unknown subcommand: \{name}")
     }

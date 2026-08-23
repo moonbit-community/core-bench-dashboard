@@ -5,6 +5,17 @@
 // series carries every retained day in date order.
 
 ///|
+/// A benchmark this much slower than its reference is a regression.
+///
+/// The cells, the badge, and the regression events all read this one number,
+/// so "5% slower" means the same thing everywhere the dashboard says it.
+pub const REGRESSION_RATIO : Double = 1.05
+
+///|
+/// A benchmark this much faster than its reference is an improvement.
+pub const IMPROVEMENT_RATIO : Double = 0.95
+
+///|
 /// Which rows the dashboard is showing.
 pub(all) enum Filter {
   AllRows
@@ -138,9 +149,9 @@ pub fn classify_delta(current : Record?, previous : Record?) -> Delta {
   }
   let ratio = current_mean / previous_mean
   let percent = (ratio - 1.0) * 100.0
-  let state = if ratio >= 1.05 {
+  let state = if ratio >= REGRESSION_RATIO {
     Regression
-  } else if ratio <= 0.95 {
+  } else if ratio <= IMPROVEMENT_RATIO {
     Improvement
   } else {
     Stable

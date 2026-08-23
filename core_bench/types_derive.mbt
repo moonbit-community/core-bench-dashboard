@@ -918,3 +918,256 @@ pub impl @data.Deserialize for HistoryIndex with fn deserialize(deserializer) {
 #deprecated("reach it through the `Deserialize` bound", skip_current_package=true)
 #doc(hidden)
 pub extend HistoryIndex with @data.Deserialize::{deserialize}
+
+///|
+pub impl @data.Serialize for RegressionEvent with fn serialize(self, serializer) {
+  serializer.serialize_struct_begin("RegressionEvent", 12)
+  serializer.serialize_field("benchmark_id", self.benchmark_id)
+  serializer.serialize_field("backend", self.backend)
+  serializer.serialize_field("package", self.pkg)
+  serializer.serialize_field("file", self.file)
+  serializer.serialize_field("line", self.line)
+  serializer.serialize_field("block_label", self.block_label)
+  serializer.serialize_field("case_name", self.case_name)
+  serializer.serialize_field("opened_on", self.opened_on)
+  serializer.serialize_field("baseline_us", self.baseline_us)
+  serializer.serialize_field("baseline_on", self.baseline_on)
+  serializer.serialize_field("latest_us", self.latest_us)
+  serializer.serialize_field("latest_on", self.latest_on)
+  serializer.serialize_struct_end()
+}
+
+///|
+#deprecated("reach it through the `Serialize` bound", skip_current_package=true)
+#doc(hidden)
+pub extend RegressionEvent with @data.Serialize::{serialize}
+
+///|
+let __data_record_fields_RegressionEvent : ReadOnlyArray[String] = [
+  "benchmark_id", "backend", "package", "file", "line", "block_label", "case_name",
+  "opened_on", "baseline_us", "baseline_on", "latest_us", "latest_on",
+]
+
+///|
+priv enum DataRecordFieldRegressionEvent {
+  Field_benchmark_id
+  Field_backend
+  Field_pkg
+  Field_file
+  Field_line
+  Field_block_label
+  Field_case_name
+  Field_opened_on
+  Field_baseline_us
+  Field_baseline_on
+  Field_latest_us
+  Field_latest_on
+  Unknown
+}
+
+///|
+impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn from_index(
+  index,
+) {
+  match index {
+    0 => Field_benchmark_id
+    1 => Field_backend
+    2 => Field_pkg
+    3 => Field_file
+    4 => Field_line
+    5 => Field_block_label
+    6 => Field_case_name
+    7 => Field_opened_on
+    8 => Field_baseline_us
+    9 => Field_baseline_on
+    10 => Field_latest_us
+    11 => Field_latest_on
+    _ => Unknown
+  }
+}
+
+///|
+impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn from_bytes(
+  key,
+  index_hint,
+) {
+  match index_hint {
+    0 if key.equal_to_bytes(b"benchmark_id") => Field_benchmark_id
+    1 if key.equal_to_bytes(b"backend") => Field_backend
+    2 if key.equal_to_bytes(b"package") => Field_pkg
+    3 if key.equal_to_bytes(b"file") => Field_file
+    4 if key.equal_to_bytes(b"line") => Field_line
+    5 if key.equal_to_bytes(b"block_label") => Field_block_label
+    6 if key.equal_to_bytes(b"case_name") => Field_case_name
+    7 if key.equal_to_bytes(b"opened_on") => Field_opened_on
+    8 if key.equal_to_bytes(b"baseline_us") => Field_baseline_us
+    9 if key.equal_to_bytes(b"baseline_on") => Field_baseline_on
+    10 if key.equal_to_bytes(b"latest_us") => Field_latest_us
+    11 if key.equal_to_bytes(b"latest_on") => Field_latest_on
+    _ =>
+      match key {
+        [0x62, 0x65, 0x6e, 0x63, 0x68, 0x6d, 0x61, 0x72, 0x6b, 0x5f, 0x69, 0x64] =>
+          Field_benchmark_id
+        [0x62, 0x61, 0x63, 0x6b, 0x65, 0x6e, 0x64] => Field_backend
+        [0x70, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65] => Field_pkg
+        [0x66, 0x69, 0x6c, 0x65] => Field_file
+        [0x6c, 0x69, 0x6e, 0x65] => Field_line
+        [0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x5f, 0x6c, 0x61, 0x62, 0x65, 0x6c] =>
+          Field_block_label
+        [0x63, 0x61, 0x73, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65] =>
+          Field_case_name
+        [0x6f, 0x70, 0x65, 0x6e, 0x65, 0x64, 0x5f, 0x6f, 0x6e] =>
+          Field_opened_on
+        [0x62, 0x61, 0x73, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x5f, 0x75, 0x73] =>
+          Field_baseline_us
+        [0x62, 0x61, 0x73, 0x65, 0x6c, 0x69, 0x6e, 0x65, 0x5f, 0x6f, 0x6e] =>
+          Field_baseline_on
+        [0x6c, 0x61, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x75, 0x73] =>
+          Field_latest_us
+        [0x6c, 0x61, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x6f, 0x6e] =>
+          Field_latest_on
+        _ => Unknown
+      }
+  }
+}
+
+///|
+impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn from_string(
+  name,
+) {
+  match name {
+    "benchmark_id" => Field_benchmark_id
+    "backend" => Field_backend
+    "package" => Field_pkg
+    "file" => Field_file
+    "line" => Field_line
+    "block_label" => Field_block_label
+    "case_name" => Field_case_name
+    "opened_on" => Field_opened_on
+    "baseline_us" => Field_baseline_us
+    "baseline_on" => Field_baseline_on
+    "latest_us" => Field_latest_us
+    "latest_on" => Field_latest_on
+    _ => Unknown
+  }
+}
+
+///|
+impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn name(self) {
+  match self {
+    Field_benchmark_id => Some("benchmark_id")
+    Field_backend => Some("backend")
+    Field_pkg => Some("package")
+    Field_file => Some("file")
+    Field_line => Some("line")
+    Field_block_label => Some("block_label")
+    Field_case_name => Some("case_name")
+    Field_opened_on => Some("opened_on")
+    Field_baseline_us => Some("baseline_us")
+    Field_baseline_on => Some("baseline_on")
+    Field_latest_us => Some("latest_us")
+    Field_latest_on => Some("latest_on")
+    Unknown => None
+  }
+}
+
+///|
+pub impl @data.Deserialize for RegressionEvent with fn deserialize(deserializer) {
+  deserializer.deserialize_struct_begin(
+    "RegressionEvent", __data_record_fields_RegressionEvent,
+  )
+  let mut f_benchmark_id = None
+  let mut f_backend = None
+  let mut f_pkg = None
+  let mut f_file = None
+  let mut f_line = None
+  let mut f_block_label = None
+  let mut f_case_name = None
+  let mut f_opened_on = None
+  let mut f_baseline_us = None
+  let mut f_baseline_on = None
+  let mut f_latest_us = None
+  let mut f_latest_on = None
+  while (deserializer.deserialize_field() : DataRecordFieldRegressionEvent?)
+        is Some(field) {
+    match field {
+      Field_benchmark_id =>
+        f_benchmark_id = Some(deserializer.deserialize_field_value())
+      Field_backend => f_backend = Some(deserializer.deserialize_field_value())
+      Field_pkg => f_pkg = Some(deserializer.deserialize_field_value())
+      Field_file => f_file = Some(deserializer.deserialize_field_value())
+      Field_line => f_line = Some(deserializer.deserialize_field_value())
+      Field_block_label =>
+        f_block_label = Some(deserializer.deserialize_field_value())
+      Field_case_name =>
+        f_case_name = Some(deserializer.deserialize_field_value())
+      Field_opened_on =>
+        f_opened_on = Some(deserializer.deserialize_field_value())
+      Field_baseline_us =>
+        f_baseline_us = Some(deserializer.deserialize_field_value())
+      Field_baseline_on =>
+        f_baseline_on = Some(deserializer.deserialize_field_value())
+      Field_latest_us =>
+        f_latest_us = Some(deserializer.deserialize_field_value())
+      Field_latest_on =>
+        f_latest_on = Some(deserializer.deserialize_field_value())
+      Unknown => deserializer.skip_value()
+    }
+  }
+  {
+    benchmark_id: match f_benchmark_id {
+      Some(value) => value
+      None =>
+        @data.required(None, name="benchmark_id", path=deserializer.path())
+    },
+    backend: match f_backend {
+      Some(value) => value
+      None => @data.required(None, name="backend", path=deserializer.path())
+    },
+    pkg: match f_pkg {
+      Some(value) => value
+      None => @data.required(None, name="package", path=deserializer.path())
+    },
+    file: match f_file {
+      Some(value) => value
+      None => @data.required(None, name="file", path=deserializer.path())
+    },
+    line: match f_line {
+      Some(value) => value
+      None => @data.required(None, name="line", path=deserializer.path())
+    },
+    block_label: match f_block_label {
+      Some(value) => value
+      None => @data.required(None, name="block_label", path=deserializer.path())
+    },
+    case_name: match f_case_name {
+      Some(value) => value
+      None => @data.required(None, name="case_name", path=deserializer.path())
+    },
+    opened_on: match f_opened_on {
+      Some(value) => value
+      None => @data.required(None, name="opened_on", path=deserializer.path())
+    },
+    baseline_us: match f_baseline_us {
+      Some(value) => value
+      None => @data.required(None, name="baseline_us", path=deserializer.path())
+    },
+    baseline_on: match f_baseline_on {
+      Some(value) => value
+      None => @data.required(None, name="baseline_on", path=deserializer.path())
+    },
+    latest_us: match f_latest_us {
+      Some(value) => value
+      None => @data.required(None, name="latest_us", path=deserializer.path())
+    },
+    latest_on: match f_latest_on {
+      Some(value) => value
+      None => @data.required(None, name="latest_on", path=deserializer.path())
+    },
+  }
+}
+
+///|
+#deprecated("reach it through the `Deserialize` bound", skip_current_package=true)
+#doc(hidden)
+pub extend RegressionEvent with @data.Deserialize::{deserialize}

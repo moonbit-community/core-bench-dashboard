@@ -222,3 +222,13 @@ pub extend StatusSummary with @debug.Debug::{to_repr}
 #deprecated("reach it through the `Show` bound", skip_current_package=true)
 #doc(hidden)
 pub extend OverallStatus with Show::{output, to_string}
+
+///|
+#deprecated("use `==` and `!=`", skip_current_package=true)
+#doc(hidden)
+pub extend RegressionEvent with Eq::{equal, not_equal}
+
+///|
+#deprecated("reach it through the `Debug` bound", skip_current_package=true)
+#doc(hidden)
+pub extend RegressionEvent with @debug.Debug::{to_repr}

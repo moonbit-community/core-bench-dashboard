@@ -197,3 +197,31 @@ pub(all) struct Identity {
   block_label : String
   case_name : String
 } derive(Eq, Debug)
+
+///|
+/// An outstanding regression, remembered across runs.
+///
+/// The baseline lives in the event rather than in the retained window, which is
+/// the whole point: a regression opened three weeks ago is still measured
+/// against the value it broke from, long after that value has aged out of
+/// history. Identity fields are copied in so the panel can still name a
+/// benchmark that has since been deleted from core.
+#data.derive(Serialize, Deserialize)
+pub(all) struct RegressionEvent {
+  benchmark_id : String
+  backend : Backend
+  #data.rename("package")
+  pkg : String
+  file : String
+  line : Int
+  block_label : String
+  case_name : String
+  /// The day the step was measured.
+  opened_on : String
+  /// The last value before the step, and the day it was measured.
+  baseline_us : Double
+  baseline_on : String
+  /// The most recent value seen while the event has been open.
+  latest_us : Double
+  latest_on : String
+} derive(Eq, Debug)
