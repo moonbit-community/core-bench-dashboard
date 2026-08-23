@@ -37,11 +37,15 @@ The collector writes `data/core-bench/current/darwin-arm64/data.jsonl` and backe
 ## Publish Assets
 
 ```sh
-./dashboard restore-history https://moonbit-community.github.io/core-bench-dashboard
+git clone --branch bench-data --single-branch --depth 1 \
+  https://github.com/moonbit-community/core-bench-dashboard.git data
 ./dashboard update-history
 ./dashboard status-badge
 warren build --server-entry ""
 ```
+
+Retained history lives on the `bench-data` branch, not in the published site. See
+[Operations](docs/operations.md).
 
 `warren build` writes `dist/index.html` and `dist/index.js`. Install it once with
 `moon install moonbit-community/warren`.

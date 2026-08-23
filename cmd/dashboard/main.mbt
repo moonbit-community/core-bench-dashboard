@@ -135,34 +135,6 @@ async fn run_collect(matches : @argparse.Matches) -> Unit {
 }
 
 ///|
-fn restore_history_command() -> @argparse.Command {
-  @argparse.Command(
-    "restore-history",
-    about="Restore the published history so this run can extend it",
-    positionals=[
-      @argparse.PositionArg(
-        "base-url",
-        about="Base URL of the published site",
-        num_args=@argparse.ValueRange(lower=0, upper=1),
-      ),
-    ],
-  )
-}
-
-///|
-async fn run_restore_history(matches : @argparse.Matches) -> Unit {
-  let base_url = option_or(matches, "base-url", "")
-  let restored = restore_published_history(base_url, DEFAULT_DATA_DIR)
-  println(
-    if restored == 0 {
-      "No published core benchmark history restored."
-    } else {
-      "Restored \{restored} published core benchmark history days."
-    },
-  )
-}
-
-///|
 fn update_history_command() -> @argparse.Command {
   @argparse.Command(
     "update-history",
@@ -240,7 +212,6 @@ async fn main {
       subcommand_required=true,
       subcommands=[
         collect_command(),
-        restore_history_command(),
         update_history_command(),
         status_badge_command(),
       ],
@@ -250,7 +221,6 @@ async fn main {
     }
     match name {
       "collect" => run_collect(sub)
-      "restore-history" => run_restore_history(sub)
       "update-history" => run_update_history(sub)
       "status-badge" => run_status_badge(sub)
       _ => fail("Unknown subcommand: \{name}")

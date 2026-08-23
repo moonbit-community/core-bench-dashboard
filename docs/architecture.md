@@ -5,7 +5,7 @@ The dashboard is a static MoonBit site with a native companion binary. One modul
 ```text
 core_bench/     types, JSONL, row building, badge rendering   every backend
 bench_parser/   the `moon bench` output parser                every backend
-cmd/dashboard/  collect, restore-history, update-history, status-badge   native
+cmd/dashboard/  collect, update-history, status-badge         native
 cmd/browser/    the Rabbita dashboard                         js
 ```
 
@@ -36,6 +36,26 @@ data/core-bench/status.svg
 
 The frontend loads current data and retained history directly from those static paths. It compares current records
 with the immediately previous retained calendar day using `mean_us`.
+
+## The archive is not the served copy
+
+Two stores, deliberately separate:
+
+```text
+bench-data branch    the archive — what the next run reads
+GitHub Pages         the served copy — what a browser reads
+```
+
+Each run clones `bench-data`, folds the new day in, prunes to fourteen, and force-pushes the same tree back as an
+orphan commit. The identical tree is then deployed to Pages. Nothing ever reads the published site back, so the
+site is a pure output and a failed deploy cannot corrupt the history.
+
+The branch is force-pushed rather than accumulated: a day is about 1.2 MB of JSONL and logs that diff badly, so
+keeping every commit would add roughly 440 MB a year for an audit trail the run logs already provide. One tree
+deep keeps the repository bounded at about 17 MB.
+
+Because the archive is the whole `data/` tree — current day, retained history, and `status.svg` — the branch is
+exactly what was deployed, and any past deploy can be reproduced from it.
 
 ## Serialization
 

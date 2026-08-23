@@ -10,9 +10,15 @@ env:
   GITHUB_ACTION_RUN_NUMBER: ${{ github.run_number }}
 
 permissions:
-  contents: read
+  # `contents: write` pushes the benchmark archive to the `bench-data` branch.
+  contents: write
   pages: write
   id-token: write
+
+# The archive is force-pushed, so two runs at once would lose a day.
+concurrency:
+  group: core-bench
+  cancel-in-progress: false
 
 jobs:
   collect-data:
@@ -97,11 +103,20 @@ jobs:
         with:
           path: artifacts
 
-      - name: Restore published history
+      # The archive holds exactly what was deployed last time. A missing branch
+      # is not an error: that is how a new dashboard, or a deliberate break of
+      # the history chain, starts over. See docs/operations.md.
+      - name: Check out the benchmark archive
         env:
-          PAGES_BASE_URL: ${{ vars.PAGES_BASE_URL }}
-          DEFAULT_PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-        run: ./dashboard restore-history "${PAGES_BASE_URL:-$DEFAULT_PAGES_BASE_URL}"
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git ls-remote --exit-code --heads "$remote" bench-data >/dev/null 2>&1; then
+            git clone --branch bench-data --single-branch --depth 1 "$remote" data
+          else
+            echo "bench-data not found; starting a new archive."
+            mkdir -p data
+          fi
 
       - name: Organize current data
         run: |
@@ -113,6 +128,24 @@ jobs:
 
       - name: Write dashboard status badge
         run: ./dashboard status-badge
+
+      # Force-pushed as an orphan, so the branch stays one tree deep instead of
+      # accumulating a megabyte of poorly-diffing JSONL every day. `add -f`
+      # because a runner's global gitignore may well exclude `*.log`, and the
+      # per-backend logs are part of the archive.
+      - name: Publish the benchmark archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rm -rf data/.git
+          cd data
+          git init -q
+          git checkout -q --orphan bench-data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -f
+          git commit -q -m "core bench run ${GITHUB_RUN_NUMBER}"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" bench-data
 
       - name: Build the browser bundle
         run: warren build --server-entry ""
