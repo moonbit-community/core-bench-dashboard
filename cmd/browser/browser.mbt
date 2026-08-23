@@ -21,6 +21,26 @@ extern "js" fn format_local(value : String) -> String =
   #|}
 
 ///|
+/// The directory this page was served from.
+extern "js" fn document_base() -> String =
+  #|() => new URL(".", document.baseURI).href
+
+///|
+/// Resolve a published data path against the page's own directory.
+///
+/// `@http.get` resolves a relative path against the origin rather than the
+/// document, so under a project Pages site — served from `/<repo>/` — every
+/// data request drops that segment and 404s. Serving the dashboard from a
+/// server root hides this completely, which is how it reached production.
+fn site_url(path : String) -> String {
+  if path.contains("://") {
+    path
+  } else {
+    "\{document_base()}\{path}"
+  }
+}
+
+///|
 /// Open a plain-text document in a new tab.
 extern "js" fn open_text_in_new_tab(content : String) -> Unit =
   #|(content) => {

@@ -87,3 +87,16 @@ git clone --branch bench-data --single-branch --depth 1 \
   https://github.com/moonbit-community/core-bench-dashboard.git data
 warren dev --server-entry ""
 ```
+
+Before trusting a frontend change, serve it **under a path**, not at a server root. The published site lives at
+`/core-bench-dashboard/`, and `@http.get` resolves relative paths against the origin rather than the document, so
+a data path that works at a root can still 404 in production:
+
+```sh
+warren build --server-entry ""
+mkdir -p /tmp/check/core-bench-dashboard
+cp dist/index.html dist/index.js /tmp/check/core-bench-dashboard/
+cp -r data /tmp/check/core-bench-dashboard/
+(cd /tmp/check && python3 -m http.server 8733)
+# then open http://127.0.0.1:8733/core-bench-dashboard/
+```

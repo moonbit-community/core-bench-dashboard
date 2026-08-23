@@ -49,7 +49,7 @@ fn fetch_text(
   path : String,
   emit : @cmd.Emit[Result[String, Error]],
 ) -> @cmd.Cmd {
-  @http.get(path).expect_text(emit)
+  @http.get(site_url(path)).expect_text(emit)
 }
 
 ///|

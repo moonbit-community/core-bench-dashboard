@@ -120,12 +120,16 @@ fn update_logs(
       let fetches = []
       if record.stderr_path is Some(path) {
         fetches.push(
-          @http.get(path).expect_text(emit.map(result => StderrLoaded(result))),
+          @http.get(site_url(path)).expect_text(
+            emit.map(result => StderrLoaded(result)),
+          ),
         )
       }
       if record.stdout_path is Some(path) {
         fetches.push(
-          @http.get(path).expect_text(emit.map(result => StdoutLoaded(result))),
+          @http.get(site_url(path)).expect_text(
+            emit.map(result => StdoutLoaded(result)),
+          ),
         )
       }
       let (next, ready) = settle(request)
