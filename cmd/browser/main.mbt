@@ -142,6 +142,8 @@ priv struct UiModel {
   event_backend : @core_bench.Backend?
   /// Whether the events panel is hiding steps under `EVENT_LARGE_PERCENT`.
   event_large_only : Bool
+  /// Whether the events panel is showing only noted, or only un-noted, steps.
+  event_noted : Bool?
 } derive(Eq)
 
 ///|
@@ -151,6 +153,7 @@ priv enum UiMsg {
   ToggleExpand(String)
   SetEventBackend(@core_bench.Backend?)
   ToggleLargeEvents
+  ToggleNoted(Bool)
 }
 
 ///|
@@ -167,6 +170,14 @@ fn update_ui(model : UiModel, msg : UiMsg) -> UiModel {
     SetEventBackend(event_backend) => { ..model, event_backend, }
     ToggleLargeEvents =>
       { ..model, event_large_only: not(model.event_large_only) }
+    // Clicking the chip that is already on clears it, so the pair covers
+    // noted, un-noted, and both without a third chip saying "either".
+    ToggleNoted(noted) =>
+      if model.event_noted == Some(noted) {
+        { ..model, event_noted: None }
+      } else {
+        { ..model, event_noted: Some(noted) }
+      }
   }
 }
 
@@ -568,6 +579,10 @@ fn row_view(
 
 ///|
 /// One outstanding regression: what broke, when, and by how much.
+///
+/// A note, when someone has written one, sits on its own line under the row
+/// rather than behind a hover: an explanation nobody reads is worth nothing,
+/// and the whole point of writing one is that the next reader sees it.
 fn event_row(event : @core_bench.RegressionEvent, today : String) -> @html.Html {
   let color = state_color(Regression)
   let age = days_between(event.opened_on, today)
@@ -576,41 +591,65 @@ fn event_row(event : @core_bench.RegressionEvent, today : String) -> @html.Html 
   } else {
     "since \{event.opened_on} (\{age} days)"
   }
-  @html.div(
-    style=[
-      "display: grid", "grid-template-columns: minmax(240px, 1fr) 76px 190px 232px",
-      "gap: 10px", "align-items: baseline", "padding: 7px 10px", "border-top: 1px solid #fecaca",
-    ],
-    [
+  let lines = [
+    @html.div(
+      style=[
+        "display: grid",
+        "grid-template-columns: minmax(240px, 1fr) 76px 190px 232px",
+        "gap: 10px",
+        "align-items: baseline",
+      ],
+      [
+        @html.div(
+          title="\{event.pkg} — \{event.file}:\{event.line}",
+          style=[
+            "font-weight: 700", "white-space: nowrap", "overflow: hidden", "text-overflow: ellipsis",
+          ],
+          if event.case_name.is_empty() {
+            event.block_label
+          } else {
+            "\{event.block_label} / \{event.case_name}"
+          },
+        ),
+        @html.div(
+          style=[
+            MONO,
+            "font-size: 11px",
+            "font-weight: 700",
+            "color: \{color.foreground}",
+          ],
+          event.backend.name(),
+        ),
+        @html.div(
+          style=[MONO, "font-size: 11px"],
+          "\{format_time(Some(event.baseline_us))} → \{format_time(Some(event.latest_us))}",
+        ),
+        @html.div(
+          style=["font-size: 11px", "color: #4b5563", "white-space: nowrap"],
+          "\{format_delta(Some(event.delta_percent()))}  \{since}",
+        ),
+      ],
+    ),
+  ]
+  if event.note is Some(note) {
+    lines.push(
       @html.div(
-        title="\{event.pkg} — \{event.file}:\{event.line}",
         style=[
-          "font-weight: 700", "white-space: nowrap", "overflow: hidden", "text-overflow: ellipsis",
-        ],
-        if event.case_name.is_empty() {
-          event.block_label
-        } else {
-          "\{event.block_label} / \{event.case_name}"
-        },
-      ),
-      @html.div(
-        style=[
-          MONO,
+          "margin-top: 5px",
+          "border-left: 2px solid \{color.border}",
+          "padding-left: 8px",
+          "max-width: 78ch",
           "font-size: 11px",
-          "font-weight: 700",
-          "color: \{color.foreground}",
+          "line-height: 1.45",
+          "color: #4b5563",
         ],
-        event.backend.name(),
+        note,
       ),
-      @html.div(
-        style=[MONO, "font-size: 11px"],
-        "\{format_time(Some(event.baseline_us))} → \{format_time(Some(event.latest_us))}",
-      ),
-      @html.div(
-        style=["font-size: 11px", "color: #4b5563", "white-space: nowrap"],
-        "\{format_delta(Some(event.delta_percent()))}  \{since}",
-      ),
-    ],
+    )
+  }
+  @html.div(
+    style=["padding: 7px 10px", "border-top: 1px solid #fecaca"],
+    lines,
   )
 }
 
@@ -700,32 +739,45 @@ fn events_filter_row(
   events : Array[@core_bench.RegressionEvent],
   backend : @core_bench.Backend?,
   large_only : Bool,
+  noted : Bool?,
   emit : @cmd.Emit[UiMsg],
 ) -> @html.Html {
   let threshold = event_threshold(large_only)
+  let count = (backend, noted) => Some(
+    @core_bench.filter_events(events, backend, threshold, noted).length(),
+  )
   let chips = [
-    event_chip(
-      "All",
-      Some(@core_bench.filter_events(events, None, threshold).length()),
-      backend is None,
-      emit(SetEventBackend(None)),
-    ),
+    event_chip("All", count(None, noted), backend is None, emit(
+      SetEventBackend(None),
+    )),
   ]
   for candidate in @core_bench.backends() {
     chips.push(
       event_chip(
         candidate.name(),
-        Some(
-          @core_bench.filter_events(events, Some(candidate), threshold).length(),
-        ),
+        count(Some(candidate), noted),
         backend == Some(candidate),
         emit(SetEventBackend(Some(candidate))),
       ),
     )
   }
-  // Pushed to the far end: a step-size switch is not one more backend.
+  // Pushed to the far end: neither of these is one more backend. The noted
+  // pair counts against the backend in force, so the numbers on the row always
+  // describe the same panel.
   chips.push(
-    @html.div(style=["margin-left: auto"], [
+    @html.div(style=["display: flex", "gap: 6px", "margin-left: auto"], [
+      event_chip(
+        "Noted",
+        count(backend, Some(true)),
+        noted == Some(true),
+        emit(ToggleNoted(true)),
+      ),
+      event_chip(
+        "Not noted",
+        count(backend, Some(false)),
+        noted == Some(false),
+        emit(ToggleNoted(false)),
+      ),
       event_chip(
         "≥ \{EVENT_LARGE_PERCENT.to_int()}% only",
         None,
@@ -763,6 +815,7 @@ fn events_panel(
   today : String,
   backend : @core_bench.Backend?,
   large_only : Bool,
+  noted : Bool?,
   emit : @cmd.Emit[UiMsg],
 ) -> @html.Html {
   if events.is_empty() {
@@ -784,6 +837,7 @@ fn events_panel(
     events,
     backend,
     event_threshold(large_only),
+    noted,
   )
   let heading = if visible.length() < events.length() {
     "\{visible.length()} of \{events.length()} outstanding regressions"
@@ -825,7 +879,7 @@ fn events_panel(
         ],
         "\{heading} — still slower than before they broke",
       ),
-      events_filter_row(events, backend, large_only, emit),
+      events_filter_row(events, backend, large_only, noted, emit),
       ..rows,
     ],
   )
@@ -877,6 +931,7 @@ fn view(
         },
         ui.event_backend,
         ui.event_large_only,
+        ui.event_noted,
         ui_emit,
       ),
       @html.div(
@@ -976,6 +1031,7 @@ fn app() -> @rabbita.Val[@html.Html] {
       expanded: @sorted_set.SortedSet::new(),
       event_backend: None,
       event_large_only: false,
+      event_noted: None,
     },
     update=(model, msg, _) => (update_ui(model, msg), @cmd.none),
   )

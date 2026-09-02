@@ -1,7 +1,8 @@
-// The dashboard's command line: one binary, four commands.
+// The dashboard's command line: one binary, five commands.
 //
-// `collect` runs on the benchmark machine. The other three run wherever the
-// site is published, and only ever touch files and published URLs.
+// `collect` runs on the benchmark machine. `note` is run by a person, on a
+// checkout, when they have concluded something about a regression. The rest run
+// wherever the site is published, and only ever touch files and published URLs.
 
 ///|
 fn option_value(matches : @argparse.Matches, name : String) -> String? {
@@ -185,17 +186,95 @@ fn update_events_command() -> @argparse.Command {
         long="data-dir",
         about="Core benchmark data directory [default: \{DEFAULT_DATA_DIR}]",
       ),
+      @argparse.OptionArg(
+        "notes",
+        long="notes",
+        about="Regression note file [default: \{DEFAULT_NOTES_PATH}]",
+      ),
     ],
   )
 }
 
 ///|
 async fn run_update_events(matches : @argparse.Matches) -> Unit {
-  let (events, opened, closed) = update_regression_events(
+  let (events, opened, closed, noted) = update_regression_events(
     option_or(matches, "data-dir", DEFAULT_DATA_DIR),
+    option_or(matches, "notes", DEFAULT_NOTES_PATH),
   )
   println(
-    "\{events.length()} outstanding regressions (\{opened} opened, \{closed} closed).",
+    "\{events.length()} outstanding regressions " +
+    "(\{opened} opened, \{closed} closed, \{noted} noted).",
+  )
+}
+
+///|
+fn note_command() -> @argparse.Command {
+  @argparse.Command(
+    "note",
+    about="Record what a human concluded about an outstanding regression",
+    options=[
+      @argparse.OptionArg(
+        "match",
+        long="match",
+        about="Part of the benchmark label, package, or file",
+        required=true,
+      ),
+      @argparse.OptionArg(
+        "text",
+        long="text",
+        about="What was concluded, and on what evidence",
+        required=true,
+      ),
+      @argparse.OptionArg(
+        "backend",
+        long="backend",
+        about="Narrow to one backend [default: every backend]",
+      ),
+      @argparse.OptionArg(
+        "data-dir",
+        long="data-dir",
+        about="Core benchmark data directory [default: \{DEFAULT_DATA_DIR}]",
+      ),
+      @argparse.OptionArg(
+        "notes",
+        long="notes",
+        about="Regression note file [default: \{DEFAULT_NOTES_PATH}]",
+      ),
+    ],
+  )
+}
+
+///|
+async fn run_note(matches : @argparse.Matches) -> Unit {
+  guard option_value(matches, "match") is Some(keyword) else {
+    fail("--match is required.")
+  }
+  guard option_value(matches, "text") is Some(text) else {
+    fail("--text is required.")
+  }
+  let backend = match option_value(matches, "backend") {
+    None => None
+    Some(value) =>
+      match @core_bench.Backend::parse(value) {
+        Some(backend) => Some(backend)
+        None => {
+          let expected = @core_bench.backends()
+            .map(backend => backend.name())
+            .join(", ")
+          fail("Invalid backend: \{value}. Expected one of \{expected}.")
+        }
+      }
+  }
+  let notes_path = option_or(matches, "notes", DEFAULT_NOTES_PATH)
+  let note = write_note(
+    option_or(matches, "data-dir", DEFAULT_DATA_DIR),
+    notes_path,
+    backend,
+    keyword,
+    text,
+  )
+  println(
+    "Noted \{note.benchmark_id} (open since \{note.opened_on}) in \{notes_path}.",
   )
 }
 
@@ -239,6 +318,7 @@ async fn main {
         collect_command(),
         update_history_command(),
         update_events_command(),
+        note_command(),
         status_badge_command(),
       ],
     ).parse()
@@ -249,6 +329,7 @@ async fn main {
       "collect" => run_collect(sub)
       "update-history" => run_update_history(sub)
       "update-events" => run_update_events(sub)
+      "note" => run_note(sub)
       "status-badge" => run_status_badge(sub)
       _ => fail("Unknown subcommand: \{name}")
     }

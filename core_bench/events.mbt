@@ -96,6 +96,7 @@ fn event_from_step(
     baseline_on: step.baseline_on,
     latest_us: latest.value,
     latest_on: latest.date,
+    note: None,
   }
 }
 
@@ -181,20 +182,56 @@ pub fn RegressionEvent::delta_percent(self : RegressionEvent) -> Double {
 }
 
 ///|
-/// The events a panel is showing: one backend or all of them, above a step size.
+/// The events a panel is showing, narrowed three ways.
 ///
 /// Five percent is what opens an event, and most of what opens sits just above
 /// it. Reading the panel means asking for the steps worth chasing, so the
 /// threshold is a parameter rather than the opening ratio a second time.
+///
+/// `noted` is three-state on purpose: `Some(true)` is what has been explained,
+/// `Some(false)` is the triage backlog, and `None` is both.
 pub fn filter_events(
   events : Array[RegressionEvent],
   backend : Backend?,
   min_percent : Double,
+  noted : Bool?,
 ) -> Array[RegressionEvent] {
   events.filter(event => {
     if backend is Some(backend) && event.backend != backend {
       return false
     }
+    if noted is Some(noted) && (event.note is Some(_)) != noted {
+      return false
+    }
     event.delta_percent() >= min_percent
   })
+}
+
+///|
+/// Fold human notes onto the events they explain.
+///
+/// A note is matched on `benchmark_id` and `opened_on` together, so it explains
+/// one step rather than one benchmark. `update_events` carries an existing
+/// event forward with its original `opened_on`, which is what makes that key
+/// stable for as long as the regression is outstanding.
+///
+/// Returns the annotated events and how many notes found a step. A note that
+/// matches nothing is not an error — the event it explained may have closed —
+/// but the count makes an orphan visible in a run log.
+pub fn apply_notes(
+  events : Array[RegressionEvent],
+  notes : Array[Note],
+) -> (Array[RegressionEvent], Int) {
+  let by_key : Map[String, String] = Map([])
+  for note in notes {
+    by_key["\{note.benchmark_id}|\{note.opened_on}"] = note.text
+  }
+  let matched : Set[String] = Set([])
+  let out = events.map(event => {
+    let key = "\{event.benchmark_id}|\{event.opened_on}"
+    guard by_key.get(key) is Some(text) else { return event }
+    matched.add(key)
+    { ..event, note: Some(text) }
+  })
+  (out, matched.length())
 }

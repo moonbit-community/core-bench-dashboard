@@ -224,4 +224,24 @@ pub(all) struct RegressionEvent {
   /// The most recent value seen while the event has been open.
   latest_us : Double
   latest_on : String
+  /// What a human has said about this step, if anyone has looked at it.
+  ///
+  /// Not derived from measurements: folded in from `notes.json` on every run,
+  /// which is why `events.json` stays a pure function of its inputs.
+  note : String?
+} derive(Eq, Debug)
+
+///|
+/// A human's explanation of one outstanding regression.
+///
+/// Keyed by `benchmark_id` and `opened_on` together. A note explains one
+/// episode, so a benchmark that recovers and breaks again later must not
+/// inherit an explanation written for a different step — the second break may
+/// be real where the first was not.
+#data.derive(Serialize, Deserialize)
+pub(all) struct Note {
+  benchmark_id : String
+  opened_on : String
+  text : String
+  noted_on : String
 } derive(Eq, Debug)

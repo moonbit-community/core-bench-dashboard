@@ -64,6 +64,40 @@ baseline the next real run is compared against. The condition sits on the step i
 
 Scheduled runs always collect: `inputs.mode` is null outside a manual dispatch, which is not `publish-only`.
 
+## Noting a regression
+
+Concluding something about an outstanding regression — that it is real and upstream, that it is measurement noise,
+that someone is already fixing it — is worth recording where the next reader will find it.
+
+```sh
+./dashboard note --backend native --match "rev_find adversary m=64 n=4096" \
+  --text "Not reproducible as a toolchain regression: identical generated C and hot assembly, 7.313us and 7.345us. Suspected measurement contamination in moon bench."
+```
+
+`--match` is a fragment of the benchmark label, package, or file, resolved against the current `events.json`. The
+command fails rather than guessing when it matches nothing or more than one benchmark; `--backend` narrows it,
+since the same label usually exists on all four. Everything else — the benchmark id, the step the note belongs to,
+the date — is filled in from the event, because the id is sixty characters of pipe-separated identity that a
+mistyped copy would silently fail to match.
+
+Writing twice about the same step replaces the earlier text. Removing a note is a hand-edit of `notes.json`.
+
+Then commit the note and redeploy:
+
+```sh
+git add notes.json && git commit -m "Note the rev_find adversary regression"
+git push
+gh workflow run core-bench.yml -f mode=publish-only
+```
+
+`notes.json` sits at the repository root, which is where `publish-site` runs, so CI needs no argument for it.
+`update-events` prints how many notes found a step: a note whose event has since closed matches nothing and is
+counted out, so an explanation that has gone stale shows in the run log rather than rotting quietly. A malformed
+`notes.json` fails the run instead of publishing with every note silently dropped.
+
+A note does not remove a regression from the panel. It marks it as looked at, which is what the panel's `Noted`
+and `Not noted` chips then count.
+
 ## The benchmark archive
 
 Retained history lives on the `bench-data` branch, not in the published site. Each run clones it, folds the day in,

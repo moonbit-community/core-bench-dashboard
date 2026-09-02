@@ -921,7 +921,7 @@ pub extend HistoryIndex with @data.Deserialize::{deserialize}
 
 ///|
 pub impl @data.Serialize for RegressionEvent with fn serialize(self, serializer) {
-  serializer.serialize_struct_begin("RegressionEvent", 12)
+  serializer.serialize_struct_begin("RegressionEvent", 13)
   serializer.serialize_field("benchmark_id", self.benchmark_id)
   serializer.serialize_field("backend", self.backend)
   serializer.serialize_field("package", self.pkg)
@@ -934,6 +934,7 @@ pub impl @data.Serialize for RegressionEvent with fn serialize(self, serializer)
   serializer.serialize_field("baseline_on", self.baseline_on)
   serializer.serialize_field("latest_us", self.latest_us)
   serializer.serialize_field("latest_on", self.latest_on)
+  serializer.serialize_field("note", self.note)
   serializer.serialize_struct_end()
 }
 
@@ -945,7 +946,7 @@ pub extend RegressionEvent with @data.Serialize::{serialize}
 ///|
 let __data_record_fields_RegressionEvent : ReadOnlyArray[String] = [
   "benchmark_id", "backend", "package", "file", "line", "block_label", "case_name",
-  "opened_on", "baseline_us", "baseline_on", "latest_us", "latest_on",
+  "opened_on", "baseline_us", "baseline_on", "latest_us", "latest_on", "note",
 ]
 
 ///|
@@ -962,6 +963,7 @@ priv enum DataRecordFieldRegressionEvent {
   Field_baseline_on
   Field_latest_us
   Field_latest_on
+  Field_note
   Unknown
 }
 
@@ -982,6 +984,7 @@ impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn from_index
     9 => Field_baseline_on
     10 => Field_latest_us
     11 => Field_latest_on
+    12 => Field_note
     _ => Unknown
   }
 }
@@ -1004,6 +1007,7 @@ impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn from_bytes
     9 if key.equal_to_bytes(b"baseline_on") => Field_baseline_on
     10 if key.equal_to_bytes(b"latest_us") => Field_latest_us
     11 if key.equal_to_bytes(b"latest_on") => Field_latest_on
+    12 if key.equal_to_bytes(b"note") => Field_note
     _ =>
       match key {
         [0x62, 0x65, 0x6e, 0x63, 0x68, 0x6d, 0x61, 0x72, 0x6b, 0x5f, 0x69, 0x64] =>
@@ -1026,6 +1030,7 @@ impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn from_bytes
           Field_latest_us
         [0x6c, 0x61, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x6f, 0x6e] =>
           Field_latest_on
+        [0x6e, 0x6f, 0x74, 0x65] => Field_note
         _ => Unknown
       }
   }
@@ -1048,6 +1053,7 @@ impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn from_strin
     "baseline_on" => Field_baseline_on
     "latest_us" => Field_latest_us
     "latest_on" => Field_latest_on
+    "note" => Field_note
     _ => Unknown
   }
 }
@@ -1067,6 +1073,7 @@ impl @data.FieldIdentifier for DataRecordFieldRegressionEvent with fn name(self)
     Field_baseline_on => Some("baseline_on")
     Field_latest_us => Some("latest_us")
     Field_latest_on => Some("latest_on")
+    Field_note => Some("note")
     Unknown => None
   }
 }
@@ -1088,6 +1095,7 @@ pub impl @data.Deserialize for RegressionEvent with fn deserialize(deserializer)
   let mut f_baseline_on = None
   let mut f_latest_us = None
   let mut f_latest_on = None
+  let mut f_note = None
   while (deserializer.deserialize_field() : DataRecordFieldRegressionEvent?)
         is Some(field) {
     match field {
@@ -1111,6 +1119,7 @@ pub impl @data.Deserialize for RegressionEvent with fn deserialize(deserializer)
         f_latest_us = Some(deserializer.deserialize_field_value())
       Field_latest_on =>
         f_latest_on = Some(deserializer.deserialize_field_value())
+      Field_note => f_note = deserializer.deserialize_field_value()
       Unknown => deserializer.skip_value()
     }
   }
@@ -1164,6 +1173,7 @@ pub impl @data.Deserialize for RegressionEvent with fn deserialize(deserializer)
       Some(value) => value
       None => @data.required(None, name="latest_on", path=deserializer.path())
     },
+    note: f_note,
   }
 }
 
@@ -1171,3 +1181,133 @@ pub impl @data.Deserialize for RegressionEvent with fn deserialize(deserializer)
 #deprecated("reach it through the `Deserialize` bound", skip_current_package=true)
 #doc(hidden)
 pub extend RegressionEvent with @data.Deserialize::{deserialize}
+
+///|
+pub impl @data.Serialize for Note with fn serialize(self, serializer) {
+  serializer.serialize_struct_begin("Note", 4)
+  serializer.serialize_field("benchmark_id", self.benchmark_id)
+  serializer.serialize_field("opened_on", self.opened_on)
+  serializer.serialize_field("text", self.text)
+  serializer.serialize_field("noted_on", self.noted_on)
+  serializer.serialize_struct_end()
+}
+
+///|
+#deprecated("reach it through the `Serialize` bound", skip_current_package=true)
+#doc(hidden)
+pub extend Note with @data.Serialize::{serialize}
+
+///|
+let __data_record_fields_Note : ReadOnlyArray[String] = [
+  "benchmark_id", "opened_on", "text", "noted_on",
+]
+
+///|
+priv enum DataRecordFieldNote {
+  Field_benchmark_id
+  Field_opened_on
+  Field_text
+  Field_noted_on
+  Unknown
+}
+
+///|
+impl @data.FieldIdentifier for DataRecordFieldNote with fn from_index(index) {
+  match index {
+    0 => Field_benchmark_id
+    1 => Field_opened_on
+    2 => Field_text
+    3 => Field_noted_on
+    _ => Unknown
+  }
+}
+
+///|
+impl @data.FieldIdentifier for DataRecordFieldNote with fn from_bytes(
+  key,
+  index_hint,
+) {
+  match index_hint {
+    0 if key.equal_to_bytes(b"benchmark_id") => Field_benchmark_id
+    1 if key.equal_to_bytes(b"opened_on") => Field_opened_on
+    2 if key.equal_to_bytes(b"text") => Field_text
+    3 if key.equal_to_bytes(b"noted_on") => Field_noted_on
+    _ =>
+      match key {
+        [0x62, 0x65, 0x6e, 0x63, 0x68, 0x6d, 0x61, 0x72, 0x6b, 0x5f, 0x69, 0x64] =>
+          Field_benchmark_id
+        [0x6f, 0x70, 0x65, 0x6e, 0x65, 0x64, 0x5f, 0x6f, 0x6e] =>
+          Field_opened_on
+        [0x74, 0x65, 0x78, 0x74] => Field_text
+        [0x6e, 0x6f, 0x74, 0x65, 0x64, 0x5f, 0x6f, 0x6e] => Field_noted_on
+        _ => Unknown
+      }
+  }
+}
+
+///|
+impl @data.FieldIdentifier for DataRecordFieldNote with fn from_string(name) {
+  match name {
+    "benchmark_id" => Field_benchmark_id
+    "opened_on" => Field_opened_on
+    "text" => Field_text
+    "noted_on" => Field_noted_on
+    _ => Unknown
+  }
+}
+
+///|
+impl @data.FieldIdentifier for DataRecordFieldNote with fn name(self) {
+  match self {
+    Field_benchmark_id => Some("benchmark_id")
+    Field_opened_on => Some("opened_on")
+    Field_text => Some("text")
+    Field_noted_on => Some("noted_on")
+    Unknown => None
+  }
+}
+
+///|
+pub impl @data.Deserialize for Note with fn deserialize(deserializer) {
+  deserializer.deserialize_struct_begin("Note", __data_record_fields_Note)
+  let mut f_benchmark_id = None
+  let mut f_opened_on = None
+  let mut f_text = None
+  let mut f_noted_on = None
+  while (deserializer.deserialize_field() : DataRecordFieldNote?) is Some(field) {
+    match field {
+      Field_benchmark_id =>
+        f_benchmark_id = Some(deserializer.deserialize_field_value())
+      Field_opened_on =>
+        f_opened_on = Some(deserializer.deserialize_field_value())
+      Field_text => f_text = Some(deserializer.deserialize_field_value())
+      Field_noted_on =>
+        f_noted_on = Some(deserializer.deserialize_field_value())
+      Unknown => deserializer.skip_value()
+    }
+  }
+  {
+    benchmark_id: match f_benchmark_id {
+      Some(value) => value
+      None =>
+        @data.required(None, name="benchmark_id", path=deserializer.path())
+    },
+    opened_on: match f_opened_on {
+      Some(value) => value
+      None => @data.required(None, name="opened_on", path=deserializer.path())
+    },
+    text: match f_text {
+      Some(value) => value
+      None => @data.required(None, name="text", path=deserializer.path())
+    },
+    noted_on: match f_noted_on {
+      Some(value) => value
+      None => @data.required(None, name="noted_on", path=deserializer.path())
+    },
+  }
+}
+
+///|
+#deprecated("reach it through the `Deserialize` bound", skip_current_package=true)
+#doc(hidden)
+pub extend Note with @data.Deserialize::{deserialize}

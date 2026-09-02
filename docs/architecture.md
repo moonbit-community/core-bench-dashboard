@@ -56,8 +56,28 @@ Because opening is derived, `events.json` is a persistence layer over a pure fun
 truth: delete it and the next run rebuilds whatever is still visible in the last fourteen days. Only the baselines
 of older regressions are lost.
 
-Today there is no second way to close an event. An accepted regression — one nobody intends to fix — stays in the
-panel until the number moves. Manual acknowledgement is the intended answer and is not built yet.
+## Notes
+
+`notes.json`, in the repository rather than the archive, carries what a human concluded about a step.
+`update-events` folds each note onto the event it explains, so `events.json` stays a pure function — of two inputs
+now, the archive and the note file, rather than one.
+
+A note is keyed by `benchmark_id` and `opened_on` together, so it explains one episode rather than one benchmark.
+A benchmark that recovers and breaks again later does not inherit an explanation written for the earlier break,
+which may well have been the one that was not real. That key is stable because `update_events` lets an existing
+event win over a freshly derived one, so a carried event keeps its original `opened_on` for as long as it is
+outstanding.
+
+Notes live in the repository because the archive branch is force-pushed on every run and is deliberately deletable
+— see [Operations](operations.md). A judgement about a regression has to survive that, and deserves a reviewable
+commit next to the reason it was made.
+
+A note does not close an event, and that is the point: nothing disappears from the panel because someone looked at
+it. The `Noted` and `Not noted` chips turn the difference into a triage backlog.
+
+Today there is still no second way to close an event. An accepted regression — one nobody intends to fix — stays
+in the panel until the number moves. Manual acknowledgement remains the intended answer, and is now a note that
+also accepts a level rather than a separate mechanism. It is not built yet.
 
 ## The archive is not the served copy
 

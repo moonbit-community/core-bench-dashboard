@@ -48,6 +48,17 @@ warren build --server-entry ""
 Retained history lives on the `bench-data` branch, not in the published site. See
 [Operations](docs/operations.md).
 
+## Note a Regression
+
+```sh
+./dashboard note --backend native --match "rev_find adversary m=64 n=4096" \
+  --text "Not reproducible; suspected measurement contamination in moon bench."
+```
+
+`notes.json` records what a human concluded about an outstanding regression, and `update-events` folds it onto the
+event. A note explains a regression rather than dismissing it: nothing leaves the panel. See
+[Operations](docs/operations.md#noting-a-regression).
+
 `warren build` writes `dist/index.html` and `dist/index.js`. Install it once with
 `moon install moonbit-community/warren`.
 

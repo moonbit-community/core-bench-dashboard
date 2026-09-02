@@ -160,6 +160,7 @@ fn test_event(
     baseline_on: "2026-05-02",
     latest_us: 100.0 + percent,
     latest_on: "2026-05-04",
+    note: None,
   }
 }
 
@@ -171,9 +172,103 @@ test "the panel narrows to one backend and to a step size" {
     test_event(Js, 40.0),
     test_event(Native, 12.0),
   ]
-  assert_eq(@core_bench.filter_events(events, None, 0.0).length(), 4)
-  assert_eq(@core_bench.filter_events(events, Some(Js), 0.0).length(), 2)
-  assert_eq(@core_bench.filter_events(events, None, 10.0).length(), 2)
-  assert_eq(@core_bench.filter_events(events, Some(Js), 10.0).length(), 1)
-  assert_eq(@core_bench.filter_events(events, Some(Wasm), 10.0).length(), 0)
+  assert_eq(@core_bench.filter_events(events, None, 0.0, None).length(), 4)
+  assert_eq(@core_bench.filter_events(events, Some(Js), 0.0, None).length(), 2)
+  assert_eq(@core_bench.filter_events(events, None, 10.0, None).length(), 2)
+  assert_eq(@core_bench.filter_events(events, Some(Js), 10.0, None).length(), 1)
+  assert_eq(
+    @core_bench.filter_events(events, Some(Wasm), 10.0, None).length(),
+    0,
+  )
+}
+
+///|
+test "the panel separates what has been explained from the backlog" {
+  let events = [
+    { ..test_event(Wasm, 6.0), note: Some("Contamination, not real.") },
+    test_event(Js, 7.0),
+    test_event(Native, 12.0),
+  ]
+  assert_eq(
+    @core_bench.filter_events(events, None, 0.0, Some(true)).length(),
+    1,
+  )
+  assert_eq(
+    @core_bench.filter_events(events, None, 0.0, Some(false)).length(),
+    2,
+  )
+  assert_eq(@core_bench.filter_events(events, None, 0.0, None).length(), 3)
+  // Composes with the other two axes rather than replacing them.
+  assert_eq(
+    @core_bench.filter_events(events, None, 10.0, Some(false)).length(),
+    1,
+  )
+}
+
+///|
+fn test_note(
+  event : @core_bench.RegressionEvent,
+  text : String,
+) -> @core_bench.Note {
+  {
+    benchmark_id: event.benchmark_id,
+    opened_on: event.opened_on,
+    text,
+    noted_on: "2026-05-05",
+  }
+}
+
+///|
+test "a note reaches the step it was written for" {
+  let events = [test_event(Native, 57.6), test_event(Js, 12.0)]
+  let (annotated, matched) = @core_bench.apply_notes(events, [
+    test_note(events[0], "Not reproducible; suspected measurement noise."),
+  ])
+  assert_eq(matched, 1)
+  assert_eq(
+    annotated[0].note,
+    Some("Not reproducible; suspected measurement noise."),
+  )
+  assert_eq(annotated[1].note, None)
+}
+
+///|
+test "a note written for an earlier step does not carry to a later one" {
+  // The benchmark recovered and broke again. The second break may be real
+  // where the first was not, so the old explanation must not follow it.
+  let event = test_event(Native, 57.6)
+  let (annotated, matched) = @core_bench.apply_notes(
+    [{ ..event, opened_on: "2026-06-14" }],
+    [test_note(event, "Contamination, not a real regression.")],
+  )
+  assert_eq(matched, 0)
+  assert_eq(annotated[0].note, None)
+}
+
+///|
+test "a note matching nothing leaves every event alone" {
+  let events = [test_event(Native, 57.6)]
+  let orphan : @core_bench.Note = {
+    benchmark_id: "native|gone|gone.mbt|1|bench gone|",
+    opened_on: "2026-05-03",
+    text: "The event this explained has closed.",
+    noted_on: "2026-05-05",
+  }
+  let (annotated, matched) = @core_bench.apply_notes(events, [orphan])
+  assert_eq(matched, 0)
+  assert_eq(annotated, events)
+}
+
+///|
+test "the last note written for a step is the one that shows" {
+  let event = test_event(Native, 57.6)
+  let (annotated, matched) = @core_bench.apply_notes([event], [
+    test_note(event, "First look: no idea."),
+    test_note(event, "Second look: identical assembly on both sides."),
+  ])
+  assert_eq(matched, 1)
+  assert_eq(
+    annotated[0].note,
+    Some("Second look: identical assembly on both sides."),
+  )
 }
