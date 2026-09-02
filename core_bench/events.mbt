@@ -179,3 +179,22 @@ pub fn update_events(
 pub fn RegressionEvent::delta_percent(self : RegressionEvent) -> Double {
   (self.latest_us / self.baseline_us - 1.0) * 100.0
 }
+
+///|
+/// The events a panel is showing: one backend or all of them, above a step size.
+///
+/// Five percent is what opens an event, and most of what opens sits just above
+/// it. Reading the panel means asking for the steps worth chasing, so the
+/// threshold is a parameter rather than the opening ratio a second time.
+pub fn filter_events(
+  events : Array[RegressionEvent],
+  backend : Backend?,
+  min_percent : Double,
+) -> Array[RegressionEvent] {
+  events.filter(event => {
+    if backend is Some(backend) && event.backend != backend {
+      return false
+    }
+    event.delta_percent() >= min_percent
+  })
+}

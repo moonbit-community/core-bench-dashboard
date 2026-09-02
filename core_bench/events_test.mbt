@@ -140,3 +140,40 @@ test "a benchmark with no measurement today keeps its event" {
 test "too little history opens nothing" {
   assert_eq(events_for([Some(100.0), Some(107.0)]).length(), 0)
 }
+
+///|
+/// One open event, `percent` above its baseline on `backend`.
+fn test_event(
+  backend : @core_bench.Backend,
+  percent : Double,
+) -> @core_bench.RegressionEvent {
+  {
+    benchmark_id: "\{backend}|pkg|file.mbt|1|bench|",
+    backend,
+    pkg: "moonbitlang/core/pkg",
+    file: "pkg/file.mbt",
+    line: 1,
+    block_label: "bench",
+    case_name: "",
+    opened_on: "2026-05-03",
+    baseline_us: 100.0,
+    baseline_on: "2026-05-02",
+    latest_us: 100.0 + percent,
+    latest_on: "2026-05-04",
+  }
+}
+
+///|
+test "the panel narrows to one backend and to a step size" {
+  let events = [
+    test_event(Wasm, 6.0),
+    test_event(Js, 7.0),
+    test_event(Js, 40.0),
+    test_event(Native, 12.0),
+  ]
+  assert_eq(@core_bench.filter_events(events, None, 0.0).length(), 4)
+  assert_eq(@core_bench.filter_events(events, Some(Js), 0.0).length(), 2)
+  assert_eq(@core_bench.filter_events(events, None, 10.0).length(), 2)
+  assert_eq(@core_bench.filter_events(events, Some(Js), 10.0).length(), 1)
+  assert_eq(@core_bench.filter_events(events, Some(Wasm), 10.0).length(), 0)
+}

@@ -138,6 +138,10 @@ priv struct UiModel {
   filter : @core_bench.Filter
   search : String
   expanded : @sorted_set.SortedSet[String]
+  /// Which backend the events panel is showing, or every backend.
+  event_backend : @core_bench.Backend?
+  /// Whether the events panel is hiding steps under `EVENT_LARGE_PERCENT`.
+  event_large_only : Bool
 } derive(Eq)
 
 ///|
@@ -145,6 +149,8 @@ priv enum UiMsg {
   SetFilter(@core_bench.Filter)
   SetSearch(String)
   ToggleExpand(String)
+  SetEventBackend(@core_bench.Backend?)
+  ToggleLargeEvents
 }
 
 ///|
@@ -158,6 +164,9 @@ fn update_ui(model : UiModel, msg : UiMsg) -> UiModel {
       } else {
         { ..model, expanded: model.expanded.add(key) }
       }
+    SetEventBackend(event_backend) => { ..model, event_backend, }
+    ToggleLargeEvents =>
+      { ..model, event_large_only: not(model.event_large_only) }
   }
 }
 
@@ -627,6 +636,123 @@ fn days_from_epoch(date : String) -> Int {
 }
 
 ///|
+/// The step size the events panel can narrow to.
+///
+/// Five percent opens an event, and most of what opens sits just above it. Ten
+/// is the line between "drifted" and "something happened".
+const EVENT_LARGE_PERCENT : Double = 10.0
+
+///|
+/// One chip in the events panel's filter row.
+///
+/// The count is set in mono at a lighter weight rather than a lighter colour:
+/// eleven pixels of dimmed red on white misses the contrast floor, and weight
+/// separates the two halves just as well.
+fn event_chip(
+  label : String,
+  count : Int?,
+  selected : Bool,
+  on_click : @cmd.Cmd,
+) -> @html.Html {
+  let color = state_color(Regression)
+  let children = [@html.span(style=["font-weight: 700"], label)]
+  if count is Some(count) {
+    children.push(
+      @html.span(
+        style=[MONO, "font-weight: 500", "font-variant-numeric: tabular-nums"],
+        count.to_string(),
+      ),
+    )
+  }
+  @html.button(
+    type_="button",
+    attrs=@html.Attrs::build().aria_pressed(
+      if selected {
+        "true"
+      } else {
+        "false"
+      },
+    ),
+    on_click~,
+    style=[
+      "display: inline-flex",
+      "align-items: baseline",
+      "gap: 5px",
+      "border: 1px solid \{if selected { color.foreground } else { "#fca5a5" }}",
+      "border-radius: 5px",
+      "background: \{if selected { color.foreground } else { "#ffffff" }}",
+      "color: \{if selected { "#ffffff" } else { color.foreground }}",
+      "padding: 5px 9px",
+      SANS,
+      "font-size: 11px",
+      "cursor: pointer",
+    ],
+    children,
+  )
+}
+
+///|
+/// Which backend the panel is showing, and how big a step it counts.
+///
+/// Each backend chip counts what it would actually reveal, so the numbers add
+/// up to the heading whichever way the step filter is set.
+fn events_filter_row(
+  events : Array[@core_bench.RegressionEvent],
+  backend : @core_bench.Backend?,
+  large_only : Bool,
+  emit : @cmd.Emit[UiMsg],
+) -> @html.Html {
+  let threshold = event_threshold(large_only)
+  let chips = [
+    event_chip(
+      "All",
+      Some(@core_bench.filter_events(events, None, threshold).length()),
+      backend is None,
+      emit(SetEventBackend(None)),
+    ),
+  ]
+  for candidate in @core_bench.backends() {
+    chips.push(
+      event_chip(
+        candidate.name(),
+        Some(
+          @core_bench.filter_events(events, Some(candidate), threshold).length(),
+        ),
+        backend == Some(candidate),
+        emit(SetEventBackend(Some(candidate))),
+      ),
+    )
+  }
+  // Pushed to the far end: a step-size switch is not one more backend.
+  chips.push(
+    @html.div(style=["margin-left: auto"], [
+      event_chip(
+        "≥ \{EVENT_LARGE_PERCENT.to_int()}% only",
+        None,
+        large_only,
+        emit(ToggleLargeEvents),
+      ),
+    ]),
+  )
+  @html.div(
+    style=[
+      "display: flex", "flex-wrap: wrap", "align-items: center", "gap: 6px", "padding: 0 10px 9px",
+    ],
+    chips,
+  )
+}
+
+///|
+fn event_threshold(large_only : Bool) -> Double {
+  if large_only {
+    EVENT_LARGE_PERCENT
+  } else {
+    0.0
+  }
+}
+
+///|
+///|
 /// The outstanding regressions, above the table.
 ///
 /// A cell only knows what changed last night. This panel is what is still
@@ -635,6 +761,9 @@ fn days_from_epoch(date : String) -> Int {
 fn events_panel(
   events : Array[@core_bench.RegressionEvent],
   today : String,
+  backend : @core_bench.Backend?,
+  large_only : Bool,
+  emit : @cmd.Emit[UiMsg],
 ) -> @html.Html {
   if events.is_empty() {
     return @html.div(
@@ -651,10 +780,32 @@ fn events_panel(
     )
   }
   let color = state_color(Regression)
-  let heading = if events.length() == 1 {
+  let visible = @core_bench.filter_events(
+    events,
+    backend,
+    event_threshold(large_only),
+  )
+  let heading = if visible.length() < events.length() {
+    "\{visible.length()} of \{events.length()} outstanding regressions"
+  } else if events.length() == 1 {
     "1 outstanding regression"
   } else {
     "\{events.length()} outstanding regressions"
+  }
+  let rows = if visible.is_empty() {
+    [
+      @html.div(
+        style=[
+          "padding: 9px 10px",
+          "border-top: 1px solid #fecaca",
+          "font-size: 12px",
+          "color: \{color.foreground}",
+        ],
+        "No outstanding regression matches this filter.",
+      ),
+    ]
+  } else {
+    visible.map(event => event_row(event, today))
   }
   @html.div(
     style=[
@@ -667,14 +818,15 @@ fn events_panel(
     [
       @html.div(
         style=[
-          "padding: 8px 10px",
+          "padding: 9px 10px 7px",
           "font-size: 12px",
           "font-weight: 800",
           "color: \{color.foreground}",
         ],
         "\{heading} — still slower than before they broke",
       ),
-      ..events.map(event => event_row(event, today)),
+      events_filter_row(events, backend, large_only, emit),
+      ..rows,
     ],
   )
 }
@@ -723,6 +875,9 @@ fn view(
           Some(metadata) => metadata.generated_at[0:10].to_owned()
           None => ""
         },
+        ui.event_backend,
+        ui.event_large_only,
+        ui_emit,
       ),
       @html.div(
         style=[
@@ -815,7 +970,13 @@ fn app() -> @rabbita.Val[@html.Html] {
     update=(model, msg, emit) => update_data(model, msg, emit),
   )
   let (ui, ui_emit) = @rabbita.create_state(
-    { filter: AllRows, search: "", expanded: @sorted_set.SortedSet::new() },
+    {
+      filter: AllRows,
+      search: "",
+      expanded: @sorted_set.SortedSet::new(),
+      event_backend: None,
+      event_large_only: false,
+    },
     update=(model, msg, _) => (update_ui(model, msg), @cmd.none),
   )
   let (_, log_emit) = @rabbita.create_state({ pending: None }, update=(
