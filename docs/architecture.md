@@ -58,9 +58,14 @@ of older regressions are lost.
 
 ## Notes
 
-`notes.json`, in the repository rather than the archive, carries what a human concluded about a step.
-`update-events` folds each note onto the event it explains, so `events.json` stays a pure function — of two inputs
-now, the archive and the note file, rather than one.
+`notes/<slug>.json`, in the repository rather than the archive, carries what a human concluded about a step — one
+file per note. `update-events` folds each note onto the event it explains, so `events.json` stays a pure function
+— of two inputs now, the archive and the note directory, rather than one.
+
+One file rather than one array so the dashboard can link a reader straight at the file for a given step. The slug
+is `<backend>-<label>-<opened_on>.json`, readable in a directory listing and stable while the event is open. It is
+not unique by construction — two packages may share a block label — so `dashboard note` refuses to write over a
+file naming a different benchmark rather than pretending the name is a key.
 
 A note is keyed by `benchmark_id` and `opened_on` together, so it explains one episode rather than one benchmark.
 A benchmark that recovers and breaks again later does not inherit an explanation written for the earlier break,
@@ -74,6 +79,21 @@ commit next to the reason it was made.
 
 A note does not close an event, and that is the point: nothing disappears from the panel because someone looked at
 it. The `Noted` and `Not noted` chips turn the difference into a triage backlog.
+
+## Writing a note from the site
+
+Each event row links into GitHub's own editor: `/new/main?filename=…&value=…` for a step with no note yet,
+`/edit/main/notes/<slug>.json` for one that has. Both are plain links, and the prefilled body already carries the
+`benchmark_id` and `opened_on` that are tedious to get right by hand.
+
+They are links rather than a write path because a static page cannot hold a token and GitHub's OAuth token
+endpoint does not answer cross-origin requests, so writing through the page would need a server behind it. That
+would invert the property this whole design rests on: nothing reads the published site back, so the site is a pure
+output. GitHub owns the sign-in, the editor, the commit and the history instead, and a reader without push access
+gets the fork-and-pull-request path for free.
+
+Committing under `notes/` on `main` triggers a run, so a note written this way is published without anyone
+dispatching a workflow. That trigger is the only one besides the schedule and a manual dispatch.
 
 Today there is still no second way to close an event. An accepted regression — one nobody intends to fix — stays
 in the panel until the number moves. Manual acknowledgement remains the intended answer, and is now a note that

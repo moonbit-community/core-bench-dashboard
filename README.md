@@ -55,8 +55,11 @@ Retained history lives on the `bench-data` branch, not in the published site. Se
   --text "Not reproducible; suspected measurement contamination in moon bench."
 ```
 
-`notes.json` records what a human concluded about an outstanding regression, and `update-events` folds it onto the
-event. A note explains a regression rather than dismissing it: nothing leaves the panel. See
+`notes/<slug>.json` records what a human concluded about an outstanding regression, and `update-events` folds it
+onto the event. A note explains a regression rather than dismissing it: nothing leaves the panel.
+
+The published dashboard links at this too — every event row has an **Add note** or **Edit note** link into
+GitHub's editor with the identity already filled in, and committing under `notes/` redeploys the site. See
 [Operations](docs/operations.md#noting-a-regression).
 
 `warren build` writes `dist/index.html` and `dist/index.js`. Install it once with

@@ -17,17 +17,39 @@ async fn read_events(data_dir : String) -> Array[@core_bench.RegressionEvent] {
 }
 
 ///|
-/// Read the note file, treating a missing one as no notes.
+/// Read one note file, or nothing if it is not there.
 ///
 /// A missing file is a valid state; a malformed one is not. `events.json` is
-/// derived and can be thrown away, but `notes.json` is written by hand and is
-/// the only copy of what anyone concluded, so a typo there must not quietly
-/// publish a run with every note dropped.
-async fn read_notes(path : String) -> Array[@core_bench.Note] raise {
-  let text = @fs.read_file(path).text() catch { _ => return [] }
-  @json.from_string(text) catch {
+/// derived and can be thrown away, but a note is the only copy of what someone
+/// concluded, so a typo must not quietly publish a run with it dropped.
+async fn read_note_file(path : String) -> @core_bench.Note? raise {
+  let text = @fs.read_file(path).text() catch {
+    _ => return None
+  }
+  Some(@json.from_string(text)) catch {
     error => fail("Could not read \{path}: \{error}")
   }
+}
+
+///|
+/// Every note in the directory, in a stable order.
+///
+/// One file per note rather than one array, so the dashboard can link a reader
+/// straight at the file for a given step. A missing directory means no notes.
+async fn read_notes(dir : String) -> Array[@core_bench.Note] raise {
+  let names = @fs.readdir(dir, sort=true) catch {
+    _ => return []
+  }
+  let notes = []
+  for name in names {
+    if !name.has_suffix(".json") {
+      continue
+    }
+    if read_note_file(join(dir, name)) is Some(note) {
+      notes.push(note)
+    }
+  }
+  notes
 }
 
 ///|
@@ -38,11 +60,11 @@ async fn read_notes(path : String) -> Array[@core_bench.Note] raise {
 /// fixed, and whether an explanation has gone stale.
 pub async fn update_regression_events(
   data_dir : String,
-  notes_path : String,
+  notes_dir : String,
 ) -> (Array[@core_bench.RegressionEvent], Int, Int, Int) {
   let existing = read_events(data_dir)
   let data = read_dashboard_data(data_dir)
-  let notes = read_notes(notes_path)
+  let notes = read_notes(notes_dir)
   let (events, noted) = @core_bench.apply_notes(
     @core_bench.update_events(@core_bench.build_rows(data), existing),
     notes,

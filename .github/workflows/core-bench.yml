@@ -12,6 +12,13 @@ on:
           - publish-only
   schedule:
     - cron: '0 18 * * *'
+  # A note committed from the dashboard's own "Add note" link is only a note
+  # once it is published, so writing one redeploys. Nothing else in the
+  # repository triggers a run: a code change still goes out by dispatch.
+  push:
+    branches: [main]
+    paths:
+      - 'notes/**'
 
 env:
   GITHUB_ACTION_RUN_ID: ${{ github.run_id }}
@@ -30,7 +37,11 @@ concurrency:
 
 jobs:
   collect-data:
-    if: inputs.mode != 'publish-only'
+    # `inputs.mode` is null outside a manual dispatch, and null is not
+    # 'publish-only', so a scheduled run always collects and the default fails
+    # safe. A push has no inputs at all and would collect for the same reason,
+    # which is wrong for a note: it is named here rather than left to that.
+    if: github.event_name != 'push' && inputs.mode != 'publish-only'
     runs-on: [self-hosted, bench-box]
     steps:
       - uses: actions/checkout@v5
@@ -112,7 +123,7 @@ jobs:
           cp _build/native/release/build/cmd/dashboard/dashboard.exe dashboard
 
       - uses: actions/download-artifact@v4
-        if: inputs.mode != 'publish-only'
+        if: needs.collect-data.result == 'success'
         with:
           path: artifacts
 
@@ -132,7 +143,7 @@ jobs:
           fi
 
       - name: Organize current data
-        if: inputs.mode != 'publish-only'
+        if: needs.collect-data.result == 'success'
         run: |
           mkdir -p data/core-bench/current/darwin-arm64
           cp -r artifacts/core-bench-current-darwin-arm64/* data/core-bench/current/darwin-arm64/
@@ -143,7 +154,7 @@ jobs:
       # then compare against it. The guard is on the step, not inferred, so it
       # stays visible to whoever edits this next.
       - name: Update retained history
-        if: inputs.mode != 'publish-only'
+        if: needs.collect-data.result == 'success'
         run: ./dashboard update-history
 
       - name: Update regression events

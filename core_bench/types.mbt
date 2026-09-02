@@ -18,6 +18,18 @@ pub const DASHBOARD_OS : String = "darwin-arm64"
 pub const CORE_REPO : String = "https://github.com/moonbitlang/core"
 
 ///|
+/// This dashboard's own repository, where notes are committed.
+///
+/// The site is served from it and links back into it, which is the whole of
+/// the note-writing path: GitHub owns the sign-in, the editor and the commit,
+/// so the published page stays a pure output with nothing to write through.
+pub const DASHBOARD_REPO : String = "https://github.com/moonbit-community/core-bench-dashboard"
+
+///|
+/// The branch notes are committed to.
+pub const DASHBOARD_BRANCH : String = "main"
+
+///|
 /// A `moon bench --target` value.
 #data.derive(Serialize, Deserialize)
 pub(all) enum Backend {
@@ -226,7 +238,7 @@ pub(all) struct RegressionEvent {
   latest_on : String
   /// What a human has said about this step, if anyone has looked at it.
   ///
-  /// Not derived from measurements: folded in from `notes.json` on every run,
+  /// Not derived from measurements: folded in from `notes/` on every run,
   /// which is why `events.json` stays a pure function of its inputs.
   note : String?
 } derive(Eq, Debug)

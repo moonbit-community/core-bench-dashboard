@@ -13,7 +13,11 @@
 /// The archive branch is force-pushed on every run and `docs/operations.md`
 /// documents deliberately deleting it. A note is a human judgement that has to
 /// survive that, and that deserves a reviewable commit.
-const DEFAULT_NOTES_PATH : String = "notes.json"
+///
+/// One file per note rather than one array, so a reader can be linked straight
+/// at the file for a step. That link is what lets a note be written from the
+/// dashboard without the site needing a server to write through.
+const DEFAULT_NOTES_DIR : String = "notes"
 
 ///|
 /// The text a reader would recognize a benchmark by.
@@ -62,36 +66,28 @@ fn resolve_event(
 /// appending: the file is a set of conclusions, not a log of them.
 async fn write_note(
   data_dir : String,
-  notes_path : String,
+  notes_dir : String,
   backend : @core_bench.Backend?,
   keyword : String,
   text : String,
-) -> @core_bench.Note raise {
+) -> String raise {
   let text = text.trim().to_owned()
   guard !text.is_empty() else { fail("--text cannot be empty.") }
   let event = resolve_event(read_events(data_dir), backend, keyword)
+  let path = join(notes_dir, event.note_slug())
+  // The slug is readable rather than unique — two packages may share a block
+  // label — so refuse the write instead of silently replacing a note about a
+  // different benchmark.
+  if read_note_file(path) is Some(existing) &&
+    existing.benchmark_id != event.benchmark_id {
+    fail("\{path} already holds a note about \{existing.benchmark_id}.")
+  }
   let note : @core_bench.Note = {
     benchmark_id: event.benchmark_id,
     opened_on: event.opened_on,
     text,
     noted_on: today_utc(),
   }
-  let notes = read_notes(notes_path).filter(existing => {
-    not(
-      existing.benchmark_id == note.benchmark_id &&
-      existing.opened_on == note.opened_on,
-    )
-  })
-  notes.push(note)
-  // Same ordering as `events.json`, so the two files read in step and a commit
-  // shows only what was actually written.
-  notes.sort_by((left, right) => {
-    let by_date = left.opened_on.lexical_compare(right.opened_on)
-    if by_date != 0 {
-      return by_date
-    }
-    left.benchmark_id.lexical_compare(right.benchmark_id)
-  })
-  write_file(notes_path, pretty_json(@json.to_string(notes)))
-  note
+  write_file(path, pretty_json(@json.to_string(note)))
+  path
 }

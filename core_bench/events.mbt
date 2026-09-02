@@ -235,3 +235,31 @@ pub fn apply_notes(
   })
   (out, matched.length())
 }
+
+///|
+/// The file a note about this step lives in.
+///
+/// Readable in a directory listing and stable for as long as the event is
+/// open, which is what lets the dashboard build a link to it without knowing
+/// anything the browser cannot see. Not unique by construction — two packages
+/// may share a block label — so `dashboard note` refuses to write over a file
+/// naming a different benchmark rather than pretending the name is a key.
+pub fn RegressionEvent::note_slug(self : RegressionEvent) -> String {
+  let source = "\{self.backend} \{self.block_label} \{self.case_name} \{self.opened_on}"
+  let out = StringBuilder()
+  let mut started = false
+  let mut pending_dash = false
+  for ch in source.to_lower() {
+    if (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9') {
+      if pending_dash && started {
+        out.write_char('-')
+      }
+      out.write_char(ch)
+      started = true
+      pending_dash = false
+    } else {
+      pending_dash = true
+    }
+  }
+  "\{out}.json"
+}

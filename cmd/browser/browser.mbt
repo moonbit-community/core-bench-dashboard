@@ -49,3 +49,20 @@ extern "js" fn open_text_in_new_tab(content : String) -> Unit =
   #|  const tab = window.open(url, "_blank");
   #|  if (tab) setTimeout(() => URL.revokeObjectURL(url), 1000);
   #|}
+
+///|
+/// `encodeURIComponent`, for the query of a GitHub prefill link.
+extern "js" fn encode_uri_component(value : String) -> String =
+  #|(value) => encodeURIComponent(value)
+
+///|
+/// Today's calendar date, in the reader's own time zone.
+///
+/// A note records when a person wrote it, which is their today rather than the
+/// benchmark run's.
+extern "js" fn today_local() -> String =
+  #|() => {
+  #|  const now = new Date();
+  #|  const pad = (n) => String(n).padStart(2, "0");
+  #|  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  #|}

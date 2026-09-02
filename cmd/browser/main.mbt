@@ -169,7 +169,7 @@ fn update_ui(model : UiModel, msg : UiMsg) -> UiModel {
       }
     SetEventBackend(event_backend) => { ..model, event_backend, }
     ToggleLargeEvents =>
-      { ..model, event_large_only: not(model.event_large_only) }
+      { ..model, event_large_only: !model.event_large_only }
     // Clicking the chip that is already on clears it, so the pair covers
     // noted, un-noted, and both without a third chip saying "either".
     ToggleNoted(noted) =>
@@ -578,6 +578,42 @@ fn row_view(
 }
 
 ///|
+/// Where a reader goes to write or change the note on a step.
+///
+/// GitHub's own editor does the work: `/new` takes a filename and a prefilled
+/// body in the query, `/edit` opens a file that already exists. Both are plain
+/// links, which is the point — a static page cannot hold a token, and GitHub's
+/// token endpoint does not answer cross-origin requests, so anything that
+/// wrote through the page would need a server behind it.
+///
+/// The two fields that are tedious to get right are filled in from the event,
+/// leaving the reader nothing to type but the note itself.
+fn note_link(event : @core_bench.RegressionEvent) -> (String, String) {
+  let path = "notes/\{event.note_slug()}"
+  let repo = @core_bench.DASHBOARD_REPO
+  let branch = @core_bench.DASHBOARD_BRANCH
+  if event.note is Some(_) {
+    return ("Edit note", "\{repo}/edit/\{branch}/\{path}")
+  }
+  let draft : @core_bench.Note = {
+    benchmark_id: event.benchmark_id,
+    opened_on: event.opened_on,
+    text: "",
+    noted_on: today_local(),
+  }
+  // Prefill is a convenience, not a correctness requirement: if the draft will
+  // not serialize, link at the right filename with an empty editor rather than
+  // at a body that might be wrong.
+  let query = "&value=\{encode_uri_component(@data_json.to_string(draft))}" catch {
+    _ => ""
+  }
+  (
+    "Add note",
+    "\{repo}/new/\{branch}?filename=\{encode_uri_component(path)}\{query}",
+  )
+}
+
+///|
 /// One outstanding regression: what broke, when, and by how much.
 ///
 /// A note, when someone has written one, sits on its own line under the row
@@ -591,11 +627,12 @@ fn event_row(event : @core_bench.RegressionEvent, today : String) -> @html.Html 
   } else {
     "since \{event.opened_on} (\{age} days)"
   }
+  let (label, link) = note_link(event)
   let lines = [
     @html.div(
       style=[
         "display: grid",
-        "grid-template-columns: minmax(240px, 1fr) 76px 190px 232px",
+        "grid-template-columns: minmax(240px, 1fr) 76px 190px 232px 70px",
         "gap: 10px",
         "align-items: baseline",
       ],
@@ -628,6 +665,20 @@ fn event_row(event : @core_bench.RegressionEvent, today : String) -> @html.Html 
           style=["font-size: 11px", "color: #4b5563", "white-space: nowrap"],
           "\{format_delta(Some(event.delta_percent()))}  \{since}",
         ),
+        @html.div(style=["text-align: right"], [
+          @html.a(
+            href=link,
+            target=Blank,
+            rel="noopener",
+            style=[
+              "color: \{color.foreground}",
+              "font-size: 11px",
+              "font-weight: 700",
+              "white-space: nowrap",
+            ],
+            label,
+          ),
+        ]),
       ],
     ),
   ]

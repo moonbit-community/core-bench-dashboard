@@ -74,26 +74,34 @@ that someone is already fixing it — is worth recording where the next reader w
   --text "Not reproducible as a toolchain regression: identical generated C and hot assembly, 7.313us and 7.345us. Suspected measurement contamination in moon bench."
 ```
 
+The dashboard also links at this directly: every event row carries an **Add note** or **Edit note** link into
+GitHub's editor, with `benchmark_id` and `opened_on` already filled in. Committing there publishes the note
+without any of the steps below. The command is for when you are already in a terminal.
+
 `--match` is a fragment of the benchmark label, package, or file, resolved against the current `events.json`. The
 command fails rather than guessing when it matches nothing or more than one benchmark; `--backend` narrows it,
 since the same label usually exists on all four. Everything else — the benchmark id, the step the note belongs to,
 the date — is filled in from the event, because the id is sixty characters of pipe-separated identity that a
 mistyped copy would silently fail to match.
 
-Writing twice about the same step replaces the earlier text. Removing a note is a hand-edit of `notes.json`.
+Notes live one per file under `notes/`, named `<backend>-<label>-<opened_on>.json`. Writing twice about the same
+step replaces the file; removing a note is deleting it.
 
-Then commit the note and redeploy:
+Then commit the note:
 
 ```sh
-git add notes.json && git commit -m "Note the rev_find adversary regression"
+git add notes && git commit -m "Note the rev_find adversary regression"
 git push
-gh workflow run core-bench.yml -f mode=publish-only
 ```
 
-`notes.json` sits at the repository root, which is where `publish-site` runs, so CI needs no argument for it.
+A push to `main` touching `notes/**` runs the workflow on its own, and `collect-data` is skipped for a push, so
+publishing a note costs about two minutes and leaves the bench box alone. Nothing else in the repository triggers
+a run: a code change still goes out by dispatch.
+
+`notes/` sits at the repository root, which is where `publish-site` runs, so CI needs no argument for it.
 `update-events` prints how many notes found a step: a note whose event has since closed matches nothing and is
 counted out, so an explanation that has gone stale shows in the run log rather than rotting quietly. A malformed
-`notes.json` fails the run instead of publishing with every note silently dropped.
+note file fails the run instead of publishing with it silently dropped.
 
 A note does not remove a regression from the panel. It marks it as looked at, which is what the panel's `Noted`
 and `Not noted` chips then count.

@@ -272,3 +272,37 @@ test "the last note written for a step is the one that shows" {
     Some("Second look: identical assembly on both sides."),
   )
 }
+
+///|
+test "a note slug reads as the benchmark it belongs to" {
+  let event = {
+    ..test_event(Native, 12.3),
+    block_label: "bench FixedArray::makei n=100000",
+    opened_on: "2026-08-31",
+  }
+  assert_eq(
+    event.note_slug(),
+    "native-bench-fixedarray-makei-n-100000-2026-08-31.json",
+  )
+}
+
+///|
+test "a note slug keeps a hyphenated backend and drops trailing punctuation" {
+  let event = {
+    ..test_event(WasmGc, 8.0),
+    block_label: "bench Array::blit_to Ref n=1000000 grow!!",
+    opened_on: "2026-08-23",
+  }
+  assert_eq(
+    event.note_slug(),
+    "wasm-gc-bench-array-blit-to-ref-n-1000000-grow-2026-08-23.json",
+  )
+}
+
+///|
+test "a note slug separates two cases of the same block" {
+  let block = "bench parse_double fast digits"
+  let left = { ..test_event(Js, 6.0), block_label: block, case_name: "n=4096" }
+  let right = { ..test_event(Js, 6.0), block_label: block, case_name: "n=8192" }
+  assert_not_eq(left.note_slug(), right.note_slug())
+}

@@ -187,9 +187,9 @@ fn update_events_command() -> @argparse.Command {
         about="Core benchmark data directory [default: \{DEFAULT_DATA_DIR}]",
       ),
       @argparse.OptionArg(
-        "notes",
-        long="notes",
-        about="Regression note file [default: \{DEFAULT_NOTES_PATH}]",
+        "notes-dir",
+        long="notes-dir",
+        about="Regression note directory [default: \{DEFAULT_NOTES_DIR}]",
       ),
     ],
   )
@@ -199,7 +199,7 @@ fn update_events_command() -> @argparse.Command {
 async fn run_update_events(matches : @argparse.Matches) -> Unit {
   let (events, opened, closed, noted) = update_regression_events(
     option_or(matches, "data-dir", DEFAULT_DATA_DIR),
-    option_or(matches, "notes", DEFAULT_NOTES_PATH),
+    option_or(matches, "notes-dir", DEFAULT_NOTES_DIR),
   )
   println(
     "\{events.length()} outstanding regressions " +
@@ -236,9 +236,9 @@ fn note_command() -> @argparse.Command {
         about="Core benchmark data directory [default: \{DEFAULT_DATA_DIR}]",
       ),
       @argparse.OptionArg(
-        "notes",
-        long="notes",
-        about="Regression note file [default: \{DEFAULT_NOTES_PATH}]",
+        "notes-dir",
+        long="notes-dir",
+        about="Regression note directory [default: \{DEFAULT_NOTES_DIR}]",
       ),
     ],
   )
@@ -265,17 +265,14 @@ async fn run_note(matches : @argparse.Matches) -> Unit {
         }
       }
   }
-  let notes_path = option_or(matches, "notes", DEFAULT_NOTES_PATH)
-  let note = write_note(
+  let path = write_note(
     option_or(matches, "data-dir", DEFAULT_DATA_DIR),
-    notes_path,
+    option_or(matches, "notes-dir", DEFAULT_NOTES_DIR),
     backend,
     keyword,
     text,
   )
-  println(
-    "Noted \{note.benchmark_id} (open since \{note.opened_on}) in \{notes_path}.",
-  )
+  println("Wrote \{path}")
 }
 
 ///|
