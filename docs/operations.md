@@ -57,7 +57,11 @@ twenty-eight. `publish-site` reads `current/` and `history/` from the archive, r
 `status.svg`, rebuilds the browser bundle, and deploys. That works because the archive carries the whole `data/`
 tree, current day included, not just retained history.
 
-**`update-history` never runs in this mode**, and that guard is the reason the mode is safe. It folds `current/`
+`update-history` also declines to fold a day on which nothing was measured — see
+[Architecture](architecture.md) — so a run where `moon bench` failed on every backend reports the failure without
+becoming the baseline for the next one.
+
+**`update-history` never runs in publish-only mode**, and that guard is the reason the mode is safe. It folds `current/`
 into history under *today's* date; in publish-only mode `current/` is whatever the archive already holds, so
 running it would write a history day out of an older run's numbers — and that fabricated day then becomes the
 baseline the next real run is compared against. The condition sits on the step itself so it stays visible.

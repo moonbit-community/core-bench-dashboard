@@ -92,11 +92,22 @@ async fn remove_pruned_dates(data_dir : String, keep : Set[String]) -> Unit {
 ///|
 /// Fold the current day into history, prune to the retention window, and
 /// rewrite the index.
+///
+/// A day that measured nothing is not folded. When `moon bench` fails for every
+/// backend the current day holds only failure records, and writing that as
+/// history makes it the day everything after it is compared against: every
+/// benchmark then reads `new`, because the day it should have been measured
+/// against has no record of it. A day with no measurements is not a data point,
+/// so it is left out and the next run compares against the last day that
+/// actually measured something. The failure is still reported — it is in
+/// `current/`, in the run log, and in the badge.
+///
+/// Returns the index and whether the day was folded.
 pub async fn update_history(
   data_dir : String,
   date : String,
   retention_days : Int,
-) -> @core_bench.HistoryIndex {
+) -> (@core_bench.HistoryIndex, Bool) {
   if !is_date(date) {
     fail("Invalid history date: \{date}")
   }
@@ -109,8 +120,24 @@ pub async fn update_history(
   guard current.metadata is Some(metadata) else {
     fail("Current data is missing metadata: \{current_path}")
   }
+  let measured = current.records.any(record => record.status is Succeeded)
+  if measured {
+    fold_current_into_history(date, data_dir, metadata, current.records)
+  }
+  let index = rewrite_history_index(data_dir, retention_days)
+  (index, measured)
+}
+
+///|
+/// Write the current day under `history/<date>/`, logs included.
+async fn fold_current_into_history(
+  date : String,
+  data_dir : String,
+  metadata : @core_bench.Metadata,
+  records : Array[@core_bench.Record],
+) -> Unit {
   copy_current_logs_to_history(date, data_dir)
-  let history_records = current.records.map(record => {
+  let history_records = records.map(record => {
     ..record,
     stdout_path: rewrite_path_to_history(record.stdout_path, date, data_dir),
     stderr_path: rewrite_path_to_history(record.stderr_path, date, data_dir),
@@ -124,6 +151,14 @@ pub async fn update_history(
     history_data_path,
     @core_bench.stringify_jsonl(metadata, history_records),
   )
+}
+
+///|
+/// Prune to the retention window and rewrite `history/index.json`.
+async fn rewrite_history_index(
+  data_dir : String,
+  retention_days : Int,
+) -> @core_bench.HistoryIndex {
   let dates = list_history_dates(data_dir)
   let keep_dates = if dates.length() <= retention_days {
     dates

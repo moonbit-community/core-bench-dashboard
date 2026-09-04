@@ -37,6 +37,16 @@ data/core-bench/status.svg
 The frontend loads current data and retained history directly from those static paths. It compares current records
 with the immediately previous retained calendar day using `mean_us`.
 
+Retained history holds only days that measured something. A run where `moon bench` failed for every backend leaves
+`current/` carrying failure records and nothing else, and folding that into history would make it the day the next
+run is compared against — every benchmark would then read `new`, because the day it should have been measured
+against has no record of it. `update-history` leaves such a day out, so the next run compares against the last day
+that actually measured. The failure is still reported: it is in `current/`, in the run log, and in the badge.
+
+A day where only *some* backends failed is still folded, since it carries real numbers for the ones that ran. The
+cells for a failed backend then read `new` the next day, which is the same shape of problem one column wide and is
+not yet fixed.
+
 ## Regression events
 
 A cell compares today with the previous retained day, which answers "what changed last night" and nothing else.

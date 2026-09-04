@@ -162,7 +162,7 @@ fn update_history_command() -> @argparse.Command {
 
 ///|
 async fn run_update_history(matches : @argparse.Matches) -> Unit {
-  let index = update_history(
+  let (index, folded) = update_history(
     option_or(matches, "data-dir", DEFAULT_DATA_DIR),
     match option_value(matches, "date") {
       Some(date) => date
@@ -170,9 +170,16 @@ async fn run_update_history(matches : @argparse.Matches) -> Unit {
     },
     option_int(matches, "retention-days", DEFAULT_HISTORY_RETENTION_DAYS),
   )
-  println(
-    "Updated core benchmark history with \{index.days.length()} retained days.",
-  )
+  if folded {
+    println(
+      "Updated core benchmark history with \{index.days.length()} retained days.",
+    )
+  } else {
+    println(
+      "No successful measurements today; history unchanged " +
+      "(\{index.days.length()} retained days).",
+    )
+  }
 }
 
 ///|
