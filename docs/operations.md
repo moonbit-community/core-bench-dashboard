@@ -24,7 +24,11 @@ MOON_HOME="$HOME/.moon-stable" PATH="$HOME/.moon-stable/bin:$PATH" moon build --
 
 Nightly is installed afterwards and is the only toolchain on `PATH` when `dashboard collect` spawns `moon bench`.
 `MOON_HOME` is never exported into the collect step, or the nightly `moon` would find the stable core library.
-`MOONC_RC_CONVENTION` is scoped to the collect step for the same reason.
+`MOONC_RC_CONVENTION=borrow`, `MOON_WASM_NEW_ALLOCATOR=1`, and `MOON_COLLECT_REF_CYCLE=1` are scoped to
+the collect step and inherited by each `moon bench` invocation.
+
+Starting with the 2026-09-21 configuration change, benchmarks enable the new Wasm allocator and reference-cycle
+collection. Comparisons against earlier runs span this configuration change as well as toolchain and core changes.
 
 ## Phases
 
