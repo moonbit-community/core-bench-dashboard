@@ -24,7 +24,7 @@ The dashboard is built with the **stable** toolchain even though it benchmarks n
 ## Collect Data
 
 ```sh
-MOONC_RC_CONVENTION=borrow MOON_WASM_NEW_ALLOCATOR=1 MOON_COLLECT_REF_CYCLE=1 \
+MOONC_RC_CONVENTION=borrow MOON_WASM_NEW_ALLOCATOR=1 \
   ./dashboard collect \
   --core-dir ../core \
   --os darwin-arm64 \

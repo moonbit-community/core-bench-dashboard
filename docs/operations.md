@@ -24,11 +24,15 @@ MOON_HOME="$HOME/.moon-stable" PATH="$HOME/.moon-stable/bin:$PATH" moon build --
 
 Nightly is installed afterwards and is the only toolchain on `PATH` when `dashboard collect` spawns `moon bench`.
 `MOON_HOME` is never exported into the collect step, or the nightly `moon` would find the stable core library.
-`MOONC_RC_CONVENTION=borrow`, `MOON_WASM_NEW_ALLOCATOR=1`, and `MOON_COLLECT_REF_CYCLE=1` are scoped to
+`MOONC_RC_CONVENTION=borrow` and `MOON_WASM_NEW_ALLOCATOR=1` are scoped to
 the collect step and inherited by each `moon bench` invocation.
 
-Starting with the 2026-09-21 configuration change, benchmarks enable the new Wasm allocator and reference-cycle
-collection. Comparisons against earlier runs span this configuration change as well as toolchain and core changes.
+The 2026-09-21 configuration change enabled the new Wasm allocator and reference-cycle collection (trial deletion).
+Trial deletion is temporarily disabled as of 2026-10-01 after Wasm `LazyList` benchmarks overflowed the stack in
+the collector's `mark_pending` traversal. The new Wasm allocator remains enabled. Re-enable trial deletion after
+validating a toolchain containing the fixes in
+[compiler MR !8849](http://192.168.86.3/compiler/ideas/-/merge_requests/8849).
+Comparisons across these configuration changes also include toolchain and core changes.
 
 ## Phases
 
