@@ -1,0 +1,6 @@
+{
+  "benchmark_id": "native|moonbitlang/core/immut/sorted_map|immut/sorted_map/merge_bench_test.mbt|36|bench merge disjoint n=5000|",
+  "opened_on": "2026-09-29",
+  "text": "Core 3edea7d2, fix(immut/sorted_map): rebalance fully when join has an empty side. When one side of join is empty, join now walks the whole spine with add_min_entry/add_max_entry instead of doing one balance step, and split on disjoint keys hits that case. Measured locally on the same nightly with ref-cycle collection off, 3 interleaved rounds: eff799b0 ran 6.11-6.29us and HEAD ede6d1c8 ran 7.66-7.76us (+25%). 3edea7d2 is the only commit in that range that touches the merge path. This is the cost of a correctness fix: the old path built trees that broke the size-balance invariant (height 376 at 2000 entries).",
+  "noted_on": "2026-10-01"
+}
