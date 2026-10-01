@@ -1,0 +1,6 @@
+{
+  "benchmark_id": "native|moonbitlang/core/builtin|builtin/stringbuilder_bench_test.mbt|41|bench StringBuilder::write_view chunks n=4096|",
+  "opened_on": "2026-09-20",
+  "text": "Not reproducible as a source or configuration regression. Before the step, the same core and toolchain already gave about 22-24us on some days and 30-32us on others (write_view and write_stringview swapped levels between 2026-09-19 and 2026-09-20), so the step lands on a bimodal benchmark. No StringBuilder source changed in the window. Locally on nightly moonc 6b3b9bf5a it runs a steady 36-37us with MOON_COLLECT_REF_CYCLE and MOON_WASM_NEW_ALLOCATOR each on or off, and the 2026-10-01 run without ref-cycle collection stayed at 34.4us. The slow level reproduces; the fast level and any correlation with source or configuration do not. Cause not identified.",
+  "noted_on": "2026-10-01"
+}
