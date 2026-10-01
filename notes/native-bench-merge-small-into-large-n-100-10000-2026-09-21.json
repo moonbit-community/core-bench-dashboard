@@ -1,0 +1,6 @@
+{
+  "benchmark_id": "native|moonbitlang/core/immut/sorted_map|immut/sorted_map/merge_bench_test.mbt|99|bench merge small into large n=100+10000|",
+  "opened_on": "2026-09-21",
+  "text": "Two causes. The 2026-09-21 step (5.50us to 5.89us) is reference-cycle collection. The 2026-09-21 dashboard change (a41be30) set MOON_COLLECT_REF_CYCLE=1. The 2026-09-20 and 2026-09-21 runs used the same core (0f2c822f) and toolchain (moonc 7d59c7ec9), so the flag is the only difference between them. The 2026-09-29 step comes from core 3edea7d2, fix(immut/sorted_map): rebalance fully when join has an empty side. When one side of join is empty, join now walks the whole spine with add_min_entry/add_max_entry instead of doing one balance step, and split on disjoint keys hits that case. Measured locally on the same nightly with ref-cycle collection off, 3 interleaved rounds: eff799b0 ran 5.84-5.99us and HEAD ede6d1c8 ran 7.12-7.18us (+22%). 3edea7d2 is the only commit in that range that touches the merge path. This is the cost of a correctness fix: the old path built trees that broke the size-balance invariant (height 376 at 2000 entries). The 2026-10-01 value of 6.76us comes from the run with ref-cycle collection disabled again.",
+  "noted_on": "2026-10-01"
+}
