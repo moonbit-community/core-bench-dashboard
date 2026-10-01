@@ -1,0 +1,6 @@
+{
+  "benchmark_id": "native|moonbitlang/core/quickcheck|quickcheck/shrink_collection_bench_test.mbt|22|bench shrink List first candidate size=10000|",
+  "opened_on": "2026-09-21",
+  "text": "Mostly reference-cycle collection. The 2026-09-21 dashboard change (a41be30) set MOON_COLLECT_REF_CYCLE=1. The 2026-09-20 and 2026-09-21 runs used the same core (0f2c822f) and toolchain (moonc 7d59c7ec9), so the flag is the only difference between them. It reproduces locally on the same core and nightly with only that variable toggled: 220-235us with it off and 300-307us with it on (+37%). With it disabled on 2026-10-01 the value fell from 300.8us to 213.9us. The remaining ~7% over the 200.4us baseline is a single run and has not been investigated.",
+  "noted_on": "2026-10-01"
+}
