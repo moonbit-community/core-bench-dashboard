@@ -1,0 +1,21 @@
+Error: failed to execute a MoonBit test
+
+Caused by:
+    RangeError: Maximum call stack size exceeded
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.raw_rc
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.in_root
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.cycle_capable
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.mark_pending_visitor
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.visit_child
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.visit_layout
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.visit_children
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.mark_pending
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.mark_pending_visitor
+        at moonbitlang/core/lazy_list@0.1.0.moonbit.visit_child
+Error: failed to run bench for target Wasm
+
+Caused by:
+    Failed to run the test: /private/tmp/core-bench-.65474.781c5d0e/wasm/build/wasm/release/bench/lazy_list/lazy_list.blackbox_test.wasm
+    The test executable exited with exit status: 1
+    Active test at executable exit:
+      - /Users/dii/actions-runner/_work/core-bench-dashboard/core-bench-dashboard/core/lazy_list/concat_bench_test.mbt:49 "bench LazyList re-traverse a forced list n=2048"
