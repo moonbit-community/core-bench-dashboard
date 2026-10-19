@@ -84,8 +84,7 @@ jobs:
         env:
           MOONC_RC_CONVENTION: borrow
           MOON_WASM_NEW_ALLOCATOR: '1'
-          # Trial deletion is temporarily disabled after stack overflows in
-          # core/lazy_list benchmarks. Re-enable with a validated toolchain.
+          MOON_COLLECT_REF_CYCLE: '1'
         run: |
           ./dashboard collect \
             --core-dir core \
