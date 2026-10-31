@@ -1,0 +1,6 @@
+{
+  "benchmark_id": "js|moonbitlang/core/builtin|builtin/string_find_code_unit_bench_test.mbt|96|bench find two anchors dense false positives n=256|",
+  "opened_on": "2026-10-29",
+  "text": "Accepted tradeoff from moonbitlang/core#4522 (8020ee22), which sends forward find of 2-250 code units on JS to V8's indexOf. V8 searches patterns shorter than 7 code units by scanning for the first code unit and comparing the rest; here the haystack is all 'a' and the pattern starts with 'a', so every position is a candidate (~8ns each), where the old two-anchor search filtered on the last code unit as well. Reproduces locally: 1.31us to 2.13us from 8020ee22^ to 8020ee22. Plain V8 shows the same cost: \"a\".repeat(256).indexOf(\"abaa\") takes about 2.1us in Node 22. The PR measured this case and accepted it for its gains on realistic searches (split_once on headers 1.5-61x faster on V8, find adversary m=64 15x faster).",
+  "noted_on": "2026-10-31"
+}
