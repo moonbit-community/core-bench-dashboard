@@ -1,0 +1,2110 @@
+[moonbitlang/core] bench argparse/globals_bench_test.mbt:16 ("bench parse inherited globals with an override") ok
+time (mean ± σ)         range (min … max) 
+   6.95 µs ±  16.90 ns     6.93 µs …   6.99 µs  in 10 ×  13764 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:16 ("bench Hash for Bytes (small)") ok
+time (mean ± σ)         range (min … max) 
+  13.82 ns ±   0.08 ns    13.73 ns …  14.00 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:22 ("bench Hash for Bytes (medium)") ok
+time (mean ± σ)         range (min … max) 
+ 107.72 ns ±   0.64 ns   106.94 ns … 108.63 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:28 ("bench Hash for Bytes (large)") ok
+time (mean ± σ)         range (min … max) 
+   2.21 µs ±  11.27 ns     2.20 µs …   2.23 µs  in 10 ×  45473 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:34 ("bench Hash for BytesView (small)") ok
+time (mean ± σ)         range (min … max) 
+  32.67 ns ±   0.18 ns    32.37 ns …  32.91 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:41 ("bench Hash for BytesView (medium)") ok
+time (mean ± σ)         range (min … max) 
+ 331.58 ns ±   0.84 ns   330.36 ns … 332.99 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:48 ("bench Hash for BytesView (large)") ok
+time (mean ± σ)         range (min … max) 
+   5.08 µs ±  26.23 ns     5.06 µs …   5.13 µs  in 10 ×  19476 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:55 ("bench Hasher::combine_bytes (small)") ok
+time (mean ± σ)         range (min … max) 
+  22.91 ns ±   0.03 ns    22.87 ns …  22.96 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:65 ("bench Hasher::combine_bytes (medium)") ok
+time (mean ± σ)         range (min … max) 
+ 209.61 ns ±   1.03 ns   208.81 ns … 211.73 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bench/hash_bench_test.mbt:75 ("bench Hasher::combine_bytes (large)") ok
+time (mean ± σ)         range (min … max) 
+   3.25 µs ±  63.15 ns     3.21 µs …   3.38 µs  in 10 ×  31172 runs
+[moonbitlang/core] bench bigint/to_string_radix_bench_test.mbt:22 ("bench bigint to_string radix=7 (4000 bits)") ok
+time (mean ± σ)         range (min … max) 
+ 438.90 µs ±   1.54 µs   437.10 µs … 440.99 µs  in 10 ×    229 runs
+[moonbitlang/core] bench bigint/to_string_radix_bench_test.mbt:28 ("bench bigint to_string radix=36 (4000 bits)") ok
+time (mean ± σ)         range (min … max) 
+ 273.16 µs ±   2.60 µs   270.34 µs … 278.52 µs  in 10 ×    369 runs
+[moonbitlang/core] bench bigint/to_string_radix_bench_test.mbt:34 ("bench bigint to_string radix=10 reference (4000 bits)") ok
+time (mean ± σ)         range (min … max) 
+  11.59 µs ±  58.17 ns    11.50 µs …  11.67 µs  in 10 ×   8567 runs
+[moonbitlang/core] bench bigint/to_string_bench_test.mbt:30 ("bench BigInt::to_string n=40 digits") ok
+time (mean ± σ)         range (min … max) 
+ 259.06 ns ±   2.64 ns   255.05 ns … 263.80 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bigint/to_string_bench_test.mbt:36 ("bench BigInt::to_string n=400 digits") ok
+time (mean ± σ)         range (min … max) 
+   2.12 µs ±  13.55 ns     2.10 µs …   2.14 µs  in 10 ×  46886 runs
+[moonbitlang/core] bench bigint/to_string_bench_test.mbt:42 ("bench BigInt::to_string n=4000 digits") ok
+time (mean ± σ)         range (min … max) 
+ 101.85 µs ±   1.36 µs   100.07 µs … 104.24 µs  in 10 ×    963 runs
+[moonbitlang/core] bench bigint/to_string_bench_test.mbt:48 ("bench BigInt::to_string n=40000 digits") ok
+time (mean ± σ)         range (min … max) 
+  10.16 ms ±  48.47 µs    10.08 ms …  10.27 ms  in 10 ×     10 runs
+[moonbitlang/core] bench bigint/to_string_bench_test.mbt:54 ("bench BigInt::to_string n=250000 digits") ok
+time (mean ± σ)         range (min … max) 
+ 180.70 ms ±   2.65 ms   178.98 ms … 186.90 ms  in 10 ×      1 runs
+[moonbitlang/core] bench bigint/from_string_bench_test.mbt:29 ("bench parse_bigint n=19 digits") ok
+time (mean ± σ)         range (min … max) 
+  96.61 ns ±   0.52 ns    96.30 ns …  97.92 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bigint/from_string_bench_test.mbt:35 ("bench parse_bigint n=40 digits") ok
+time (mean ± σ)         range (min … max) 
+ 269.68 ns ±   3.03 ns   266.08 ns … 274.19 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bigint/from_string_bench_test.mbt:41 ("bench parse_bigint n=400 digits") ok
+time (mean ± σ)         range (min … max) 
+   2.45 µs ±  54.11 ns     2.41 µs …   2.59 µs  in 10 ×  41336 runs
+[moonbitlang/core] bench bigint/from_string_bench_test.mbt:47 ("bench parse_bigint n=4000 digits") ok
+time (mean ± σ)         range (min … max) 
+ 122.80 µs ±   9.84 µs   114.69 µs … 142.73 µs  in 10 ×    872 runs
+[moonbitlang/core] bench bigint/from_string_bench_test.mbt:53 ("bench parse_bigint n=20000 digits") ok
+time (mean ± σ)         range (min … max) 
+   2.90 ms ±  94.06 µs     2.75 ms …   3.01 ms  in 10 ×     31 runs
+[moonbitlang/core] bench bigint/from_octets_bench_test.mbt:21 ("bench BigInt::from_octets n=64") ok
+time (mean ± σ)         range (min … max) 
+  45.57 ns ±   0.50 ns    45.07 ns …  46.37 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bigint/from_octets_bench_test.mbt:27 ("bench BigInt::from_octets n=1024") ok
+time (mean ± σ)         range (min … max) 
+ 508.80 ns ±   5.89 ns   502.47 ns … 517.52 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bigint/division_bench_test.mbt:66 ("bench BigInt balanced division n=4000 digits") ok
+time (mean ± σ)         range (min … max) 
+ 250.34 µs ±  14.81 µs   240.17 µs … 281.46 µs  in 10 ×    421 runs
+[moonbitlang/core] bench bigint/division_bench_test.mbt:72 ("bench BigInt balanced division n=40000 digits") ok
+time (mean ± σ)         range (min … max) 
+  12.06 ms ± 171.99 µs    11.90 ms …  12.38 ms  in 10 ×      9 runs
+[moonbitlang/core] bench bigint/division_bench_test.mbt:78 ("bench BigInt balanced division n=250000 digits") ok
+time (mean ± σ)         range (min … max) 
+ 263.03 ms ±   1.61 ms   260.90 ms … 265.50 ms  in 10 ×      1 runs
+[moonbitlang/core] bench bigint/division_bench_test.mbt:84 ("bench BigInt unbalanced division q=65536 d=64 limbs") ok
+time (mean ± σ)         range (min … max) 
+  33.07 ms ± 768.75 µs    32.00 ms …  34.22 ms  in 10 ×      3 runs
+[moonbitlang/core] bench bigint/division_bench_test.mbt:90 ("bench BigInt narrow division q=9 d=64 limbs") ok
+time (mean ± σ)         range (min … max) 
+ 691.02 ns ±  15.54 ns   673.45 ns … 721.35 ns  in 10 × 100000 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:30 ("bench Buffer::write_byte n=4096") ok
+time (mean ± σ)         range (min … max) 
+   8.07 µs ± 129.92 ns     7.89 µs …   8.27 µs  in 10 ×  12013 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:42 ("bench Buffer::write_uint16_be n=4096") ok
+time (mean ± σ)         range (min … max) 
+   9.89 µs ± 762.50 ns     8.81 µs …  10.59 µs  in 10 ×  11304 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:54 ("bench Buffer::write_uint_le n=4096") ok
+time (mean ± σ)         range (min … max) 
+  12.00 µs ± 194.27 ns    11.79 µs …  12.33 µs  in 10 ×   8398 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:66 ("bench Buffer::write_uint64_be n=4096") ok
+time (mean ± σ)         range (min … max) 
+  15.93 µs ± 242.25 ns    15.63 µs …  16.32 µs  in 10 ×   6105 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:78 ("bench Buffer::write_char_utf8 ASCII n=4096") ok
+time (mean ± σ)         range (min … max) 
+  10.02 µs ± 125.22 ns     9.81 µs …  10.20 µs  in 10 ×   9869 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:90 ("bench Buffer::write_char_utf8 non-BMP n=4096") ok
+time (mean ± σ)         range (min … max) 
+  14.15 µs ± 272.42 ns    13.83 µs …  14.54 µs  in 10 ×   7001 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:103 ("bench Buffer::write_char_utf16le BMP n=4096") ok
+time (mean ± σ)         range (min … max) 
+  10.84 µs ± 296.32 ns    10.52 µs …  11.32 µs  in 10 ×   9367 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:115 ("bench Buffer::write_string_utf16le chunks n=4096") ok
+time (mean ± σ)         range (min … max) 
+  60.49 µs ± 590.27 ns    59.67 µs …  61.60 µs  in 10 ×   1676 runs
+[moonbitlang/core] bench buffer/write_bench_test.mbt:130 ("bench @buffer.from_array n=4096") ok
+time (mean ± σ)         range (min … max) 
+   2.27 µs ±  10.13 ns     2.25 µs …   2.28 µs  in 10 ×  44024 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:34 ("bench ArrayView::at Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  68.26 µs ± 155.36 ns    68.08 µs …  68.50 µs  in 10 ×   1464 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:47 ("bench ArrayView::get Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  68.42 µs ± 366.74 ns    68.10 µs …  69.39 µs  in 10 ×   1472 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:62 ("bench ArrayView::unsafe_get Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  62.31 µs ± 665.69 ns    61.68 µs …  63.64 µs  in 10 ×   1545 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:75 ("bench ArrayView::rev_fold Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  51.71 µs ± 230.38 ns    51.39 µs …  52.01 µs  in 10 ×   1940 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:82 ("bench ArrayView::rev_foldi Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  44.88 µs ± 222.40 ns    44.59 µs …  45.28 µs  in 10 ×   2231 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:91 ("bench ArrayView::equal Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  88.82 µs ± 937.62 ns    87.59 µs …  90.48 µs  in 10 ×   1097 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:99 ("bench ArrayView::compare Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  96.12 µs ± 739.49 ns    94.43 µs …  96.77 µs  in 10 ×   1074 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:107 ("bench MutArrayView::at Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  68.23 µs ± 311.08 ns    67.88 µs …  68.71 µs  in 10 ×   1461 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:120 ("bench MutArrayView::unsafe_get Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  61.65 µs ±  95.78 ns    61.55 µs …  61.81 µs  in 10 ×   1625 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:133 ("bench MutArrayView::set Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  92.57 µs ±   2.36 µs    90.58 µs …  96.72 µs  in 10 ×   1098 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:145 ("bench MutArrayView::unsafe_set Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+  75.55 µs ± 323.56 ns    75.04 µs …  76.12 µs  in 10 ×   1336 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:157 ("bench BytesView::at n=100000") ok
+time (mean ± σ)         range (min … max) 
+  62.62 µs ± 994.04 ns    61.50 µs …  64.58 µs  in 10 ×   1634 runs
+[moonbitlang/core] bench builtin/view_bench_test.mbt:170 ("bench BytesView::unsafe_get n=100000") ok
+time (mean ± σ)         range (min … max) 
+  48.02 µs ±   1.57 µs    45.49 µs …  49.49 µs  in 10 ×   2176 runs
+[moonbitlang/core] bench builtin/stringview_clamped_view_bench_test.mbt:44 ("bench StringView::clamped_view start only") ok
+time (mean ± σ)         range (min … max) 
+ 594.84 ns ±  11.87 ns   582.93 ns … 613.70 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringview_clamped_view_bench_test.mbt:70 ("bench StringView::clamped_view mixed starts") ok
+time (mean ± σ)         range (min … max) 
+ 690.09 ns ±   8.75 ns   678.94 ns … 704.12 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:16 ("bench UTF-16 StringBuilder write string 1M units") ok
+time (mean ± σ)         range (min … max) 
+ 153.39 µs ±   3.13 µs   148.79 µs … 157.82 µs  in 10 ×    646 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:26 ("bench UTF-16 StringBuilder write view offset 1M units") ok
+time (mean ± σ)         range (min … max) 
+ 154.51 µs ±   2.54 µs   151.71 µs … 159.60 µs  in 10 ×    653 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:37 ("bench UTF-16 StringBuilder write chunks 4096x32") ok
+time (mean ± σ)         range (min … max) 
+  29.54 µs ±   1.25 µs    28.37 µs …  32.11 µs  in 10 ×   3516 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:49 ("bench UTF-16 StringBuilder short write 7 units") ok
+time (mean ± σ)         range (min … max) 
+  63.08 ns ±   0.41 ns    62.69 ns …  63.85 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:58 ("bench UTF-16 StringBuilder block write 8 units") ok
+time (mean ± σ)         range (min … max) 
+  59.95 ns ±   0.50 ns    59.50 ns …  60.85 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:67 ("bench UTF-16 StringBuilder write char control 4096") ok
+time (mean ± σ)         range (min … max) 
+  12.62 µs ± 778.60 ns    11.95 µs …  14.13 µs  in 10 ×   8276 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:78 ("bench UTF-16 JSON stringify plain string 128k units") ok
+time (mean ± σ)         range (min … max) 
+  29.91 µs ± 185.17 ns    29.73 µs …  30.23 µs  in 10 ×   3326 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:84 ("bench UTF-16 JSON stringify 1000 strings 128-unit prefixes") ok
+time (mean ± σ)         range (min … max) 
+  49.79 µs ± 615.50 ns    49.14 µs …  51.06 µs  in 10 ×   2036 runs
+[moonbitlang/core] bench builtin/stringbuilder_utf16_bench_test.mbt:93 ("bench UTF-16 JSON stringify 64 prose strings with newline") ok
+time (mean ± σ)         range (min … max) 
+ 169.82 µs ±   1.43 µs   168.95 µs … 172.95 µs  in 10 ×    595 runs
+[moonbitlang/core] bench builtin/stringbuilder_reset_bench_test.mbt:16 ("bench StringBuilder full convert reset 4096") ok
+time (mean ± σ)         range (min … max) 
+ 156.43 µs ± 780.31 ns   155.34 µs … 157.77 µs  in 10 ×    640 runs
+[moonbitlang/core] bench builtin/stringbuilder_reset_bench_test.mbt:28 ("bench StringBuilder partial convert reset 4096") ok
+time (mean ± σ)         range (min … max) 
+ 153.28 µs ± 509.06 ns   152.61 µs … 154.12 µs  in 10 ×    651 runs
+[moonbitlang/core] bench builtin/stringbuilder_reset_bench_test.mbt:40 ("bench StringBuilder write reset without conversion 4096") ok
+time (mean ± σ)         range (min … max) 
+  87.74 µs ±   1.79 µs    86.53 µs …  92.57 µs  in 10 ×   1152 runs
+[moonbitlang/core] bench builtin/stringbuilder_large_bench_test.mbt:23 ("bench StringBuilder reserve 1 MiB") ok
+time (mean ± σ)         range (min … max) 
+  53.54 ns ±   0.91 ns    52.85 ns …  55.03 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_large_bench_test.mbt:29 ("bench StringBuilder reserve 8 MiB") ok
+time (mean ± σ)         range (min … max) 
+  52.90 ns ±   0.16 ns    52.73 ns …  53.27 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_large_bench_test.mbt:35 ("bench StringBuilder reserve 32 MiB") ok
+time (mean ± σ)         range (min … max) 
+  53.53 ns ±   1.45 ns    52.60 ns …  56.81 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_large_bench_test.mbt:41 ("bench StringBuilder build 1 MiB") ok
+time (mean ± σ)         range (min … max) 
+  72.00 µs ± 226.96 ns    71.79 µs …  72.37 µs  in 10 ×   1394 runs
+[moonbitlang/core] bench builtin/stringbuilder_large_bench_test.mbt:52 ("bench StringBuilder build 8 MiB") ok
+time (mean ± σ)         range (min … max) 
+ 685.01 µs ±   3.79 µs   680.19 µs … 693.53 µs  in 10 ×    147 runs
+[moonbitlang/core] bench builtin/stringbuilder_large_bench_test.mbt:63 ("bench StringBuilder build 32 MiB") ok
+time (mean ± σ)         range (min … max) 
+   2.68 ms ±   7.74 µs     2.67 ms …   2.69 ms  in 10 ×     38 runs
+[moonbitlang/core] bench builtin/stringbuilder_capacity_bench_test.mbt:16 ("bench StringBuilder default empty") ok
+time (mean ± σ)         range (min … max) 
+  35.00 ns ±   0.10 ns    34.88 ns …  35.18 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_capacity_bench_test.mbt:21 ("bench StringBuilder default 8 ASCII chars") ok
+time (mean ± σ)         range (min … max) 
+  79.33 ns ±   1.34 ns    78.13 ns …  82.31 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_capacity_bench_test.mbt:32 ("bench StringBuilder default 4 non-BMP chars") ok
+time (mean ± σ)         range (min … max) 
+  70.16 ns ±   0.34 ns    69.83 ns …  71.00 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_capacity_bench_test.mbt:43 ("bench StringBuilder default single 7-unit string") ok
+time (mean ± σ)         range (min … max) 
+  63.49 ns ±   1.25 ns    62.91 ns …  66.88 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_capacity_bench_test.mbt:52 ("bench StringBuilder default single 64k-unit string") ok
+time (mean ± σ)         range (min … max) 
+   9.20 µs ± 240.31 ns     8.80 µs …   9.37 µs  in 10 ×  10617 runs
+[moonbitlang/core] bench builtin/stringbuilder_capacity_bench_test.mbt:62 ("bench StringBuilder explicit zero 8 ASCII chars") ok
+time (mean ± σ)         range (min … max) 
+ 154.06 ns ±   1.37 ns   152.88 ns … 156.26 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_capacity_bench_test.mbt:73 ("bench StringBuilder join 64 strings") ok
+time (mean ± σ)         range (min … max) 
+ 591.25 ns ±   2.80 ns   587.00 ns … 594.39 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_capacity_bench_test.mbt:79 ("bench StringBuilder default single ASCII char") ok
+time (mean ± σ)         range (min … max) 
+  57.87 ns ±   0.86 ns    57.37 ns …  59.92 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/stringbuilder_bench_test.mbt:28 ("bench StringBuilder::write_string chunks n=4096") ok
+time (mean ± σ)         range (min … max) 
+  21.92 µs ± 500.33 ns    21.56 µs …  22.76 µs  in 10 ×   4614 runs
+[moonbitlang/core] bench builtin/stringbuilder_bench_test.mbt:41 ("bench StringBuilder::write_view chunks n=4096") ok
+time (mean ± σ)         range (min … max) 
+  21.43 µs ±  43.82 ns    21.37 µs …  21.51 µs  in 10 ×   4695 runs
+[moonbitlang/core] bench builtin/stringbuilder_bench_test.mbt:54 ("bench StringBuilder::write_stringview chunks n=4096") ok
+time (mean ± σ)         range (min … max) 
+  29.68 µs ± 773.57 ns    29.21 µs …  31.21 µs  in 10 ×   3177 runs
+[moonbitlang/core] bench builtin/stringbuilder_bench_test.mbt:67 ("bench StringBuilder::write_char ASCII n=4096") ok
+time (mean ± σ)         range (min … max) 
+  11.68 µs ±  32.33 ns    11.64 µs …  11.71 µs  in 10 ×   8568 runs
+[moonbitlang/core] bench builtin/stringbuilder_bench_test.mbt:79 ("bench StringBuilder::write_char non-BMP n=4096") ok
+time (mean ± σ)         range (min … max) 
+  15.17 µs ±  46.97 ns    15.11 µs …  15.26 µs  in 10 ×   6607 runs
+[moonbitlang/core] bench builtin/stringbuilder_bench_test.mbt:92 ("bench StringBuilder::reset reuse spare capacity n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 113.91 µs ± 409.93 ns   113.36 µs … 114.51 µs  in 10 ×    878 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:61 ("bench String::to_upper short") ok
+time (mean ± σ)         range (min … max) 
+  36.64 ns ±   0.72 ns    36.28 ns …  38.65 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:66 ("bench String::to_upper long") ok
+time (mean ± σ)         range (min … max) 
+ 174.15 ns ±   1.89 ns   172.49 ns … 177.96 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:71 ("bench String::to_upper sparse") ok
+time (mean ± σ)         range (min … max) 
+ 173.81 ns ±   1.27 ns   172.57 ns … 175.97 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:76 ("bench String::to_upper late-lowercase") ok
+time (mean ± σ)         range (min … max) 
+ 176.11 ns ±   2.91 ns   173.77 ns … 182.59 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:81 ("bench String::to_upper one-unit runs") ok
+time (mean ± σ)         range (min … max) 
+ 176.14 ns ±   1.43 ns   175.23 ns … 180.02 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:86 ("bench String::to_upper all-lowercase") ok
+time (mean ± σ)         range (min … max) 
+ 183.57 ns ±   2.56 ns   181.44 ns … 188.10 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:91 ("bench String::to_upper no-change short") ok
+time (mean ± σ)         range (min … max) 
+  20.09 ns ±   0.13 ns    20.00 ns …  20.35 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:96 ("bench String::to_upper no-change long") ok
+time (mean ± σ)         range (min … max) 
+  58.93 ns ±   0.43 ns    58.64 ns …  59.85 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:101 ("bench StringView::to_upper short") ok
+time (mean ± σ)         range (min … max) 
+  39.36 ns ±   1.21 ns    38.85 ns …  42.74 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:106 ("bench StringView::to_upper long") ok
+time (mean ± σ)         range (min … max) 
+ 180.73 ns ±   1.21 ns   179.36 ns … 183.31 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_upper_bench_test.mbt:111 ("bench StringView::to_upper no-change long") ok
+time (mean ± σ)         range (min … max) 
+  62.39 ns ±   0.16 ns    62.21 ns …  62.72 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:61 ("bench String::to_lower short") ok
+time (mean ± σ)         range (min … max) 
+  36.57 ns ±   0.22 ns    36.27 ns …  36.78 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:66 ("bench String::to_lower long") ok
+time (mean ± σ)         range (min … max) 
+ 176.15 ns ±   4.34 ns   172.63 ns … 185.78 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:71 ("bench String::to_lower sparse") ok
+time (mean ± σ)         range (min … max) 
+ 173.58 ns ±   1.44 ns   172.45 ns … 177.03 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:76 ("bench String::to_lower late-uppercase") ok
+time (mean ± σ)         range (min … max) 
+ 178.08 ns ±   1.96 ns   176.19 ns … 181.18 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:81 ("bench String::to_lower one-unit runs") ok
+time (mean ± σ)         range (min … max) 
+ 174.67 ns ±   2.67 ns   172.57 ns … 179.60 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:86 ("bench String::to_lower all-uppercase") ok
+time (mean ± σ)         range (min … max) 
+ 176.62 ns ±   3.12 ns   172.82 ns … 180.77 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:91 ("bench String::to_lower no-change short") ok
+time (mean ± σ)         range (min … max) 
+  22.51 ns ±   0.07 ns    22.45 ns …  22.68 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:96 ("bench String::to_lower no-change long") ok
+time (mean ± σ)         range (min … max) 
+  61.93 ns ±   1.12 ns    61.45 ns …  65.06 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:101 ("bench StringView::to_lower short") ok
+time (mean ± σ)         range (min … max) 
+  39.26 ns ±   0.12 ns    39.13 ns …  39.49 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:106 ("bench StringView::to_lower long") ok
+time (mean ± σ)         range (min … max) 
+ 180.54 ns ±   2.55 ns   178.40 ns … 185.23 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_lower_bench_test.mbt:111 ("bench StringView::to_lower no-change long") ok
+time (mean ± σ)         range (min … max) 
+  64.43 ns ±   0.81 ns    64.03 ns …  66.69 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_array_bench_test.mbt:24 ("bench String::to_array ASCII 51 chars") ok
+time (mean ± σ)         range (min … max) 
+ 130.24 ns ±   1.34 ns   128.98 ns … 133.33 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_to_array_bench_test.mbt:29 ("bench String::to_array mixed 1KB") ok
+time (mean ± σ)         range (min … max) 
+   1.76 µs ±   5.75 ns     1.75 µs …   1.77 µs  in 10 ×  56788 runs
+[moonbitlang/core] bench builtin/string_to_array_bench_test.mbt:34 ("bench StringView::to_array mixed 1KB") ok
+time (mean ± σ)         range (min … max) 
+   1.79 µs ±  32.46 ns     1.77 µs …   1.84 µs  in 10 ×  56627 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:53 ("bench split_once short ':'") ok
+time (mean ± σ)         range (min … max) 
+ 183.29 ns ±   1.75 ns   181.33 ns … 187.02 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:60 ("bench split_once short ': '") ok
+time (mean ± σ)         range (min … max) 
+ 190.63 ns ±   1.46 ns   188.58 ns … 192.96 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:67 ("bench split_once short crlfcrlf") ok
+time (mean ± σ)         range (min … max) 
+ 112.42 ns ±   1.42 ns   111.30 ns … 115.94 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:76 ("bench split_once long ':'") ok
+time (mean ± σ)         range (min … max) 
+ 219.77 ns ±   0.69 ns   219.13 ns … 221.04 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:83 ("bench split_once long ': '") ok
+time (mean ± σ)         range (min … max) 
+ 375.65 ns ±   5.64 ns   370.29 ns … 387.43 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:90 ("bench split_once long crlfcrlf") ok
+time (mean ± σ)         range (min … max) 
+ 364.20 ns ±   2.28 ns   361.55 ns … 368.60 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:99 ("bench find header terminator in builder text") ok
+time (mean ± σ)         range (min … max) 
+  91.03 ns ±   1.49 ns    90.17 ns …  93.84 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:110 ("bench bounded find z 32 in 1MiB") ok
+time (mean ± σ)         range (min … max) 
+  16.99 ns ±   0.02 ns    16.97 ns …  17.02 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:117 ("bench bounded rev_find z 32 in 1MiB") ok
+time (mean ± σ)         range (min … max) 
+  16.72 ns ±   0.03 ns    16.70 ns …  16.77 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:124 ("bench bounded find zz 32 in 1MiB") ok
+time (mean ± σ)         range (min … max) 
+  21.12 ns ±   0.10 ns    21.05 ns …  21.36 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:131 ("bench find hit start n=256") ok
+time (mean ± σ)         range (min … max) 
+  15.83 ns ±   0.48 ns    15.35 ns …  16.80 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:137 ("bench reverse hit end n=256") ok
+time (mean ± σ)         range (min … max) 
+  15.39 ns ±   0.05 ns    15.34 ns …  15.47 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:143 ("bench dense aZ n=65536") ok
+time (mean ± σ)         range (min … max) 
+   6.10 µs ± 148.51 ns     5.97 µs …   6.40 µs  in 10 ×  16190 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:149 ("bench unicode find miss n=256") ok
+time (mean ± σ)         range (min … max) 
+  28.60 ns ±   0.70 ns    28.07 ns …  30.35 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:155 ("bench threshold m249 n=65536") ok
+time (mean ± σ)         range (min … max) 
+ 163.79 µs ±   2.45 µs   161.77 µs … 168.29 µs  in 10 ×    610 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:162 ("bench threshold m250 n=65536") ok
+time (mean ± σ)         range (min … max) 
+ 162.53 µs ± 258.30 ns   162.09 µs … 162.90 µs  in 10 ×    614 runs
+[moonbitlang/core] bench builtin/string_search_workloads_bench_test.mbt:169 ("bench threshold m251 n=65536") ok
+time (mean ± σ)         range (min … max) 
+ 163.09 µs ±   1.02 µs   161.99 µs … 164.97 µs  in 10 ×    596 runs
+[moonbitlang/core] bench builtin/string_methods_bench_test.mbt:36 ("bench StringView::has_prefix match n=100000 needle=128") ok
+time (mean ± σ)         range (min … max) 
+  24.48 ns ±   0.17 ns    24.37 ns …  24.81 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_methods_bench_test.mbt:45 ("bench StringView::has_prefix mismatch n=100000 needle=128") ok
+time (mean ± σ)         range (min … max) 
+  14.44 ns ±   0.08 ns    14.27 ns …  14.56 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_methods_bench_test.mbt:54 ("bench StringView::has_suffix match n=100000 needle=128") ok
+time (mean ± σ)         range (min … max) 
+  25.20 ns ±   1.11 ns    24.78 ns …  28.34 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_methods_bench_test.mbt:63 ("bench StringView::has_suffix mismatch n=100000 needle=128") ok
+time (mean ± σ)         range (min … max) 
+  14.13 ns ±   0.15 ns    14.01 ns …  14.51 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_join_bench_test.mbt:16 ("bench join FixedArray 64 short strings") ok
+time (mean ± σ)         range (min … max) 
+ 592.22 ns ±   3.22 ns   588.69 ns … 598.08 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_join_bench_test.mbt:22 ("bench join ArrayView 64 offset views") ok
+time (mean ± σ)         range (min … max) 
+ 471.57 ns ±   2.34 ns   468.92 ns … 475.57 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_join_bench_test.mbt:29 ("bench join Iter 64 short strings") ok
+time (mean ± σ)         range (min … max) 
+   1.18 µs ±   4.59 ns     1.17 µs …   1.18 µs  in 10 ×  84839 runs
+[moonbitlang/core] bench builtin/string_join_bench_test.mbt:35 ("bench join FixedArray 1 MiB content") ok
+time (mean ± σ)         range (min … max) 
+  53.87 µs ± 388.51 ns    53.58 µs …  54.74 µs  in 10 ×   1845 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:16 ("bench find one code unit absent n=4") ok
+time (mean ± σ)         range (min … max) 
+  17.24 ns ±   0.62 ns    16.96 ns …  18.97 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:22 ("bench find one code unit absent n=8") ok
+time (mean ± σ)         range (min … max) 
+  17.01 ns ±   1.22 ns    16.41 ns …  20.16 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:28 ("bench find one code unit present@0 n=8") ok
+time (mean ± σ)         range (min … max) 
+  15.65 ns ±   0.53 ns    15.34 ns …  17.12 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:34 ("bench find one code unit absent n=64") ok
+time (mean ± σ)         range (min … max) 
+  19.33 ns ±   0.22 ns    19.18 ns …  19.93 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:40 ("bench find one code unit absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  28.12 ns ±   0.04 ns    28.07 ns …  28.20 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:46 ("bench find one code unit present@end n=256") ok
+time (mean ± σ)         range (min … max) 
+  28.73 ns ±   0.79 ns    28.35 ns …  30.91 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:52 ("bench rev_find one code unit absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  28.00 ns ±   0.24 ns    27.83 ns …  28.58 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:58 ("bench rev_find one code unit present@start n=256") ok
+time (mean ± σ)         range (min … max) 
+  27.88 ns ±   0.91 ns    27.55 ns …  30.48 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:64 ("bench rev_find one code unit present@end n=8") ok
+time (mean ± σ)         range (min … max) 
+  15.42 ns ±   0.04 ns    15.38 ns …  15.48 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:70 ("bench StringView find one code unit absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  27.90 ns ±   0.56 ns    27.53 ns …  29.22 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:77 ("bench StringView rev_find one code unit absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  27.68 ns ±   0.99 ns    26.99 ns …  29.89 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:84 ("bench find two anchors absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  45.77 ns ±   1.12 ns    44.65 ns …  48.80 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:90 ("bench find two anchors present@end n=256") ok
+time (mean ± σ)         range (min … max) 
+  45.24 ns ±   1.18 ns    44.33 ns …  47.68 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:96 ("bench find two anchors dense false positives n=256") ok
+time (mean ± σ)         range (min … max) 
+ 698.45 ns ±   5.20 ns   690.06 ns … 705.73 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:102 ("bench find two anchors long absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  39.79 ns ±   1.50 ns    38.38 ns …  42.08 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:108 ("bench rev_find two anchors absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  42.08 ns ±   1.46 ns    40.60 ns …  44.57 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:114 ("bench rev_find two anchors present@start n=256") ok
+time (mean ± σ)         range (min … max) 
+  42.53 ns ±   2.19 ns    40.63 ns …  46.04 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:120 ("bench rev_find two anchors dense false positives n=256") ok
+time (mean ± σ)         range (min … max) 
+ 710.10 ns ±   7.79 ns   696.52 ns … 718.56 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:126 ("bench StringView find two anchors absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  45.09 ns ±   1.82 ns    43.05 ns …  47.50 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:133 ("bench rev_find one code unit absent n=16") ok
+time (mean ± σ)         range (min … max) 
+  17.34 ns ±   0.67 ns    16.99 ns …  18.82 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:139 ("bench rev_find one code unit absent n=64") ok
+time (mean ± σ)         range (min … max) 
+  19.30 ns ±   0.23 ns    19.14 ns …  19.81 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:145 ("bench rev_find one code unit absent n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 208.91 ns ±   2.05 ns   205.79 ns … 212.00 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:151 ("bench find one code unit absent n=16") ok
+time (mean ± σ)         range (min … max) 
+  17.07 ns ±   0.67 ns    16.70 ns …  18.94 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:157 ("bench find one code unit absent n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 226.47 ns ±   2.36 ns   223.36 ns … 229.49 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:163 ("bench find two anchors absent n=24") ok
+time (mean ± σ)         range (min … max) 
+  24.27 ns ±   1.12 ns    23.77 ns …  27.40 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:169 ("bench find two anchors absent n=40") ok
+time (mean ± σ)         range (min … max) 
+  25.31 ns ±   0.27 ns    25.12 ns …  25.85 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:175 ("bench find two anchors absent n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 401.18 ns ±   4.08 ns   394.51 ns … 406.35 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:181 ("bench rev_find two anchors absent n=40") ok
+time (mean ± σ)         range (min … max) 
+  23.61 ns ±   1.49 ns    22.65 ns …  26.18 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_code_unit_bench_test.mbt:187 ("bench rev_find two anchors absent n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 374.93 ns ±   3.15 ns   370.20 ns … 380.34 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_adversary_bench_test.mbt:26 ("bench find adversary m=64 n=4096") ok
+time (mean ± σ)         range (min … max) 
+  10.45 µs ± 100.04 ns    10.34 µs …  10.62 µs  in 10 ×   9464 runs
+[moonbitlang/core] bench builtin/string_find_adversary_bench_test.mbt:33 ("bench rev_find adversary m=64 n=4096") ok
+time (mean ± σ)         range (min … max) 
+  10.46 µs ±  72.03 ns    10.37 µs …  10.57 µs  in 10 ×   9201 runs
+[moonbitlang/core] bench builtin/string_find_adversary_bench_test.mbt:40 ("bench find adversary m=512 n=65536") ok
+time (mean ± σ)         range (min … max) 
+ 165.11 µs ±   1.27 µs   163.87 µs … 167.29 µs  in 10 ×    606 runs
+[moonbitlang/core] bench builtin/string_find_adversary_bench_test.mbt:47 ("bench find dense miss fast path n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 396.93 ns ±   3.77 ns   393.37 ns … 402.65 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_find_adversary_bench_test.mbt:53 ("bench find rare hit end fast path n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 401.58 ns ±   2.62 ns   399.02 ns … 406.23 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:61 ("bench String::escape short plain") ok
+time (mean ± σ)         range (min … max) 
+ 108.33 ns ±   1.30 ns   107.46 ns … 111.76 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:66 ("bench String::escape short escaped") ok
+time (mean ± σ)         range (min … max) 
+ 129.68 ns ±   1.51 ns   128.30 ns … 133.22 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:71 ("bench String::escape threshold plain") ok
+time (mean ± σ)         range (min … max) 
+ 104.04 ns ±   1.11 ns   103.21 ns … 106.48 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:76 ("bench String::escape prose") ok
+time (mean ± σ)         range (min … max) 
+ 144.47 ns ±   0.56 ns   143.91 ns … 145.94 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:81 ("bench String::escape escape-first") ok
+time (mean ± σ)         range (min … max) 
+ 132.66 ns ±   1.40 ns   131.76 ns … 136.37 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:86 ("bench String::escape long plain") ok
+time (mean ± σ)         range (min … max) 
+   1.15 µs ±   6.24 ns     1.14 µs …   1.16 µs  in 10 ×  87731 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:91 ("bench String::escape long dense") ok
+time (mean ± σ)         range (min … max) 
+  15.47 µs ±  67.09 ns    15.37 µs …  15.55 µs  in 10 ×   6476 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:96 ("bench String::escape long all-escaped") ok
+time (mean ± σ)         range (min … max) 
+  27.17 µs ± 191.60 ns    26.97 µs …  27.54 µs  in 10 ×   3690 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:101 ("bench String::escape long unicode") ok
+time (mean ± σ)         range (min … max) 
+   1.16 µs ±  27.16 ns     1.14 µs …   1.22 µs  in 10 ×  87301 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:106 ("bench StringView::escape long plain view") ok
+time (mean ± σ)         range (min … max) 
+   1.02 µs ±   7.16 ns     1.01 µs …   1.03 µs  in 10 ×  97540 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:112 ("bench debug to_string short plain") ok
+time (mean ± σ)         range (min … max) 
+ 286.57 ns ±   2.46 ns   284.28 ns … 290.89 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:117 ("bench debug to_string prose") ok
+time (mean ± σ)         range (min … max) 
+ 328.81 ns ±   2.60 ns   325.98 ns … 332.39 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_escape_bench_test.mbt:122 ("bench debug to_string long plain") ok
+time (mean ± σ)         range (min … max) 
+   1.35 µs ±   8.49 ns     1.33 µs …   1.36 µs  in 10 ×  73417 runs
+[moonbitlang/core] bench builtin/string_equal_bench_test.mbt:28 ("bench StringView::equal n=100000 equal") ok
+time (mean ± σ)         range (min … max) 
+   8.57 µs ±  39.57 ns     8.53 µs …   8.64 µs  in 10 ×  11598 runs
+[moonbitlang/core] bench builtin/string_equal_bench_test.mbt:35 ("bench StringView::equal n=100000 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+   8.73 µs ± 151.02 ns     8.59 µs …   8.97 µs  in 10 ×  11627 runs
+[moonbitlang/core] bench builtin/string_equal_bench_test.mbt:44 ("bench StringView::equal_to_string n=100000 equal") ok
+time (mean ± σ)         range (min … max) 
+   8.62 µs ±  82.27 ns     8.50 µs …   8.74 µs  in 10 ×  11563 runs
+[moonbitlang/core] bench builtin/string_clamped_view_bench_test.mbt:46 ("bench String::clamped_view start only") ok
+time (mean ± σ)         range (min … max) 
+ 545.73 ns ±   2.62 ns   542.59 ns … 550.60 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_clamped_view_bench_test.mbt:61 ("bench String::clamped_view start and end at the end") ok
+time (mean ± σ)         range (min … max) 
+ 593.76 ns ±  16.42 ns   577.75 ns … 621.11 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_clamped_view_bench_test.mbt:77 ("bench String::clamped_view start and end") ok
+time (mean ± σ)         range (min … max) 
+ 617.21 ns ±   4.34 ns   608.88 ns … 624.01 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_clamped_view_bench_test.mbt:102 ("bench String::clamped_view mixed starts") ok
+time (mean ± σ)         range (min … max) 
+ 602.47 ns ±  12.04 ns   587.60 ns … 618.67 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_set_bench_test.mbt:43 ("bench StringView::contains_any ASCII miss n=100000") ok
+time (mean ± σ)         range (min … max) 
+  14.65 µs ±  94.10 ns    14.51 µs …  14.80 µs  in 10 ×   6858 runs
+[moonbitlang/core] bench builtin/string_char_set_bench_test.mbt:54 ("bench StringView::contains_any ASCII match at end n=100000") ok
+time (mean ± σ)         range (min … max) 
+  14.58 µs ±  54.09 ns    14.52 µs …  14.67 µs  in 10 ×   6865 runs
+[moonbitlang/core] bench builtin/string_char_set_bench_test.mbt:67 ("bench StringView::trim_start ASCII n=100000") ok
+time (mean ± σ)         range (min … max) 
+  16.76 µs ±   1.52 µs    16.21 µs …  21.07 µs  in 10 ×   6134 runs
+[moonbitlang/core] bench builtin/string_char_set_bench_test.mbt:74 ("bench StringView::trim_end ASCII n=100000") ok
+time (mean ± σ)         range (min … max) 
+  16.76 µs ±   1.47 µs    16.22 µs …  20.94 µs  in 10 ×   6122 runs
+[moonbitlang/core] bench builtin/string_char_set_bench_test.mbt:79 ("bench StringView::trim ASCII n=100000") ok
+time (mean ± σ)         range (min … max) 
+  32.55 µs ±  67.98 ns    32.45 µs …  32.69 µs  in 10 ×   3077 runs
+[moonbitlang/core] bench builtin/string_char_set_bench_test.mbt:96 ("bench StringView::trim short inputs") ok
+time (mean ± σ)         range (min … max) 
+ 249.92 ns ±   3.23 ns   246.05 ns … 254.45 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_set_bench_test.mbt:107 ("bench StringView::contains_any short inputs") ok
+time (mean ± σ)         range (min … max) 
+ 126.42 ns ±   1.54 ns   124.33 ns … 128.21 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:51 ("bench char_length ascii 8") ok
+time (mean ± σ)         range (min … max) 
+  19.03 ns ±   0.04 ns    18.98 ns …  19.11 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:56 ("bench char_length ascii 16") ok
+time (mean ± σ)         range (min … max) 
+  15.41 ns ±   0.09 ns    15.34 ns …  15.65 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:61 ("bench char_length ascii 100") ok
+time (mean ± σ)         range (min … max) 
+  26.36 ns ±   0.88 ns    25.51 ns …  27.88 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:66 ("bench char_length ascii 4k") ok
+time (mean ± σ)         range (min … max) 
+ 368.87 ns ±   2.21 ns   367.07 ns … 374.16 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:71 ("bench char_length ascii 64k") ok
+time (mean ± σ)         range (min … max) 
+   5.62 µs ±  18.74 ns     5.60 µs …   5.65 µs  in 10 ×  17590 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:76 ("bench char_length cjk 4k") ok
+time (mean ± σ)         range (min … max) 
+ 368.75 ns ±   2.45 ns   366.88 ns … 374.51 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:81 ("bench char_length emoji 4k") ok
+time (mean ± σ)         range (min … max) 
+ 878.45 ns ±   3.37 ns   874.64 ns … 883.71 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:86 ("bench char_length mixed 4k") ok
+time (mean ± σ)         range (min … max) 
+ 499.70 ns ±   1.98 ns   497.45 ns … 503.17 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:91 ("bench StringView::char_length ascii 4k unaligned") ok
+time (mean ± σ)         range (min … max) 
+ 377.29 ns ±   3.57 ns   373.46 ns … 382.60 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:97 ("bench char_length_eq ascii 16") ok
+time (mean ± σ)         range (min … max) 
+  15.71 ns ±   0.06 ns    15.64 ns …  15.85 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:102 ("bench char_length_eq ascii 4k") ok
+time (mean ± σ)         range (min … max) 
+ 482.70 ns ±   2.73 ns   480.35 ns … 488.66 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:107 ("bench char_length_eq emoji 4k") ok
+time (mean ± σ)         range (min … max) 
+ 991.69 ns ±   8.14 ns   976.97 ns …   1.00 µs  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:112 ("bench char_length_eq mixed 4k") ok
+time (mean ± σ)         range (min … max) 
+ 631.91 ns ±   5.80 ns   622.71 ns … 639.36 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:119 ("bench char_length_ge ascii 4k len 3") ok
+time (mean ± σ)         range (min … max) 
+  14.84 ns ±   0.27 ns    14.65 ns …  15.41 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:124 ("bench char_length_ge ascii 4k len 2000") ok
+time (mean ± σ)         range (min … max) 
+ 247.97 ns ±   1.89 ns   246.23 ns … 252.48 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:129 ("bench char_length_ge cjk 4k len 4096") ok
+time (mean ± σ)         range (min … max) 
+ 494.43 ns ±  12.17 ns   480.73 ns … 511.21 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/string_char_length_bench_test.mbt:134 ("bench char_length_ge emoji 4k len 2048") ok
+time (mean ± σ)         range (min … max) 
+ 993.53 ns ±  13.56 ns   974.04 ns …   1.02 µs  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/sort_bench_test.mbt:21 ("bench Array::sort n=1000") ok
+time (mean ± σ)         range (min … max) 
+  19.00 µs ± 284.25 ns    18.61 µs …  19.31 µs  in 10 ×   5198 runs
+[moonbitlang/core] bench builtin/sort_bench_test.mbt:31 ("bench Array::sort n=100000") ok
+time (mean ± σ)         range (min … max) 
+   5.63 ms ±  73.54 µs     5.57 ms …   5.79 ms  in 10 ×     18 runs
+[moonbitlang/core] bench builtin/sort_bench_test.mbt:41 ("bench Array::sort_by n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 540.64 µs ±   3.89 µs   536.11 µs … 546.57 µs  in 10 ×    184 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:64 ("bench range_equal StringView== n=4 equal") ok
+time (mean ± σ)         range (min … max) 
+  16.53 ns ±   0.06 ns    16.46 ns …  16.62 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:69 ("bench range_equal StringView== n=8 equal") ok
+time (mean ± σ)         range (min … max) 
+  15.18 ns ±   0.10 ns    15.10 ns …  15.36 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:74 ("bench range_equal StringView== n=8 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+  15.17 ns ±   0.09 ns    15.10 ns …  15.39 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:79 ("bench range_equal StringView== n=16 equal") ok
+time (mean ± σ)         range (min … max) 
+  15.69 ns ±   0.07 ns    15.63 ns …  15.81 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:84 ("bench range_equal StringView== n=16 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+  15.67 ns ±   0.04 ns    15.63 ns …  15.74 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:89 ("bench range_equal StringView== n=15 equal") ok
+time (mean ± σ)         range (min … max) 
+  15.97 ns ±   0.91 ns    15.63 ns …  18.54 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:94 ("bench range_equal StringView== n=64 equal") ok
+time (mean ± σ)         range (min … max) 
+  20.37 ns ±   1.18 ns    19.17 ns …  22.75 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:99 ("bench range_equal StringView== n=64 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+  19.84 ns ±   0.71 ns    19.18 ns …  21.12 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:104 ("bench range_equal StringView== n=1024 equal") ok
+time (mean ± σ)         range (min … max) 
+ 105.26 ns ±   3.63 ns   101.40 ns … 110.41 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:109 ("bench range_equal StringView== n=1024 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+ 102.54 ns ±   1.68 ns   100.79 ns … 105.30 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:114 ("bench range_equal StringView== n=1024 mismatch at 0") ok
+time (mean ± σ)         range (min … max) 
+  15.40 ns ±   0.34 ns    15.08 ns …  16.10 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:119 ("bench range_equal StringView== n=65536 equal") ok
+time (mean ± σ)         range (min … max) 
+   5.92 µs ± 106.36 ns     5.78 µs …   6.09 µs  in 10 ×  16846 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:124 ("bench range_equal StringView== n=65536 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+   5.88 µs ±  70.85 ns     5.80 µs …   5.99 µs  in 10 ×  17071 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:129 ("bench range_equal BytesView== n=4 equal") ok
+time (mean ± σ)         range (min … max) 
+  17.63 ns ±   1.17 ns    16.47 ns …  19.69 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:134 ("bench range_equal BytesView== n=8 equal") ok
+time (mean ± σ)         range (min … max) 
+  18.36 ns ±   0.73 ns    17.83 ns …  20.14 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:139 ("bench range_equal BytesView== n=8 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+  18.50 ns ±   1.14 ns    17.70 ns …  20.54 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:144 ("bench range_equal BytesView== n=16 equal") ok
+time (mean ± σ)         range (min … max) 
+  16.01 ns ±   0.87 ns    15.10 ns …  17.66 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:149 ("bench range_equal BytesView== n=16 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+  15.83 ns ±   0.72 ns    15.13 ns …  16.96 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:154 ("bench range_equal BytesView== n=31 equal") ok
+time (mean ± σ)         range (min … max) 
+  16.49 ns ±   0.47 ns    15.76 ns …  17.24 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:159 ("bench range_equal BytesView== n=64 equal") ok
+time (mean ± σ)         range (min … max) 
+  18.87 ns ±   1.17 ns    17.39 ns …  21.03 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:164 ("bench range_equal BytesView== n=64 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+  17.53 ns ±   1.02 ns    16.73 ns …  18.92 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:169 ("bench range_equal BytesView== n=1024 equal") ok
+time (mean ± σ)         range (min … max) 
+  59.12 ns ±   2.52 ns    56.86 ns …  64.73 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:174 ("bench range_equal BytesView== n=1024 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+  58.35 ns ±   1.41 ns    56.91 ns …  60.64 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:179 ("bench range_equal BytesView== n=1024 mismatch at 0") ok
+time (mean ± σ)         range (min … max) 
+  14.90 ns ±   0.08 ns    14.81 ns …  15.06 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:184 ("bench range_equal BytesView== n=65536 equal") ok
+time (mean ± σ)         range (min … max) 
+   2.92 µs ±  21.84 ns     2.89 µs …   2.94 µs  in 10 ×  34429 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:189 ("bench range_equal BytesView== n=65536 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+   2.93 µs ±  27.70 ns     2.90 µs …   2.97 µs  in 10 ×  33897 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:194 ("bench range_equal StringView::has_prefix prefix=32 hit") ok
+time (mean ± σ)         range (min … max) 
+  17.41 ns ±   0.77 ns    16.98 ns …  19.18 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/range_equal_bench_test.mbt:201 ("bench range_equal StringView::has_prefix prefix=32 miss at end") ok
+time (mean ± σ)         range (min … max) 
+  17.93 ns ±   1.48 ns    16.97 ns …  20.26 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/linked_hash_map_map_bench_test.mbt:16 ("bench Map::map int n=0") ok
+time (mean ± σ)         range (min … max) 
+  52.94 ns ±   1.46 ns    51.25 ns …  55.22 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/linked_hash_map_map_bench_test.mbt:25 ("bench Map::map int n=1") ok
+time (mean ± σ)         range (min … max) 
+  82.51 ns ±   1.52 ns    79.99 ns …  84.61 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/linked_hash_map_map_bench_test.mbt:34 ("bench Map::map int n=16") ok
+time (mean ± σ)         range (min … max) 
+ 459.30 ns ±  12.68 ns   443.45 ns … 476.30 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/linked_hash_map_map_bench_test.mbt:43 ("bench Map::map int n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 245.01 µs ±   4.64 µs   240.23 µs … 252.59 µs  in 10 ×    404 runs
+[moonbitlang/core] bench builtin/linked_hash_map_map_bench_test.mbt:52 ("bench Map::map int n=100000") ok
+time (mean ± σ)         range (min … max) 
+   2.74 ms ± 129.18 µs     2.62 ms …   3.03 ms  in 10 ×     39 runs
+[moonbitlang/core] bench builtin/linked_hash_map_map_bench_test.mbt:61 ("bench Map::map string n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 313.02 µs ±   4.57 µs   308.59 µs … 320.93 µs  in 10 ×    316 runs
+[moonbitlang/core] bench builtin/linked_hash_map_bench_test.mbt:19 ("bench Map::set n=50000") ok
+time (mean ± σ)         range (min … max) 
+   3.37 ms ±  35.30 µs     3.33 ms …   3.44 ms  in 10 ×     31 runs
+[moonbitlang/core] bench builtin/linked_hash_map_bench_test.mbt:30 ("bench Map::get n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.10 ms ±  14.93 µs     1.09 ms …   1.14 ms  in 10 ×     87 runs
+[moonbitlang/core] bench builtin/linked_hash_map_bench_test.mbt:47 ("bench Map::get miss n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.21 ms ±  29.04 µs     1.18 ms …   1.25 ms  in 10 ×     87 runs
+[moonbitlang/core] bench builtin/linked_hash_map_bench_test.mbt:67 ("bench Map::set+remove n=50000") ok
+time (mean ± σ)         range (min … max) 
+   5.21 ms ± 120.87 µs     5.10 ms …   5.40 ms  in 10 ×     19 runs
+[moonbitlang/core] bench builtin/linked_hash_map_bench_test.mbt:83 ("bench Map::each n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 114.25 µs ±   2.49 µs   111.83 µs … 118.91 µs  in 10 ×    886 runs
+[moonbitlang/core] bench builtin/linked_hash_map_bench_test.mbt:101 ("bench Map::filter n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.47 ms ±  13.40 µs     1.45 ms …   1.49 ms  in 10 ×     69 runs
+[moonbitlang/core] bench builtin/linked_hash_map_bench_test.mbt:107 ("bench Map comprehension filter n=50000") ok
+time (mean ± σ)         range (min … max) 
+   3.71 ms ± 126.49 µs     3.63 ms …   4.00 ms  in 10 ×     24 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:42 ("bench lexical_compare equal n=256") ok
+time (mean ± σ)         range (min … max) 
+  30.69 ns ±   0.42 ns    30.33 ns …  31.43 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:47 ("bench lexical_compare common-prefix n=256") ok
+time (mean ± σ)         range (min … max) 
+  31.21 ns ±   0.25 ns    30.95 ns …  31.68 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:52 ("bench lexical_compare early-diff n=256") ok
+time (mean ± σ)         range (min … max) 
+  14.59 ns ±   0.04 ns    14.54 ns …  14.67 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:89 ("bench String::lexical_compare equal n=256") ok
+time (mean ± σ)         range (min … max) 
+ 228.51 ns ±   1.68 ns   226.77 ns … 231.64 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:94 ("bench String::lexical_compare common-prefix n=256") ok
+time (mean ± σ)         range (min … max) 
+ 229.78 ns ±   5.03 ns   224.77 ns … 238.38 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:99 ("bench String::lexical_compare early-diff n=256") ok
+time (mean ± σ)         range (min … max) 
+  14.63 ns ±   0.08 ns    14.55 ns …  14.77 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:104 ("bench StringView::lexical_compare equal n=256") ok
+time (mean ± σ)         range (min … max) 
+ 227.66 ns ±   2.96 ns   225.81 ns … 233.53 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:109 ("bench StringView::lexical_compare common-prefix n=256") ok
+time (mean ± σ)         range (min … max) 
+ 224.27 ns ±   0.79 ns   223.33 ns … 225.62 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:114 ("bench StringView::lexical_compare early-diff n=256") ok
+time (mean ± σ)         range (min … max) 
+  14.62 ns ±   0.04 ns    14.57 ns …  14.69 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:121 ("bench String::compare equal-length common-prefix n=256") ok
+time (mean ± σ)         range (min … max) 
+ 160.43 ns ±   1.51 ns   159.19 ns … 163.17 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:128 ("bench StringView::compare equal-length common-prefix n=256") ok
+time (mean ± σ)         range (min … max) 
+ 231.04 ns ±   2.48 ns   229.33 ns … 235.76 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/lexical_compare_bench_test.mbt:135 ("bench StringView::compare_ignore_ascii_case common-prefix n=256") ok
+time (mean ± σ)         range (min … max) 
+ 379.33 ns ±   1.84 ns   377.52 ns … 382.91 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/float_total_compare_bench_test.mbt:54 ("bench Double::total_compare") ok
+name                     time (mean ± σ)         range (min … max) 
+double store finite        11.71 µs ± 204.11 ns    11.56 µs …  12.19 µs  in 10 ×   8676 runs
+double sum finite           2.43 µs ±  40.45 ns     2.39 µs …   2.51 µs  in 10 ×  41284 runs
+double store nan-heavy      9.81 µs ±  53.95 ns     9.72 µs …   9.91 µs  in 10 ×  10165 runs
+double sum nan-heavy        3.02 µs ± 100.93 ns     2.90 µs …   3.17 µs  in 10 ×  33807 runs
+double store random-bits   11.61 µs ±  29.10 ns    11.58 µs …  11.66 µs  in 10 ×   8603 runs
+double sum random-bits      2.40 µs ±  28.37 ns     2.37 µs …   2.44 µs  in 10 ×  40286 runs
+[moonbitlang/core] bench builtin/float_total_compare_bench_test.mbt:77 ("bench Float::total_compare") ok
+name                    time (mean ± σ)         range (min … max) 
+float store finite        11.36 µs ±  34.14 ns    11.30 µs …  11.41 µs  in 10 ×   8789 runs
+float sum finite           2.41 µs ±  26.49 ns     2.38 µs …   2.46 µs  in 10 ×  39267 runs
+float store nan-heavy      9.61 µs ± 117.01 ns     9.52 µs …   9.88 µs  in 10 ×   9994 runs
+float sum nan-heavy        2.93 µs ±  40.06 ns     2.89 µs …   3.03 µs  in 10 ×  32544 runs
+float store random-bits   11.07 µs ±  55.44 ns    11.00 µs …  11.18 µs  in 10 ×   9064 runs
+float sum random-bits      2.35 µs ±   7.07 ns     2.34 µs …   2.36 µs  in 10 ×  41810 runs
+[moonbitlang/core] bench builtin/fixedarray_from_array_bench_test.mbt:34 ("bench array conversions Int32 n=32") ok
+name                         time (mean ± σ)         range (min … max) 
+fresh Array to FixedArray      40.73 ns ±   0.21 ns    40.51 ns …  41.16 ns  in 10 × 100000 runs
+fresh Array to ReadOnlyArray   43.20 ns ±   1.18 ns    42.47 ns …  45.71 ns  in 10 × 100000 runs
+shared view to FixedArray      36.33 ns ±   0.28 ns    36.01 ns …  36.64 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/fixedarray_from_array_bench_test.mbt:39 ("bench array conversions Int32 n=262144") ok
+name                         time (mean ± σ)         range (min … max) 
+fresh Array to FixedArray     126.32 µs ±   1.28 µs   125.01 µs … 129.08 µs  in 10 ×    795 runs
+fresh Array to ReadOnlyArray  132.47 µs ±   9.01 µs   124.18 µs … 148.34 µs  in 10 ×    717 runs
+shared view to FixedArray      17.29 µs ±  48.22 ns    17.23 µs …  17.37 µs  in 10 ×   5806 runs
+[moonbitlang/core] bench builtin/fixedarray_from_array_bench_test.mbt:44 ("bench array conversions references n=32") ok
+name                         time (mean ± σ)         range (min … max) 
+fresh Array to FixedArray     133.85 ns ±   5.47 ns   128.74 ns … 143.64 ns  in 10 × 100000 runs
+fresh Array to ReadOnlyArray  130.16 ns ±   3.21 ns   127.99 ns … 137.02 ns  in 10 × 100000 runs
+shared view to FixedArray     127.41 ns ±   1.78 ns   126.12 ns … 131.07 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/fixedarray_from_array_bench_test.mbt:49 ("bench array conversions references n=262144") ok
+name                         time (mean ± σ)         range (min … max) 
+fresh Array to FixedArray     980.12 µs ±   2.26 µs   976.86 µs … 983.83 µs  in 10 ×    103 runs
+fresh Array to ReadOnlyArray  982.70 µs ±   3.44 µs   978.62 µs … 988.61 µs  in 10 ×    103 runs
+shared view to FixedArray     993.94 µs ±   4.13 µs   988.31 µs … 999.57 µs  in 10 ×    101 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:19 ("bench contains_code_unit absent n=4") ok
+time (mean ± σ)         range (min … max) 
+  14.08 ns ±   0.05 ns    14.04 ns …  14.18 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:25 ("bench contains_code_unit absent n=8") ok
+time (mean ± σ)         range (min … max) 
+  14.32 ns ±   0.04 ns    14.25 ns …  14.37 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:31 ("bench contains_code_unit present@0 n=8") ok
+time (mean ± σ)         range (min … max) 
+  13.50 ns ±   0.03 ns    13.46 ns …  13.57 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:37 ("bench contains_code_unit absent n=16") ok
+time (mean ± σ)         range (min … max) 
+  15.17 ns ±   0.99 ns    14.52 ns …  17.15 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:43 ("bench contains_code_unit absent n=64") ok
+time (mean ± σ)         range (min … max) 
+  16.84 ns ±   0.15 ns    16.70 ns …  17.10 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:49 ("bench contains_code_unit absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  26.91 ns ±   0.93 ns    25.63 ns …  27.99 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:55 ("bench contains_code_unit present@end n=256") ok
+time (mean ± σ)         range (min … max) 
+  24.98 ns ±   1.29 ns    24.31 ns …  28.05 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:61 ("bench contains_code_unit present@0 n=256") ok
+time (mean ± σ)         range (min … max) 
+  13.91 ns ±   0.79 ns    13.46 ns …  15.79 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:67 ("bench StringView contains_code_unit absent n=256") ok
+time (mean ± σ)         range (min … max) 
+  27.34 ns ±   0.84 ns    26.29 ns …  28.88 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:74 ("bench contains_code_unit absent n=24") ok
+time (mean ± σ)         range (min … max) 
+  14.58 ns ±   0.05 ns    14.54 ns …  14.68 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:80 ("bench contains_code_unit absent n=40") ok
+time (mean ± σ)         range (min … max) 
+  15.64 ns ±   0.58 ns    15.37 ns …  17.29 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/contains_code_unit_bench_test.mbt:86 ("bench contains_code_unit absent n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 230.72 ns ±   2.54 ns   226.24 ns … 234.28 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/bytesview_compare_bench_test.mbt:16 ("bench BytesView Compare equal n=1000000") ok
+time (mean ± σ)         range (min … max) 
+  61.67 µs ± 378.31 ns    61.31 µs …  62.54 µs  in 10 ×   1639 runs
+[moonbitlang/core] bench builtin/bytesview_compare_bench_test.mbt:23 ("bench BytesView Compare last-diff n=1000000") ok
+time (mean ± σ)         range (min … max) 
+  62.36 µs ±   1.16 µs    61.40 µs …  64.35 µs  in 10 ×   1634 runs
+[moonbitlang/core] bench builtin/bytes_unsafe_bench_test.mbt:31 ("bench Bytes::unsafe_read_uint16_le n=4096") ok
+time (mean ± σ)         range (min … max) 
+   2.29 µs ±   9.00 ns     2.27 µs …   2.30 µs  in 10 ×  43560 runs
+[moonbitlang/core] bench builtin/bytes_unsafe_bench_test.mbt:43 ("bench Bytes::unsafe_read_uint32_le n=4096") ok
+time (mean ± σ)         range (min … max) 
+   1.73 µs ±   6.93 ns     1.72 µs …   1.74 µs  in 10 ×  56486 runs
+[moonbitlang/core] bench builtin/bytes_unsafe_bench_test.mbt:55 ("bench Bytes::unsafe_read_uint64_le n=4096") ok
+time (mean ± σ)         range (min … max) 
+   1.82 µs ±  23.73 ns     1.80 µs …   1.86 µs  in 10 ×  56294 runs
+[moonbitlang/core] bench builtin/bytes_unsafe_bench_test.mbt:67 ("bench FixedArray::unsafe_write_uint16_le n=4096") ok
+time (mean ± σ)         range (min … max) 
+   1.28 µs ±   5.02 ns     1.28 µs …   1.29 µs  in 10 ×  77231 runs
+[moonbitlang/core] bench builtin/bytes_unsafe_bench_test.mbt:78 ("bench FixedArray::unsafe_write_uint32_le n=4096") ok
+time (mean ± σ)         range (min … max) 
+   1.28 µs ±   4.73 ns     1.28 µs …   1.29 µs  in 10 ×  77731 runs
+[moonbitlang/core] bench builtin/bytes_unsafe_bench_test.mbt:89 ("bench FixedArray::unsafe_write_uint64_le n=4096") ok
+time (mean ± σ)         range (min … max) 
+   1.79 µs ±   6.93 ns     1.78 µs …   1.80 µs  in 10 ×  56403 runs
+[moonbitlang/core] bench builtin/bytes_output_bench_test.mbt:19 ("bench Bytes Show binary n=100000") ok
+time (mean ± σ)         range (min … max) 
+   1.17 ms ±   6.77 µs     1.17 ms …   1.19 ms  in 10 ×     86 runs
+[moonbitlang/core] bench builtin/bytes_output_bench_test.mbt:24 ("bench Bytes ToJson binary n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 858.93 µs ±  18.83 µs   843.57 µs … 889.40 µs  in 10 ×    118 runs
+[moonbitlang/core] bench builtin/bytes_hash_bench_test.mbt:54 ("bench Hash::hash(Bytes) n=32") ok
+time (mean ± σ)         range (min … max) 
+  18.26 ns ±   0.06 ns    18.19 ns …  18.40 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/bytes_hash_bench_test.mbt:60 ("bench Hash::hash(Bytes) n=8192") ok
+time (mean ± σ)         range (min … max) 
+   4.44 µs ±  23.96 ns     4.41 µs …   4.48 µs  in 10 ×  22399 runs
+[moonbitlang/core] bench builtin/bytes_hash_bench_test.mbt:66 ("bench Map::at Bytes n=1024 key_bytes=32") ok
+time (mean ± σ)         range (min … max) 
+  22.75 µs ± 146.28 ns    22.60 µs …  22.99 µs  in 10 ×   4357 runs
+[moonbitlang/core] bench builtin/bytes_from_array_bench_test.mbt:30 ("bench Bytes::from_array n=262144 full") ok
+time (mean ± σ)         range (min … max) 
+   4.12 µs ±   7.24 ns     4.11 µs …   4.13 µs  in 10 ×  24231 runs
+[moonbitlang/core] bench builtin/bytes_from_array_bench_test.mbt:41 ("bench Bytes::from_array n=262144 sliced") ok
+time (mean ± σ)         range (min … max) 
+   4.27 µs ±   2.03 ns     4.27 µs …   4.28 µs  in 10 ×  23434 runs
+[moonbitlang/core] bench builtin/bytes_from_array_bench_test.mbt:48 ("bench Bytes::makei from ArrayView n=262144 full") ok
+time (mean ± σ)         range (min … max) 
+ 582.09 µs ±   1.61 µs   579.47 µs … 583.78 µs  in 10 ×    173 runs
+[moonbitlang/core] bench builtin/bytes_from_array_bench_test.mbt:59 ("bench Bytes::makei from ArrayView n=262144 sliced") ok
+time (mean ± σ)         range (min … max) 
+ 582.87 µs ±   3.42 µs   580.30 µs … 591.53 µs  in 10 ×    173 runs
+[moonbitlang/core] bench builtin/bytes_from_array_bench_test.mbt:83 ("bench Bytes::from_array ownership n=32") ok
+name               time (mean ± σ)         range (min … max) 
+fresh FixedArray     30.25 ns ±   0.24 ns    30.12 ns …  30.94 ns  in 10 × 100000 runs
+fresh Array          40.72 ns ±   0.05 ns    40.66 ns …  40.82 ns  in 10 × 100000 runs
+shared full buffer   35.82 ns ±   0.03 ns    35.79 ns …  35.85 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/bytes_from_array_bench_test.mbt:88 ("bench Bytes::from_array ownership n=4096") ok
+name               time (mean ± σ)         range (min … max) 
+fresh FixedArray     91.93 ns ±   1.72 ns    89.81 ns …  94.35 ns  in 10 × 100000 runs
+fresh Array           1.35 µs ±   2.48 ns     1.35 µs …   1.36 µs  in 10 ×  74020 runs
+shared full buffer  107.40 ns ±   0.56 ns   106.58 ns … 107.98 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/bytes_from_array_bench_test.mbt:93 ("bench Bytes::from_array ownership n=262144") ok
+name               time (mean ± σ)         range (min … max) 
+fresh FixedArray      8.43 µs ± 125.53 ns     8.21 µs …   8.58 µs  in 10 ×  13797 runs
+fresh Array          93.02 µs ± 139.26 ns    92.82 µs …  93.23 µs  in 10 ×   1089 runs
+shared full buffer    4.27 µs ±   5.92 ns     4.26 µs …   4.28 µs  in 10 ×  24319 runs
+[moonbitlang/core] bench builtin/bytes_equal_bench_test.mbt:37 ("bench Bytes::equal n=100000 equal") ok
+time (mean ± σ)         range (min … max) 
+   4.23 µs ±   6.68 ns     4.22 µs …   4.24 µs  in 10 ×  23507 runs
+[moonbitlang/core] bench builtin/bytes_equal_bench_test.mbt:44 ("bench Bytes::equal n=100000 aliased object") ok
+time (mean ± σ)         range (min … max) 
+  14.34 ns ±   0.03 ns    14.32 ns …  14.41 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/bytes_equal_bench_test.mbt:54 ("bench Bytes::equal n=100000 mismatch at end") ok
+time (mean ± σ)         range (min … max) 
+   4.24 µs ±  29.75 ns     4.22 µs …   4.32 µs  in 10 ×  23575 runs
+[moonbitlang/core] bench builtin/bytes_add_bench_test.mbt:16 ("bench Bytes add total=1000000") ok
+time (mean ± σ)         range (min … max) 
+  15.96 µs ± 123.16 ns    15.79 µs …  16.12 µs  in 10 ×   6273 runs
+[moonbitlang/core] bench builtin/bitstring_uint_aligned_bench_test.mbt:24 ("bench Bytes::unsafe_extract_uint_le_aligned n=8192") ok
+time (mean ± σ)         range (min … max) 
+ 896.62 ns ±   6.86 ns   888.42 ns … 907.23 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/bitstring_uint64_aligned_bench_test.mbt:24 ("bench Bytes::unsafe_extract_uint64_le_aligned n=8192") ok
+time (mean ± σ)         range (min … max) 
+ 447.19 ns ±   4.73 ns   441.73 ns … 457.61 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:35 ("bench BytesView uint_le aligned len=32") ok
+time (mean ± σ)         range (min … max) 
+   3.71 µs ±   9.30 ns     3.69 µs …   3.72 µs  in 10 ×  27016 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:48 ("bench BytesView uint_be aligned len=32") ok
+time (mean ± σ)         range (min … max) 
+   3.81 µs ±  21.55 ns     3.79 µs …   3.86 µs  in 10 ×  25902 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:61 ("bench ArrayView uint_le aligned len=32") ok
+time (mean ± σ)         range (min … max) 
+   3.70 µs ±  14.50 ns     3.68 µs …   3.73 µs  in 10 ×  26989 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:75 ("bench ArrayView uint_be aligned len=32") ok
+time (mean ± σ)         range (min … max) 
+   3.82 µs ±  37.63 ns     3.78 µs …   3.89 µs  in 10 ×  26253 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:89 ("bench BytesView uint64_le aligned len=64") ok
+time (mean ± σ)         range (min … max) 
+   1.87 µs ±  13.30 ns     1.86 µs …   1.91 µs  in 10 ×  53747 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:102 ("bench BytesView uint64_be aligned len=64") ok
+time (mean ± σ)         range (min … max) 
+   2.81 µs ±  11.20 ns     2.80 µs …   2.83 µs  in 10 ×  35552 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:115 ("bench ArrayView uint64_le aligned len=64") ok
+time (mean ± σ)         range (min … max) 
+   1.89 µs ±  48.73 ns     1.85 µs …   1.98 µs  in 10 ×  53616 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:129 ("bench ArrayView uint64_be aligned len=64") ok
+time (mean ± σ)         range (min … max) 
+   2.81 µs ±   9.32 ns     2.80 µs …   2.82 µs  in 10 ×  35481 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:143 ("bench BytesView uint_le unaligned len=32") ok
+time (mean ± σ)         range (min … max) 
+  17.92 µs ±   1.17 µs    17.28 µs …  20.15 µs  in 10 ×   5780 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:156 ("bench BytesView uint64_le unaligned len=64") ok
+time (mean ± σ)         range (min … max) 
+  11.63 µs ±  34.97 ns    11.58 µs …  11.68 µs  in 10 ×   8558 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:169 ("bench BytesView uint_le aligned len=16") ok
+time (mean ± σ)         range (min … max) 
+   7.39 µs ±  60.32 ns     7.35 µs …   7.50 µs  in 10 ×  13345 runs
+[moonbitlang/core] bench builtin/bitstring_extract_bench_test.mbt:182 ("bench BytesView uint_le aligned len=24") ok
+time (mean ± σ)         range (min … max) 
+  14.37 µs ± 369.21 ns    14.09 µs …  14.93 µs  in 10 ×   7075 runs
+[moonbitlang/core] bench builtin/arrayview_to_owned_bench_test.mbt:32 ("bench array conversions Int32 n=32") ok
+name                  time (mean ± σ)         range (min … max) 
+fresh view to Array     52.22 ns ±   0.24 ns    52.08 ns …  52.86 ns  in 10 × 100000 runs
+shared view to Array    48.28 ns ±   1.10 ns    47.83 ns …  51.41 ns  in 10 × 100000 runs
+fresh suffix to Array   67.93 ns ±   0.19 ns    67.74 ns …  68.30 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/arrayview_to_owned_bench_test.mbt:37 ("bench array conversions Int32 n=262144") ok
+name                  time (mean ± σ)         range (min … max) 
+fresh view to Array    125.40 µs ± 740.03 ns   124.36 µs … 126.59 µs  in 10 ×    793 runs
+shared view to Array    17.24 µs ±  51.40 ns    17.17 µs …  17.32 µs  in 10 ×   5773 runs
+fresh suffix to Array   50.46 µs ±  83.81 ns    50.30 µs …  50.59 µs  in 10 ×   1970 runs
+[moonbitlang/core] bench builtin/arrayview_to_owned_bench_test.mbt:42 ("bench array conversions references n=32") ok
+name                  time (mean ± σ)         range (min … max) 
+fresh view to Array    141.56 ns ±   1.24 ns   140.87 ns … 144.72 ns  in 10 × 100000 runs
+shared view to Array   139.28 ns ±   1.14 ns   138.64 ns … 142.40 ns  in 10 × 100000 runs
+fresh suffix to Array  120.61 ns ±   2.39 ns   119.04 ns … 125.50 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/arrayview_to_owned_bench_test.mbt:47 ("bench array conversions references n=262144") ok
+name                  time (mean ± σ)         range (min … max) 
+fresh view to Array    983.26 µs ±   6.33 µs   976.25 µs … 998.58 µs  in 10 ×    102 runs
+shared view to Array     1.02 ms ±   4.64 µs     1.01 ms …   1.02 ms  in 10 ×     99 runs
+fresh suffix to Array  553.11 µs ±   2.40 µs   549.31 µs … 556.52 µs  in 10 ×    182 runs
+[moonbitlang/core] bench builtin/array_retain_bench_test.mbt:29 ("bench Array::retain all keep Int n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 180.66 µs ±   1.24 µs   179.10 µs … 183.11 µs  in 10 ×    544 runs
+[moonbitlang/core] bench builtin/array_retain_bench_test.mbt:42 ("bench Array::retain all keep Ref n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 183.98 µs ±   1.25 µs   182.84 µs … 186.45 µs  in 10 ×    546 runs
+[moonbitlang/core] bench builtin/array_retain_bench_test.mbt:55 ("bench Array::retain drop tail n=100000") ok
+time (mean ± σ)         range (min … max) 
+  81.06 µs ±   1.06 µs    80.13 µs …  83.09 µs  in 10 ×   1191 runs
+[moonbitlang/core] bench builtin/array_retain_bench_test.mbt:66 ("bench Array::retain late sparse drop n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 106.14 µs ± 382.72 ns   105.66 µs … 107.05 µs  in 10 ×    942 runs
+[moonbitlang/core] bench builtin/array_retain_bench_test.mbt:77 ("bench Array::retain drop first n=100000") ok
+time (mean ± σ)         range (min … max) 
+  93.68 µs ± 349.96 ns    93.26 µs …  94.33 µs  in 10 ×   1065 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:32 ("bench FixedArray::copy Ref n=1000000") ok
+time (mean ± σ)         range (min … max) 
+   1.97 ms ±   3.98 µs     1.96 ms …   1.97 ms  in 10 ×     51 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:38 ("bench Array::from_fixed_array Ref n=1000000") ok
+time (mean ± σ)         range (min … max) 
+   1.96 ms ±   5.43 µs     1.95 ms …   1.97 ms  in 10 ×     52 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:44 ("bench Array::add Ref n=500000+500000") ok
+time (mean ± σ)         range (min … max) 
+   3.61 ms ±  30.92 µs     3.58 ms …   3.68 ms  in 10 ×     28 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:51 ("bench ArrayView::add Ref n=500000+500000") ok
+time (mean ± σ)         range (min … max) 
+   3.59 ms ±  10.56 µs     3.58 ms …   3.61 ms  in 10 ×     28 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:60 ("bench Array::blit_to Ref n=1000000 overwrite") ok
+time (mean ± σ)         range (min … max) 
+   2.68 ms ±  26.24 µs     2.67 ms …   2.76 ms  in 10 ×     38 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:70 ("bench Array::blit_to Ref n=1000000 grow") ok
+time (mean ± σ)         range (min … max) 
+   4.31 ms ±   9.90 µs     4.29 ms …   4.33 ms  in 10 ×     24 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:80 ("bench ArrayView::blit_to Ref n=1000000 overwrite") ok
+time (mean ± σ)         range (min … max) 
+   2.67 ms ±   7.48 µs     2.66 ms …   2.68 ms  in 10 ×     38 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:90 ("bench ArrayView::blit_to Ref n=1000000 grow") ok
+time (mean ± σ)         range (min … max) 
+   4.30 ms ±  11.26 µs     4.29 ms …   4.32 ms  in 10 ×     24 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:100 ("bench Array::append Ref n=1000000 grow") ok
+time (mean ± σ)         range (min … max) 
+   4.32 ms ±  10.98 µs     4.30 ms …   4.33 ms  in 10 ×     24 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:110 ("bench Array::push Ref n=1000000 resize") ok
+time (mean ± σ)         range (min … max) 
+   3.67 ms ±   6.62 µs     3.67 ms …   3.69 ms  in 10 ×     28 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:129 ("bench Array::copy Int n=1000000") ok
+time (mean ± σ)         range (min … max) 
+  63.46 µs ± 283.81 ns    63.22 µs …  64.20 µs  in 10 ×   1575 runs
+[moonbitlang/core] bench builtin/array_make_blit_bench_test.mbt:135 ("bench Array::copy Ref n=1000000") ok
+time (mean ± σ)         range (min … max) 
+   3.84 ms ±   8.83 µs     3.83 ms …   3.86 ms  in 10 ×     27 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:29 ("bench Array::retain_map n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 138.79 µs ±   2.87 µs   136.24 µs … 144.40 µs  in 10 ×    731 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:38 ("bench Array::shuffle_in_place n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 207.51 µs ± 594.20 ns   206.74 µs … 208.52 µs  in 10 ×    483 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:50 ("bench Array::filter_map n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 142.08 µs ± 502.76 ns   141.51 µs … 143.09 µs  in 10 ×    703 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:58 ("bench FixedArray::each n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 177.69 µs ± 551.56 ns   176.87 µs … 178.46 µs  in 10 ×    563 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:68 ("bench FixedArray::eachi n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 178.48 µs ±   2.23 µs   176.64 µs … 184.06 µs  in 10 ×    561 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:78 ("bench FixedArray::rev_each n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 187.04 µs ±   8.89 µs   177.03 µs … 196.98 µs  in 10 ×    565 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:88 ("bench FixedArray::rev_eachi n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 185.51 µs ±   5.32 µs   179.64 µs … 193.93 µs  in 10 ×    522 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:98 ("bench FixedArray::map n=100000") ok
+time (mean ± σ)         range (min … max) 
+  63.44 µs ± 650.69 ns    63.09 µs …  65.26 µs  in 10 ×   1557 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:104 ("bench FixedArray::mapi n=100000") ok
+time (mean ± σ)         range (min … max) 
+  67.07 µs ±   1.40 µs    64.68 µs …  69.31 µs  in 10 ×   1452 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:110 ("bench FixedArray::makei n=100000") ok
+time (mean ± σ)         range (min … max) 
+  69.93 µs ±   1.05 µs    68.25 µs …  71.23 µs  in 10 ×   1470 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:115 ("bench FixedArray::fold n=100000") ok
+time (mean ± σ)         range (min … max) 
+  53.41 µs ± 173.31 ns    53.11 µs …  53.68 µs  in 10 ×   1889 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:121 ("bench FixedArray::rev_fold n=100000") ok
+time (mean ± σ)         range (min … max) 
+  47.48 µs ± 368.23 ns    47.03 µs …  48.23 µs  in 10 ×   2099 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:127 ("bench FixedArray::foldi n=100000") ok
+time (mean ± σ)         range (min … max) 
+  60.05 µs ± 169.00 ns    59.77 µs …  60.35 µs  in 10 ×   1674 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:133 ("bench FixedArray::rev_foldi n=100000") ok
+time (mean ± σ)         range (min … max) 
+  61.05 µs ± 997.82 ns    60.34 µs …  62.58 µs  in 10 ×   1644 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:139 ("bench ArrayView::chunk_by n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 115.19 µs ±   3.71 µs   110.59 µs … 118.91 µs  in 10 ×    839 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:146 ("bench ArrayView::each n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 177.41 µs ± 604.96 ns   176.59 µs … 178.10 µs  in 10 ×    562 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:157 ("bench ArrayView::eachi n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 178.34 µs ±   2.42 µs   176.83 µs … 183.74 µs  in 10 ×    546 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:168 ("bench ArrayView::rev_each n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 178.29 µs ±   1.53 µs   176.80 µs … 181.38 µs  in 10 ×    561 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:179 ("bench ArrayView::rev_eachi n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 177.61 µs ± 781.09 ns   176.99 µs … 178.93 µs  in 10 ×    566 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:190 ("bench ArrayView::all n=100000") ok
+time (mean ± σ)         range (min … max) 
+  63.00 µs ± 244.68 ns    62.65 µs …  63.41 µs  in 10 ×   1612 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:197 ("bench ArrayView::any n=100000") ok
+time (mean ± σ)         range (min … max) 
+  61.80 µs ± 333.09 ns    61.49 µs …  62.56 µs  in 10 ×   1634 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:204 ("bench ArrayView::search_by n=100000") ok
+time (mean ± σ)         range (min … max) 
+  62.85 µs ± 163.25 ns    62.53 µs …  63.10 µs  in 10 ×   1601 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:213 ("bench ArrayView::fold n=100000") ok
+time (mean ± σ)         range (min … max) 
+  57.73 µs ± 773.72 ns    56.38 µs …  58.59 µs  in 10 ×   1739 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:220 ("bench ArrayView::rev_fold n=100000") ok
+time (mean ± σ)         range (min … max) 
+  51.61 µs ± 274.91 ns    51.26 µs …  51.95 µs  in 10 ×   1952 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:227 ("bench ArrayView::foldi n=100000") ok
+time (mean ± σ)         range (min … max) 
+  60.09 µs ± 232.17 ns    59.76 µs …  60.42 µs  in 10 ×   1598 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:234 ("bench ArrayView::rev_foldi n=100000") ok
+time (mean ± σ)         range (min … max) 
+  61.06 µs ± 281.44 ns    60.70 µs …  61.48 µs  in 10 ×   1637 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:241 ("bench ArrayView::map n=100000") ok
+time (mean ± σ)         range (min … max) 
+  79.38 µs ± 601.71 ns    78.34 µs …  80.25 µs  in 10 ×   1269 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:248 ("bench ArrayView::mapi n=100000") ok
+time (mean ± σ)         range (min … max) 
+  85.34 µs ± 464.18 ns    84.73 µs …  86.07 µs  in 10 ×   1166 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:255 ("bench ArrayView::filter n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 120.27 µs ±   1.02 µs   119.12 µs … 122.55 µs  in 10 ×    833 runs
+[moonbitlang/core] bench builtin/array_locals_bench_test.mbt:262 ("bench ArrayView::filter_map n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 144.50 µs ± 489.19 ns   143.98 µs … 145.28 µs  in 10 ×    693 runs
+[moonbitlang/core] bench builtin/array_from_fixed_bench_test.mbt:34 ("bench array conversions Int32 n=32") ok
+name                       time (mean ± σ)         range (min … max) 
+fresh FixedArray to Array    40.13 ns ±   1.67 ns    39.08 ns …  43.75 ns  in 10 × 100000 runs
+shared FixedArray to Array   45.86 ns ±   1.41 ns    44.50 ns …  48.24 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/array_from_fixed_bench_test.mbt:39 ("bench array conversions Int32 n=262144") ok
+name                       time (mean ± σ)         range (min … max) 
+fresh FixedArray to Array    22.78 µs ±   1.31 µs    21.11 µs …  24.83 µs  in 10 ×   4488 runs
+shared FixedArray to Array   16.99 µs ± 265.53 ns    16.76 µs …  17.49 µs  in 10 ×   6288 runs
+[moonbitlang/core] bench builtin/array_from_fixed_bench_test.mbt:44 ("bench array conversions references n=32") ok
+name                       time (mean ± σ)         range (min … max) 
+fresh FixedArray to Array    92.36 ns ±   2.21 ns    90.81 ns …  96.70 ns  in 10 × 100000 runs
+shared FixedArray to Array  135.57 ns ±   1.71 ns   134.68 ns … 140.26 ns  in 10 × 100000 runs
+[moonbitlang/core] bench builtin/array_from_fixed_bench_test.mbt:49 ("bench array conversions references n=262144") ok
+name                       time (mean ± σ)         range (min … max) 
+fresh FixedArray to Array   522.09 µs ±   1.02 µs   520.42 µs … 523.64 µs  in 10 ×    192 runs
+shared FixedArray to Array  995.23 µs ±   4.74 µs   990.14 µs …   1.00 ms  in 10 ×    101 runs
+[moonbitlang/core] bench bytes/regex_bench_test.mbt:41 ("bench regex /aa?b/ on 1MB") ok
+name            time (mean ± σ)         range (min … max) 
+aa?b 1MB/string    2.29 ms ±  18.19 µs     2.27 ms …   2.33 ms  in 10 ×     44 runs
+aa?b 1MB/bytes     2.22 ms ±   5.97 µs     2.22 ms …   2.23 ms  in 10 ×     45 runs
+[moonbitlang/core] bench bytes/regex_bench_test.mbt:46 ("bench regex word boundary scan 1MB") ok
+name                 time (mean ± σ)         range (min … max) 
+\bzebra\b 1MB/string    2.29 ms ±  10.53 µs     2.28 ms …   2.31 ms  in 10 ×     44 runs
+\bzebra\b 1MB/bytes     2.22 ms ±   8.12 µs     2.21 ms …   2.24 ms  in 10 ×     45 runs
+[moonbitlang/core] bench bytes/regex_bench_test.mbt:52 ("bench regex key=value groups") ok
+name             time (mean ± σ)         range (min … max) 
+key=value/string  532.78 µs ±  11.65 µs   524.61 µs … 557.47 µs  in 10 ×    190 runs
+key=value/bytes   521.36 µs ±   4.52 µs   514.63 µs … 527.27 µs  in 10 ×    192 runs
+[moonbitlang/core] bench bytes/regex_bench_test.mbt:63 ("bench regex phone lines") ok
+name         time (mean ± σ)         range (min … max) 
+phone/string    3.16 µs ±   8.64 ns     3.15 µs …   3.17 µs  in 10 ×  31769 runs
+phone/bytes     2.99 µs ±   9.46 ns     2.98 µs …   3.00 µs  in 10 ×  33539 runs
+[moonbitlang/core] bench bytes/regex_bench_test.mbt:80 ("bench regex large pattern") ok
+name                 time (mean ± σ)         range (min … max) 
+large pattern/string    1.99 ms ±  14.44 µs     1.98 ms …   2.03 ms  in 10 ×     51 runs
+large pattern/bytes     1.90 ms ±   4.57 µs     1.90 ms …   1.91 ms  in 10 ×     53 runs
+[moonbitlang/core] bench bytes/regex_bench_test.mbt:99 ("bench regex periodic literal n=300, fresh regex") ok
+name                    time (mean ± σ)         range (min … max) 
+periodic literal/string   22.81 ms ±  93.43 µs    22.73 ms …  23.00 ms  in 10 ×      5 runs
+periodic literal/bytes    22.43 ms ± 528.90 µs    22.11 ms …  23.43 ms  in 10 ×      5 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:92 ("bench BytesView::find single byte hit end n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 114.78 ns ±   2.06 ns   113.43 ns … 118.53 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:99 ("bench BytesView::find single byte miss n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 113.73 ns ±   0.43 ns   113.45 ns … 114.58 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:106 ("bench BytesView::find substring rare hit end n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 201.26 ns ±   1.02 ns   200.32 ns … 203.41 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:113 ("bench BytesView::find substring dense miss n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 204.89 ns ±   2.28 ns   203.16 ns … 209.17 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:120 ("bench BytesView::find offset view rare hit end n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 201.93 ns ±   2.36 ns   200.21 ns … 205.89 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:127 ("bench BytesView::find long dense miss n=4096") ok
+time (mean ± σ)         range (min … max) 
+   4.55 µs ±  20.69 ns     4.52 µs …   4.58 µs  in 10 ×  22068 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:134 ("bench BytesView::find single byte miss n=32") ok
+time (mean ± σ)         range (min … max) 
+  17.11 ns ±   0.06 ns    17.05 ns …  17.24 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:141 ("bench BytesView::find substring miss n=32") ok
+time (mean ± σ)         range (min … max) 
+  27.12 ns ±   0.05 ns    27.07 ns …  27.19 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:148 ("bench BytesView::rev_find single byte hit start n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 135.40 ns ±   3.78 ns   133.29 ns … 142.69 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:155 ("bench BytesView::rev_find single byte miss n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 130.81 ns ±   1.68 ns   129.83 ns … 135.10 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:162 ("bench BytesView::rev_find substring rare hit start n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 198.98 ns ±   3.74 ns   196.43 ns … 206.82 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:169 ("bench BytesView::rev_find substring dense miss n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 199.95 ns ±   1.40 ns   198.65 ns … 202.33 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:176 ("bench BytesView::rev_find offset view rare hit start n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 199.61 ns ±   4.41 ns   196.43 ns … 207.31 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:185 ("bench BytesView::rev_find long dense miss n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 195.28 ns ±   1.37 ns   194.31 ns … 197.98 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:192 ("bench BytesView::find single byte miss n=8") ok
+time (mean ± σ)         range (min … max) 
+  17.82 ns ±   0.11 ns    17.74 ns …  18.08 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:199 ("bench BytesView::find single byte miss n=24") ok
+time (mean ± σ)         range (min … max) 
+  19.82 ns ±   0.03 ns    19.79 ns …  19.88 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:206 ("bench BytesView::find single byte miss n=40") ok
+time (mean ± σ)         range (min … max) 
+  19.58 ns ±   0.06 ns    19.53 ns …  19.72 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:213 ("bench BytesView::find single byte miss n=256") ok
+time (mean ± σ)         range (min … max) 
+  22.79 ns ±   0.06 ns    22.73 ns …  22.91 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:220 ("bench BytesView::rev_find single byte miss n=8") ok
+time (mean ± σ)         range (min … max) 
+  18.29 ns ±   0.44 ns    18.02 ns …  19.38 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:227 ("bench BytesView::rev_find single byte miss n=24") ok
+time (mean ± σ)         range (min … max) 
+  19.93 ns ±   0.13 ns    19.80 ns …  20.13 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:234 ("bench BytesView::rev_find single byte miss n=40") ok
+time (mean ± σ)         range (min … max) 
+  20.10 ns ±   0.07 ns    20.03 ns …  20.21 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:241 ("bench BytesView::rev_find single byte miss n=256") ok
+time (mean ± σ)         range (min … max) 
+  24.32 ns ±   0.71 ns    23.57 ns …  25.69 ns  in 10 × 100000 runs
+[moonbitlang/core] bench bytes/find_bench_test.mbt:248 ("bench BytesView::rev_find single byte miss n=32") ok
+time (mean ± σ)         range (min … max) 
+  17.63 ns ±   0.04 ns    17.60 ns …  17.70 ns  in 10 × 100000 runs
+[moonbitlang/core] bench debug/debug_inspect_bench_test.mbt:16 ("bench debug_inspect passing Int") ok
+time (mean ± σ)         range (min … max) 
+ 212.93 ns ±   3.84 ns   210.39 ns … 221.48 ns  in 10 × 100000 runs
+[moonbitlang/core] bench debug/debug_inspect_bench_test.mbt:21 ("bench debug_inspect passing Array") ok
+time (mean ± σ)         range (min … max) 
+   2.60 µs ±   9.19 ns     2.59 µs …   2.62 µs  in 10 ×  38539 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:22 ("bench Deque::to_array Int n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 109.61 µs ± 526.78 ns   108.90 µs … 110.56 µs  in 10 ×    916 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:28 ("bench Deque::to_array Ref n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 288.36 µs ±   1.79 µs   285.69 µs … 291.01 µs  in 10 ×    349 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:34 ("bench Deque steady-state pop_front/push_back x100000 len=1000") ok
+time (mean ± σ)         range (min … max) 
+ 380.41 µs ±   2.76 µs   377.53 µs … 387.40 µs  in 10 ×    264 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:51 ("bench Deque steady-state push_front/pop_back x100000 len=1000") ok
+time (mean ± σ)         range (min … max) 
+ 379.61 µs ±   1.28 µs   377.55 µs … 381.79 µs  in 10 ×    263 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:67 ("bench Deque::get x100000 len=1000") ok
+time (mean ± σ)         range (min … max) 
+ 603.76 µs ±   1.24 µs   601.56 µs … 604.96 µs  in 10 ×    166 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:95 ("bench Deque iter wrapped n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 155.55 µs ± 212.69 ns   155.24 µs … 155.94 µs  in 10 ×    643 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:107 ("bench Deque rev_iter2 wrapped n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 579.90 µs ±  10.76 µs   570.90 µs … 601.58 µs  in 10 ×    176 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:119 ("bench Deque::map wrapped n=50000") ok
+time (mean ± σ)         range (min … max) 
+  42.62 µs ± 142.55 ns    42.40 µs …  42.89 µs  in 10 ×   2347 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:125 ("bench Deque::search miss wrapped n=50000") ok
+time (mean ± σ)         range (min … max) 
+  31.21 µs ± 291.33 ns    30.69 µs …  31.50 µs  in 10 ×   3259 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:131 ("bench Deque::extract_if none wrapped n=50000") ok
+time (mean ± σ)         range (min … max) 
+  41.14 µs ± 333.18 ns    40.82 µs …  41.97 µs  in 10 ×   2444 runs
+[moonbitlang/core] bench deque/deque_bench_test.mbt:137 ("bench Deque::shuffle_in_place wrapped n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 110.24 µs ± 404.23 ns   109.66 µs … 110.93 µs  in 10 ×    908 runs
+[moonbitlang/core] bench encoding/ascii/ascii_bench_test.mbt:40 ("bench ASCII decode n=15") ok
+time (mean ± σ)         range (min … max) 
+  37.70 ns ±   0.20 ns    37.56 ns …  38.15 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/ascii/ascii_bench_test.mbt:46 ("bench ASCII decode n=16") ok
+time (mean ± σ)         range (min … max) 
+  37.90 ns ±   0.52 ns    37.47 ns …  38.99 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/ascii/ascii_bench_test.mbt:52 ("bench ASCII decode n=32") ok
+time (mean ± σ)         range (min … max) 
+  49.40 ns ±   0.10 ns    49.32 ns …  49.61 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/ascii/ascii_bench_test.mbt:58 ("bench ASCII decode n=64") ok
+time (mean ± σ)         range (min … max) 
+  44.37 ns ±   1.07 ns    43.48 ns …  47.12 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/ascii/ascii_bench_test.mbt:64 ("bench ASCII decode n=100000") ok
+time (mean ± σ)         range (min … max) 
+  18.09 µs ± 416.09 ns    17.60 µs …  18.67 µs  in 10 ×   6114 runs
+[moonbitlang/core] bench encoding/ascii/ascii_bench_test.mbt:70 ("bench ASCII decode n=1000000") ok
+time (mean ± σ)         range (min … max) 
+ 160.01 µs ±   1.32 µs   157.87 µs … 161.28 µs  in 10 ×    615 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:38 ("bench encode scalar n=64") ok
+time (mean ± σ)         range (min … max) 
+ 296.36 ns ±   5.66 ns   290.21 ns … 307.01 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:43 ("bench encode v128 n=64") ok
+time (mean ± σ)         range (min … max) 
+  87.45 ns ±   0.52 ns    86.94 ns …  88.81 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:48 ("bench encode scalar n=1024") ok
+time (mean ± σ)         range (min … max) 
+   3.50 µs ±  36.98 ns     3.46 µs …   3.59 µs  in 10 ×  28750 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:53 ("bench encode v128 n=1024") ok
+time (mean ± σ)         range (min … max) 
+ 744.94 ns ±   4.51 ns   738.39 ns … 749.88 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:58 ("bench encode scalar n=65536") ok
+time (mean ± σ)         range (min … max) 
+ 219.53 µs ±   3.12 µs   215.95 µs … 224.33 µs  in 10 ×    465 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:63 ("bench encode v128 n=65536") ok
+time (mean ± σ)         range (min … max) 
+  52.99 µs ± 343.37 ns    52.63 µs …  53.64 µs  in 10 ×   1894 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:68 ("bench decode scalar n=64") ok
+time (mean ± σ)         range (min … max) 
+ 370.02 ns ±   2.87 ns   365.29 ns … 373.85 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:75 ("bench decode v128 n=64") ok
+time (mean ± σ)         range (min … max) 
+ 139.68 ns ±   2.91 ns   136.29 ns … 144.45 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:80 ("bench decode scalar n=1024") ok
+time (mean ± σ)         range (min … max) 
+   4.73 µs ± 102.51 ns     4.64 µs …   4.92 µs  in 10 ×  21120 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:87 ("bench decode v128 n=1024") ok
+time (mean ± σ)         range (min … max) 
+ 481.91 ns ±   2.60 ns   479.01 ns … 486.09 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:92 ("bench decode scalar n=65536") ok
+time (mean ± σ)         range (min … max) 
+ 619.63 µs ±  11.45 µs   609.84 µs … 640.84 µs  in 10 ×    163 runs
+[moonbitlang/core] bench encoding/base64/v128_bench_wbtest.mbt:99 ("bench decode v128 n=65536") ok
+time (mean ± σ)         range (min … max) 
+  22.95 µs ±  69.33 ns    22.83 µs …  23.08 µs  in 10 ×   4322 runs
+[moonbitlang/core] bench encoding/hex/v128_bench_wbtest.mbt:34 ("bench encode scalar 4k") ok
+time (mean ± σ)         range (min … max) 
+  23.42 µs ±  71.28 ns    23.31 µs …  23.53 µs  in 10 ×   4253 runs
+[moonbitlang/core] bench encoding/hex/v128_bench_wbtest.mbt:39 ("bench encode public 64") ok
+time (mean ± σ)         range (min … max) 
+  83.35 ns ±   2.30 ns    82.06 ns …  87.93 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/hex/v128_bench_wbtest.mbt:44 ("bench encode public 4k") ok
+time (mean ± σ)         range (min … max) 
+ 868.01 ns ±  31.24 ns   820.54 ns … 901.13 ns  in 10 × 100000 runs
+[moonbitlang/core] bench encoding/hex/v128_bench_wbtest.mbt:49 ("bench encode public 64k") ok
+time (mean ± σ)         range (min … max) 
+  14.09 µs ±  51.56 ns    14.01 µs …  14.18 µs  in 10 ×   7105 runs
+[moonbitlang/core] bench encoding/hex/v128_bench_wbtest.mbt:54 ("bench decode scalar 4k") ok
+time (mean ± σ)         range (min … max) 
+  18.34 µs ± 846.22 ns    17.12 µs …  19.35 µs  in 10 ×   4972 runs
+[moonbitlang/core] bench encoding/hex/v128_bench_wbtest.mbt:62 ("bench decode public 4k") ok
+time (mean ± σ)         range (min … max) 
+   1.13 µs ±   4.61 ns     1.13 µs …   1.14 µs  in 10 ×  87855 runs
+[moonbitlang/core] bench encoding/hex/v128_bench_wbtest.mbt:70 ("bench decode public 64k") ok
+time (mean ± σ)         range (min … max) 
+  17.31 µs ±  53.00 ns    17.24 µs …  17.39 µs  in 10 ×   5772 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:57 ("bench utf16 encode ASCII LE n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 129.20 µs ±   2.90 µs   126.92 µs … 134.98 µs  in 10 ×    790 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:63 ("bench utf16 encode ASCII BE n=100000") ok
+time (mean ± σ)         range (min … max) 
+  12.17 µs ±  64.77 ns    12.11 µs …  12.32 µs  in 10 ×   8108 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:69 ("bench utf16 encode mixed LE n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 126.86 µs ± 327.48 ns   126.35 µs … 127.36 µs  in 10 ×    791 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:75 ("bench utf16 encode mixed BE n=100000") ok
+time (mean ± σ)         range (min … max) 
+  12.24 µs ± 126.99 ns    12.11 µs …  12.47 µs  in 10 ×   8239 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:81 ("bench utf16 decode ASCII LE n=100000") ok
+time (mean ± σ)         range (min … max) 
+  17.07 µs ±  55.11 ns    17.00 µs …  17.15 µs  in 10 ×   5801 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:87 ("bench utf16 decode ASCII BE n=100000") ok
+time (mean ± σ)         range (min … max) 
+  30.57 µs ±   1.93 µs    28.70 µs …  32.73 µs  in 10 ×   3063 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:95 ("bench utf16 decode mixed LE n=100000") ok
+time (mean ± σ)         range (min … max) 
+  17.03 µs ±  72.56 ns    16.95 µs …  17.16 µs  in 10 ×   5843 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:101 ("bench utf16 decode mixed BE n=100000") ok
+time (mean ± σ)         range (min … max) 
+  30.60 µs ±   1.92 µs    28.74 µs …  32.70 µs  in 10 ×   3064 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:109 ("bench utf16 decode emoji LE n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 550.34 µs ±  10.73 µs   539.85 µs … 573.35 µs  in 10 ×    186 runs
+[moonbitlang/core] bench encoding/utf16/utf16_v128_bench_test.mbt:115 ("bench utf16 decode emoji BE n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 547.89 µs ±   2.18 µs   544.84 µs … 550.77 µs  in 10 ×    183 runs
+[moonbitlang/core] bench encoding/utf16/encode_be_bench_test.mbt:16 ("bench big endian encoding keeps the entire result") ok
+name        time (mean ± σ)         range (min … max) 
+BE n=7        36.22 ns ±   0.59 ns    35.53 ns …  37.12 ns  in 10 × 100000 runs
+BE n=8        28.15 ns ±   0.21 ns    28.00 ns …  28.65 ns  in 10 × 100000 runs
+BE n=17       29.03 ns ±   0.43 ns    28.84 ns …  30.23 ns  in 10 × 100000 runs
+BE n=100000   12.06 µs ± 104.58 ns    12.00 µs …  12.35 µs  in 10 ×   8160 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:19 ("bench HashMap::set n=50000") ok
+time (mean ± σ)         range (min … max) 
+   2.78 ms ±   5.16 µs     2.77 ms …   2.79 ms  in 10 ×     36 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:30 ("bench HashMap::get n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 521.56 µs ± 540.36 ns   520.44 µs … 522.34 µs  in 10 ×    192 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:47 ("bench HashMap::get miss n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 686.77 µs ±   1.82 µs   684.59 µs … 689.78 µs  in 10 ×    146 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:67 ("bench HashMap::set+remove n=50000") ok
+time (mean ± σ)         range (min … max) 
+   2.97 ms ±   9.40 µs     2.96 ms …   2.98 ms  in 10 ×     34 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:87 ("bench HashMap::copy+remove n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.87 ms ±  41.29 µs     1.84 ms …   1.95 ms  in 10 ×     55 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:102 ("bench HashMap::copy n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.53 ms ±   4.00 µs     1.52 ms …   1.54 ms  in 10 ×     66 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:114 ("bench HashMap::to_array Int n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.23 ms ±   8.89 µs     1.22 ms …   1.25 ms  in 10 ×     81 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:123 ("bench HashMap::to_array Ref n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.39 ms ±   5.64 µs     1.38 ms …   1.40 ms  in 10 ×     72 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:141 ("bench HashMap::filter n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.63 ms ±   2.52 µs     1.63 ms …   1.64 ms  in 10 ×     62 runs
+[moonbitlang/core] bench hashmap/hashmap_bench_test.mbt:147 ("bench HashMap comprehension filter n=50000") ok
+time (mean ± σ)         range (min … max) 
+   3.77 ms ±  12.21 µs     3.75 ms …   3.79 ms  in 10 ×     27 runs
+[moonbitlang/core] bench hashset/set_algebra_bench_test.mbt:29 ("bench HashSet::union String 10k 50% overlap") ok
+time (mean ± σ)         range (min … max) 
+   1.01 ms ±   1.25 µs     1.01 ms …   1.02 ms  in 10 ×     99 runs
+[moonbitlang/core] bench hashset/set_algebra_bench_test.mbt:36 ("bench HashSet::union Int 10k 50% overlap") ok
+time (mean ± σ)         range (min … max) 
+ 825.22 µs ±   1.98 µs   822.32 µs … 828.00 µs  in 10 ×    122 runs
+[moonbitlang/core] bench hashset/set_algebra_bench_test.mbt:43 ("bench HashSet::intersection String 10k 50% overlap") ok
+time (mean ± σ)         range (min … max) 
+ 542.95 µs ±  12.86 µs   533.63 µs … 563.75 µs  in 10 ×    186 runs
+[moonbitlang/core] bench hashset/set_algebra_bench_test.mbt:50 ("bench HashSet::difference String 10k 50% overlap") ok
+time (mean ± σ)         range (min … max) 
+ 493.26 µs ±   1.54 µs   490.94 µs … 495.71 µs  in 10 ×    203 runs
+[moonbitlang/core] bench hashset/set_algebra_bench_test.mbt:57 ("bench HashSet::is_subset String 10k true") ok
+time (mean ± σ)         range (min … max) 
+ 169.30 µs ±   1.36 µs   167.83 µs … 172.12 µs  in 10 ×    577 runs
+[moonbitlang/core] bench hashset/set_algebra_bench_test.mbt:64 ("bench HashSet == String 10k") ok
+time (mean ± σ)         range (min … max) 
+ 169.39 µs ± 466.35 ns   168.66 µs … 170.12 µs  in 10 ×    584 runs
+[moonbitlang/core] bench hashset/set_algebra_bench_test.mbt:71 ("bench HashSet == Int 10k") ok
+time (mean ± σ)         range (min … max) 
+  91.09 µs ±  10.52 µs    80.38 µs … 103.59 µs  in 10 ×   1018 runs
+[moonbitlang/core] bench hashset/intersection_bench_test.mbt:16 ("bench intersection Int large/small overlap 100000/100") ok
+time (mean ± σ)         range (min … max) 
+   2.90 µs ±   8.13 ns     2.89 µs …   2.92 µs  in 10 ×  34454 runs
+[moonbitlang/core] bench hashset/intersection_bench_test.mbt:23 ("bench intersection Int large/small disjoint 100000/100") ok
+time (mean ± σ)         range (min … max) 
+ 591.68 ns ±   3.28 ns   588.74 ns … 596.30 ns  in 10 × 100000 runs
+[moonbitlang/core] bench hashset/intersection_bench_test.mbt:30 ("bench intersection Int small/large overlap 100/100000") ok
+time (mean ± σ)         range (min … max) 
+   2.83 µs ±  11.13 ns     2.82 µs …   2.84 µs  in 10 ×  35240 runs
+[moonbitlang/core] bench hashset/intersection_bench_test.mbt:37 ("bench intersection Int equal tables half overlap 10000/10000") ok
+time (mean ± σ)         range (min … max) 
+ 422.30 µs ±   9.47 µs   414.71 µs … 439.71 µs  in 10 ×    245 runs
+[moonbitlang/core] bench hashset/intersection_bench_test.mbt:46 ("bench intersection Int small tables half overlap 8/8") ok
+time (mean ± σ)         range (min … max) 
+ 126.18 ns ±   2.88 ns   123.07 ns … 130.26 ns  in 10 × 100000 runs
+[moonbitlang/core] bench hashset/intersection_bench_test.mbt:53 ("bench intersection Int empty right 100000/0") ok
+time (mean ± σ)         range (min … max) 
+  45.94 ns ±   2.09 ns    43.78 ns …  49.63 ns  in 10 × 100000 runs
+[moonbitlang/core] bench hashset/intersection_bench_test.mbt:60 ("bench intersection String large/small overlap 100000/100") ok
+time (mean ± σ)         range (min … max) 
+   4.39 µs ±  37.55 ns     4.35 µs …   4.48 µs  in 10 ×  22738 runs
+[moonbitlang/core] bench hashset/intersection_bench_test.mbt:67 ("bench intersection sparse left table 100/100") ok
+time (mean ± σ)         range (min … max) 
+   1.98 µs ±  16.66 ns     1.96 µs …   2.00 µs  in 10 ×  50420 runs
+[moonbitlang/core] bench hashset/hashset_bench_test.mbt:19 ("bench HashSet::add n=50000") ok
+time (mean ± σ)         range (min … max) 
+   2.93 ms ±   7.41 µs     2.92 ms …   2.94 ms  in 10 ×     35 runs
+[moonbitlang/core] bench hashset/hashset_bench_test.mbt:30 ("bench HashSet::contains n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.32 ms ±  22.38 µs     1.31 ms …   1.37 ms  in 10 ×     77 runs
+[moonbitlang/core] bench hashset/hashset_bench_test.mbt:56 ("bench HashSet::filter n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 708.12 µs ±   9.80 µs   700.41 µs … 724.02 µs  in 10 ×    143 runs
+[moonbitlang/core] bench hashset/hashset_bench_test.mbt:62 ("bench HashSet comprehension filter n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.33 ms ±   1.95 µs     1.33 ms …   1.33 ms  in 10 ×     76 runs
+[moonbitlang/core] bench immut/hashmap/update_bench_test.mbt:21 ("bench HashMap::remove absent x1000 n=100000") ok
+time (mean ± σ)         range (min … max) 
+  44.51 µs ±   1.02 µs    43.73 µs …  46.35 µs  in 10 ×   2286 runs
+[moonbitlang/core] bench immut/hashmap/update_bench_test.mbt:32 ("bench HashMap::remove present x1000 n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 817.66 µs ±   3.34 µs   813.44 µs … 821.72 µs  in 10 ×    123 runs
+[moonbitlang/core] bench immut/hashmap/update_bench_test.mbt:43 ("bench HashMap::union with a derived version n=100000") ok
+time (mean ± σ)         range (min … max) 
+   1.30 µs ±   3.77 ns     1.30 µs …   1.31 µs  in 10 ×  76380 runs
+[moonbitlang/core] bench immut/hashmap/update_bench_test.mbt:49 ("bench HashMap::intersection with a derived version n=100000") ok
+time (mean ± σ)         range (min … max) 
+   1.71 µs ±   7.24 ns     1.69 µs …   1.72 µs  in 10 ×  58564 runs
+[moonbitlang/core] bench immut/hashmap/hashmap_build_bench_test.mbt:37 ("bench HashMap constructor ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+   2.34 ms ±   6.36 µs     2.34 ms …   2.35 ms  in 10 ×     43 runs
+[moonbitlang/core] bench immut/hashmap/hashmap_build_bench_test.mbt:43 ("bench HashMap constructor random n=10000") ok
+time (mean ± σ)         range (min … max) 
+   2.33 ms ±   4.55 µs     2.32 ms …   2.34 ms  in 10 ×     43 runs
+[moonbitlang/core] bench immut/hashmap/hashmap_build_bench_test.mbt:49 ("bench HashMap::from_iter random n=10000") ok
+time (mean ± σ)         range (min … max) 
+   2.39 ms ±  10.33 µs     2.38 ms …   2.41 ms  in 10 ×     42 runs
+[moonbitlang/core] bench immut/hashset/update_bench_test.mbt:21 ("bench HashSet::add existing x1000 n=100000") ok
+time (mean ± σ)         range (min … max) 
+  48.67 µs ± 205.76 ns    48.44 µs …  49.00 µs  in 10 ×   2044 runs
+[moonbitlang/core] bench immut/hashset/update_bench_test.mbt:32 ("bench HashSet::remove absent x1000 n=100000") ok
+time (mean ± σ)         range (min … max) 
+  43.10 µs ± 162.80 ns    42.88 µs …  43.31 µs  in 10 ×   2209 runs
+[moonbitlang/core] bench immut/hashset/update_bench_test.mbt:43 ("bench HashSet::add new x1000 n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 686.16 µs ±   4.44 µs   682.35 µs … 697.76 µs  in 10 ×    146 runs
+[moonbitlang/core] bench immut/hashset/update_bench_test.mbt:54 ("bench HashSet::union with a derived version n=100000") ok
+time (mean ± σ)         range (min … max) 
+   1.14 µs ±   5.91 ns     1.14 µs …   1.15 µs  in 10 ×  87246 runs
+[moonbitlang/core] bench immut/hashset/hashset_build_bench_test.mbt:34 ("bench HashSet constructor ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+   2.29 ms ±   1.93 µs     2.28 ms …   2.29 ms  in 10 ×     44 runs
+[moonbitlang/core] bench immut/hashset/hashset_build_bench_test.mbt:40 ("bench HashSet constructor random n=10000") ok
+time (mean ± σ)         range (min … max) 
+   2.28 ms ±   2.18 µs     2.28 ms …   2.28 ms  in 10 ×     44 runs
+[moonbitlang/core] bench immut/hashset/hashset_build_bench_test.mbt:46 ("bench HashSet::from_iter random n=10000") ok
+time (mean ± σ)         range (min … max) 
+   2.32 ms ±   6.50 µs     2.31 ms …   2.33 ms  in 10 ×     44 runs
+[moonbitlang/core] bench immut/priority_queue/priority_queue_build_bench_test.mbt:38 ("bench PriorityQueue::from_array ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 156.55 µs ± 294.61 ns   156.07 µs … 156.86 µs  in 10 ×    639 runs
+[moonbitlang/core] bench immut/priority_queue/priority_queue_build_bench_test.mbt:44 ("bench PriorityQueue::from_array reverse n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 147.98 µs ±   3.08 µs   145.78 µs … 153.56 µs  in 10 ×    683 runs
+[moonbitlang/core] bench immut/priority_queue/priority_queue_build_bench_test.mbt:50 ("bench PriorityQueue::from_array random n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 156.15 µs ± 576.05 ns   155.46 µs … 157.27 µs  in 10 ×    641 runs
+[moonbitlang/core] bench immut/priority_queue/priority_queue_build_bench_test.mbt:56 ("bench PriorityQueue::from_iter random n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 194.92 µs ± 741.32 ns   193.86 µs … 196.10 µs  in 10 ×    515 runs
+[moonbitlang/core] bench immut/sorted_map/sorted_map_build_bench_test.mbt:54 ("bench SortedMap constructor reverse n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 222.51 µs ± 764.08 ns   221.79 µs … 224.45 µs  in 10 ×    451 runs
+[moonbitlang/core] bench immut/sorted_map/sorted_map_build_bench_test.mbt:60 ("bench SortedMap::from_iter ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.92 ms ±  14.35 µs     3.90 ms …   3.95 ms  in 10 ×     26 runs
+[moonbitlang/core] bench immut/sorted_map/sorted_map_build_bench_test.mbt:66 ("bench SortedMap::from_iter almost ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.92 ms ±  12.34 µs     3.90 ms …   3.94 ms  in 10 ×     26 runs
+[moonbitlang/core] bench immut/sorted_map/sorted_map_build_bench_test.mbt:72 ("bench SortedMap::from_iter random n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.61 ms ±   9.10 µs     3.60 ms …   3.62 ms  in 10 ×     28 runs
+[moonbitlang/core] bench immut/sorted_map/sorted_map_build_bench_test.mbt:78 ("bench SortedMap constructor ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 230.17 µs ±   1.01 µs   228.75 µs … 231.94 µs  in 10 ×    435 runs
+[moonbitlang/core] bench immut/sorted_map/sorted_map_build_bench_test.mbt:84 ("bench SortedMap constructor almost ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 605.27 µs ±  13.84 µs   594.52 µs … 631.49 µs  in 10 ×    167 runs
+[moonbitlang/core] bench immut/sorted_map/sorted_map_build_bench_test.mbt:90 ("bench SortedMap constructor random n=10000") ok
+time (mean ± σ)         range (min … max) 
+   1.44 ms ±  14.10 µs     1.43 ms …   1.48 ms  in 10 ×     70 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:29 ("bench merge disjoint n=1000") ok
+time (mean ± σ)         range (min … max) 
+   5.70 µs ±  21.13 ns     5.67 µs …   5.73 µs  in 10 ×  17542 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:36 ("bench merge disjoint n=5000") ok
+time (mean ± σ)         range (min … max) 
+   8.53 µs ±  42.67 ns     8.48 µs …   8.58 µs  in 10 ×  11693 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:43 ("bench merge disjoint n=10000") ok
+time (mean ± σ)         range (min … max) 
+   9.44 µs ±  25.99 ns     9.40 µs …   9.48 µs  in 10 ×  10584 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:50 ("bench merge overlapping 50% n=1000") ok
+time (mean ± σ)         range (min … max) 
+  25.78 µs ± 121.38 ns    25.58 µs …  25.97 µs  in 10 ×   3904 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:57 ("bench merge overlapping 50% n=5000") ok
+time (mean ± σ)         range (min … max) 
+ 135.17 µs ± 381.70 ns   134.73 µs … 135.78 µs  in 10 ×    737 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:64 ("bench merge overlapping 50% n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 233.71 µs ± 682.79 ns   233.14 µs … 235.43 µs  in 10 ×    429 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:71 ("bench merge identical n=1000") ok
+time (mean ± σ)         range (min … max) 
+  34.39 µs ± 734.88 ns    33.83 µs …  35.80 µs  in 10 ×   2952 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:78 ("bench merge identical n=5000") ok
+time (mean ± σ)         range (min … max) 
+ 172.70 µs ± 935.11 ns   171.95 µs … 174.88 µs  in 10 ×    581 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:85 ("bench merge interleaved n=1000") ok
+time (mean ± σ)         range (min … max) 
+ 140.20 µs ± 270.55 ns   139.72 µs … 140.57 µs  in 10 ×    715 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:92 ("bench merge interleaved n=5000") ok
+time (mean ± σ)         range (min … max) 
+ 703.62 µs ±   2.93 µs   700.11 µs … 710.26 µs  in 10 ×    143 runs
+[moonbitlang/core] bench immut/sorted_map/merge_bench_test.mbt:99 ("bench merge small into large n=100+10000") ok
+time (mean ± σ)         range (min … max) 
+  11.80 µs ±  49.79 ns    11.72 µs …  11.87 µs  in 10 ×   8493 runs
+[moonbitlang/core] bench immut/sorted_map/filter_bench_test.mbt:16 ("bench filter keep all n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 586.60 µs ±   1.53 µs   584.35 µs … 589.54 µs  in 10 ×    171 runs
+[moonbitlang/core] bench immut/sorted_map/filter_bench_test.mbt:22 ("bench filter keep 99% n=100000") ok
+time (mean ± σ)         range (min … max) 
+   1.32 ms ±  10.68 µs     1.31 ms …   1.34 ms  in 10 ×     77 runs
+[moonbitlang/core] bench immut/sorted_map/filter_bench_test.mbt:28 ("bench filter keep half n=100000") ok
+time (mean ± σ)         range (min … max) 
+   2.94 ms ±  33.81 µs     2.90 ms …   3.02 ms  in 10 ×     34 runs
+[moonbitlang/core] bench immut/sorted_map/filter_bench_test.mbt:34 ("bench filter drop all n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 328.37 µs ±   2.81 µs   325.04 µs … 334.92 µs  in 10 ×    305 runs
+[moonbitlang/core] bench immut/sorted_map/filter_bench_test.mbt:40 ("bench filter keep all n=31") ok
+time (mean ± σ)         range (min … max) 
+ 199.37 ns ±   3.07 ns   195.41 ns … 203.59 ns  in 10 × 100000 runs
+[moonbitlang/core] bench immut/sorted_map/filter_bench_test.mbt:46 ("bench filter drop all n=31") ok
+time (mean ± σ)         range (min … max) 
+ 119.69 ns ±   2.16 ns   116.68 ns … 122.53 ns  in 10 × 100000 runs
+[moonbitlang/core] bench immut/sorted_map/balance_bench_test.mbt:43 ("bench SortedMap::add ascending n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.96 ms ±  40.34 µs     3.92 ms …   4.06 ms  in 10 ×     26 runs
+[moonbitlang/core] bench immut/sorted_map/balance_bench_test.mbt:49 ("bench SortedMap::add scrambled n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.67 ms ±  63.73 µs     3.60 ms …   3.79 ms  in 10 ×     28 runs
+[moonbitlang/core] bench immut/sorted_map/balance_bench_test.mbt:55 ("bench SortedMap::remove ascending n=10000") ok
+time (mean ± σ)         range (min … max) 
+   2.78 ms ±   9.45 µs     2.77 ms …   2.80 ms  in 10 ×     36 runs
+[moonbitlang/core] bench immut/sorted_map/balance_bench_test.mbt:68 ("bench SortedMap::remove scrambled n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.47 ms ±   5.36 µs     3.46 ms …   3.48 ms  in 10 ×     29 runs
+[moonbitlang/core] bench immut/sorted_map/balance_bench_test.mbt:81 ("bench SortedMap::get ascending-built n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 813.65 µs ±  10.86 µs   801.94 µs … 834.36 µs  in 10 ×    119 runs
+[moonbitlang/core] bench immut/sorted_map/balance_bench_test.mbt:96 ("bench SortedMap::get scrambled-built n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 719.99 µs ±   7.49 µs   712.17 µs … 731.55 µs  in 10 ×    141 runs
+[moonbitlang/core] bench immut/sorted_set/sorted_set_build_bench_test.mbt:51 ("bench SortedSet constructor reverse n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 212.45 µs ±   3.66 µs   208.25 µs … 218.59 µs  in 10 ×    462 runs
+[moonbitlang/core] bench immut/sorted_set/sorted_set_build_bench_test.mbt:57 ("bench SortedSet::from_iter ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.86 ms ±  55.13 µs     3.80 ms …   3.95 ms  in 10 ×     27 runs
+[moonbitlang/core] bench immut/sorted_set/sorted_set_build_bench_test.mbt:63 ("bench SortedSet::from_iter almost ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.83 ms ±  16.69 µs     3.81 ms …   3.86 ms  in 10 ×     27 runs
+[moonbitlang/core] bench immut/sorted_set/sorted_set_build_bench_test.mbt:69 ("bench SortedSet::from_iter rev almost ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+   4.43 ms ±  11.01 µs     4.41 ms …   4.44 ms  in 10 ×     23 runs
+[moonbitlang/core] bench immut/sorted_set/sorted_set_build_bench_test.mbt:75 ("bench SortedSet::from_iter random n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.66 ms ±  12.38 µs     3.64 ms …   3.68 ms  in 10 ×     27 runs
+[moonbitlang/core] bench immut/sorted_set/sorted_set_build_bench_test.mbt:81 ("bench SortedSet constructor ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 217.08 µs ± 859.02 ns   215.99 µs … 218.88 µs  in 10 ×    463 runs
+[moonbitlang/core] bench immut/sorted_set/sorted_set_build_bench_test.mbt:87 ("bench SortedSet constructor almost ordered n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 243.33 µs ±   1.02 µs   242.07 µs … 245.17 µs  in 10 ×    411 runs
+[moonbitlang/core] bench immut/sorted_set/sorted_set_build_bench_test.mbt:93 ("bench SortedSet constructor random n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 529.34 µs ± 947.36 ns   527.93 µs … 530.38 µs  in 10 ×    187 runs
+[moonbitlang/core] bench immut/sorted_set/balance_bench_test.mbt:41 ("bench SortedSet::add ascending n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.86 ms ±  78.61 µs     3.79 ms …   3.96 ms  in 10 ×     27 runs
+[moonbitlang/core] bench immut/sorted_set/balance_bench_test.mbt:47 ("bench SortedSet::add scrambled n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.63 ms ±   9.33 µs     3.62 ms …   3.65 ms  in 10 ×     28 runs
+[moonbitlang/core] bench immut/sorted_set/balance_bench_test.mbt:53 ("bench SortedSet::remove ascending n=10000") ok
+time (mean ± σ)         range (min … max) 
+   2.63 ms ±  12.06 µs     2.61 ms …   2.64 ms  in 10 ×     39 runs
+[moonbitlang/core] bench immut/sorted_set/balance_bench_test.mbt:66 ("bench SortedSet::remove scrambled n=10000") ok
+time (mean ± σ)         range (min … max) 
+   3.34 ms ±   9.47 µs     3.33 ms …   3.36 ms  in 10 ×     30 runs
+[moonbitlang/core] bench immut/sorted_set/balance_bench_test.mbt:79 ("bench SortedSet::contains ascending-built n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 782.25 µs ±   1.63 µs   780.14 µs … 784.60 µs  in 10 ×    128 runs
+[moonbitlang/core] bench immut/sorted_set/balance_bench_test.mbt:94 ("bench SortedSet::contains scrambled-built n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 694.39 µs ±   2.26 µs   691.31 µs … 698.35 µs  in 10 ×    145 runs
+[moonbitlang/core] bench immut/vector/vector_iter_bench_test.mbt:24 ("bench Vector::iter fold n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 665.31 µs ±   2.95 µs   660.92 µs … 668.83 µs  in 10 ×    149 runs
+[moonbitlang/core] bench immut/vector/vector_iter_bench_test.mbt:30 ("bench Vector::iter each n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 696.40 µs ±   3.49 µs   690.53 µs … 700.25 µs  in 10 ×    144 runs
+[moonbitlang/core] bench immut/vector/vector_iter_bench_test.mbt:40 ("bench Vector::iter to_array n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 763.01 µs ±   8.75 µs   755.07 µs … 786.15 µs  in 10 ×    123 runs
+[moonbitlang/core] bench immut/vector/vector_iter_bench_test.mbt:46 ("bench Vector::for-in n=100000") ok
+time (mean ± σ)         range (min … max) 
+ 667.87 µs ±   2.84 µs   662.74 µs … 670.98 µs  in 10 ×    149 runs
+[moonbitlang/core] bench immut/vector/vector_contains_bench_test.mbt:24 ("bench Vector::contains missing n=100000") ok
+time (mean ± σ)         range (min … max) 
+  56.34 µs ± 106.36 ns    56.19 µs …  56.53 µs  in 10 ×   1773 runs
+[moonbitlang/core] bench immut/vector/vector_contains_bench_test.mbt:30 ("bench Vector::contains tree-end n=100000") ok
+time (mean ± σ)         range (min … max) 
+  57.07 µs ± 110.12 ns    56.88 µs …  57.23 µs  in 10 ×   1748 runs
+[moonbitlang/core] bench immut/vector/vector_contains_bench_test.mbt:36 ("bench Vector::contains tail-end n=100000") ok
+time (mean ± σ)         range (min … max) 
+  56.90 µs ±  87.92 ns    56.79 µs …  57.07 µs  in 10 ×   1754 runs
+[moonbitlang/core] bench internal/strconv/parse_double_bench_test.mbt:48 ("bench parse_double fast digits n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 355.52 µs ±   1.39 µs   353.75 µs … 357.94 µs  in 10 ×    283 runs
+[moonbitlang/core] bench internal/strconv/parse_double_bench_test.mbt:55 ("bench parse_double underscores n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 484.50 µs ±   1.79 µs   481.77 µs … 487.00 µs  in 10 ×    207 runs
+[moonbitlang/core] bench internal/strconv/parse_double_bench_test.mbt:62 ("bench parse_double long mantissa n=4096") ok
+time (mean ± σ)         range (min … max) 
+ 469.80 µs ±   2.44 µs   467.36 µs … 474.81 µs  in 10 ×    213 runs
+[moonbitlang/core] bench json/to_json_bytes_bench_test.mbt:16 ("bench ToJson for Bytes all byte values n=4096") ok
+time (mean ± σ)         range (min … max) 
+  48.26 µs ± 964.78 ns    47.51 µs …  50.06 µs  in 10 ×   2010 runs
+[moonbitlang/core] bench json/to_json_bytes_bench_test.mbt:22 ("bench ToJson for Bytes printable n=4096") ok
+time (mean ± σ)         range (min … max) 
+  10.99 µs ±  64.49 ns    10.92 µs …  11.09 µs  in 10 ×   9045 runs
+[moonbitlang/core] bench json/stringify_indent_bench_test.mbt:45 ("bench Json::stringify deep wide indent=2 n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 402.78 µs ± 785.29 ns   401.31 µs … 403.58 µs  in 10 ×    249 runs
+[moonbitlang/core] bench json/stringify_indent_bench_test.mbt:54 ("bench Json::stringify compact n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 304.46 µs ±   4.27 µs   301.68 µs … 313.28 µs  in 10 ×    331 runs
+[moonbitlang/core] bench json/stringify_indent_bench_test.mbt:60 ("bench Json::stringify shallow wide indent=2 n=500") ok
+time (mean ± σ)         range (min … max) 
+ 465.54 µs ±   1.71 µs   463.93 µs … 468.75 µs  in 10 ×    212 runs
+[moonbitlang/core] bench json/stringify_indent_bench_test.mbt:66 ("bench Json::stringify shallow wide compact n=500") ok
+time (mean ± σ)         range (min … max) 
+ 282.80 µs ± 416.56 ns   282.18 µs … 283.46 µs  in 10 ×    352 runs
+[moonbitlang/core] bench json/stringify_escape_bench_test.mbt:24 ("bench Json::stringify strings no escape n=2048") ok
+time (mean ± σ)         range (min … max) 
+  60.26 µs ± 120.06 ns    60.05 µs …  60.42 µs  in 10 ×   1658 runs
+[moonbitlang/core] bench json/stringify_escape_bench_test.mbt:30 ("bench Json::stringify strings slash no escape n=2048") ok
+time (mean ± σ)         range (min … max) 
+  60.35 µs ± 383.12 ns    59.99 µs …  61.30 µs  in 10 ×   1666 runs
+[moonbitlang/core] bench json/stringify_escape_bench_test.mbt:36 ("bench Json::stringify strings slash escaped n=2048") ok
+time (mean ± σ)         range (min … max) 
+ 242.52 µs ±   4.01 µs   239.78 µs … 250.71 µs  in 10 ×    397 runs
+[moonbitlang/core] bench json/stringify_escape_bench_test.mbt:42 ("bench Json::stringify strings quotes controls n=2048") ok
+time (mean ± σ)         range (min … max) 
+ 196.96 µs ± 787.49 ns   196.05 µs … 198.57 µs  in 10 ×    510 runs
+[moonbitlang/core] bench json/stringify_escape_bench_test.mbt:48 ("bench Json::stringify 2KB prose one newline n=64") ok
+time (mean ± σ)         range (min … max) 
+ 166.53 µs ± 355.81 ns   166.01 µs … 167.07 µs  in 10 ×    598 runs
+[moonbitlang/core] bench json/parse_bench_test.mbt:45 ("bench json parse mixed object array n=1000") ok
+time (mean ± σ)         range (min … max) 
+   3.10 ms ±  26.08 µs     3.04 ms …   3.14 ms  in 10 ×     32 runs
+[moonbitlang/core] bench json/number_bench_test.mbt:64 ("bench json parse int array n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 894.08 µs ±   2.62 µs   890.26 µs … 898.42 µs  in 10 ×    112 runs
+[moonbitlang/core] bench json/number_bench_test.mbt:70 ("bench json parse float array n=10000") ok
+time (mean ± σ)         range (min … max) 
+   1.27 ms ±  12.53 µs     1.25 ms …   1.29 ms  in 10 ×     80 runs
+[moonbitlang/core] bench json/number_bench_test.mbt:76 ("bench json parse long mantissa array n=10000") ok
+time (mean ± σ)         range (min … max) 
+   1.72 ms ±   5.71 µs     1.72 ms …   1.74 ms  in 10 ×     58 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:41 ("bench json parse object with short keys n=1000") ok
+time (mean ± σ)         range (min … max) 
+ 282.93 µs ±   3.94 µs   278.55 µs … 289.98 µs  in 10 ×    355 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:57 ("bench json parse strings len=20 n=1000") ok
+time (mean ± σ)         range (min … max) 
+ 118.96 µs ±   2.11 µs   117.26 µs … 122.86 µs  in 10 ×    837 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:64 ("bench json parse strings len=64 n=1000") ok
+time (mean ± σ)         range (min … max) 
+ 200.84 µs ± 408.84 ns   200.24 µs … 201.35 µs  in 10 ×    498 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:70 ("bench json parse strings len=1024 n=64") ok
+time (mean ± σ)         range (min … max) 
+ 104.93 µs ± 308.19 ns   104.51 µs … 105.40 µs  in 10 ×    946 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:76 ("bench json parse single string len=65536") ok
+time (mean ± σ)         range (min … max) 
+  91.27 µs ± 422.81 ns    90.49 µs …  91.65 µs  in 10 ×   1096 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:82 ("bench json parse strings len=1040 escape every 100 n=64") ok
+time (mean ± σ)         range (min … max) 
+  75.59 µs ± 342.70 ns    75.05 µs …  76.07 µs  in 10 ×   1318 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:97 ("bench json parse strings dense escapes n=1000") ok
+time (mean ± σ)         range (min … max) 
+ 475.76 µs ± 770.40 ns   474.13 µs … 476.62 µs  in 10 ×    211 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:111 ("bench json parse strings len=36 n=1000") ok
+time (mean ± σ)         range (min … max) 
+ 156.42 µs ± 764.32 ns   155.16 µs … 157.26 µs  in 10 ×    641 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:118 ("bench json parse strings len=128 n=1000") ok
+time (mean ± σ)         range (min … max) 
+ 321.40 µs ±   1.98 µs   319.68 µs … 325.20 µs  in 10 ×    312 runs
+[moonbitlang/core] bench json/lex_string_bench_test.mbt:124 ("bench json parse strings len=136 n=1000") ok
+time (mean ± σ)         range (min … max) 
+ 331.62 µs ± 902.48 ns   330.20 µs … 332.69 µs  in 10 ×    291 runs
+[moonbitlang/core] bench json/json_inspect_bench_test.mbt:16 ("bench json_inspect passing Int") ok
+time (mean ± σ)         range (min … max) 
+ 290.63 ns ±   3.08 ns   288.55 ns … 297.26 ns  in 10 × 100000 runs
+[moonbitlang/core] bench json/from_json_map_bench_test.mbt:25 ("bench Map::from_json entries=10000") ok
+time (mean ± σ)         range (min … max) 
+ 663.83 µs ±   3.62 µs   660.28 µs … 670.20 µs  in 10 ×    152 runs
+[moonbitlang/core] bench json/from_json_map_bench_test.mbt:34 ("bench Map::from_json entries=100000") ok
+time (mean ± σ)         range (min … max) 
+  11.16 ms ± 213.83 µs    10.99 ms …  11.50 ms  in 10 ×      9 runs
+[moonbitlang/core] bench json/from_json_map_bench_test.mbt:45 ("bench Map::from_json entries=15000") ok
+time (mean ± σ)         range (min … max) 
+ 970.14 µs ±   2.06 µs   967.20 µs … 973.05 µs  in 10 ×    104 runs
+[moonbitlang/core] bench json/from_json_map_bench_test.mbt:54 ("bench Map::from_json entries=120000") ok
+time (mean ± σ)         range (min … max) 
+  12.77 ms ±  37.27 µs    12.71 ms …  12.83 ms  in 10 ×      8 runs
+[moonbitlang/core] bench json/from_json_map_bench_test.mbt:65 ("bench Map::from_json entries=100 source_capacity=131072") ok
+time (mean ± σ)         range (min … max) 
+   6.08 µs ±  26.45 ns     6.05 µs …   6.12 µs  in 10 ×  16052 runs
+[moonbitlang/core] bench json/from_json_bench_test.mbt:31 ("bench from_json Array[Array[Int]] 500x50") ok
+time (mean ± σ)         range (min … max) 
+ 255.45 µs ±   2.21 µs   252.50 µs … 257.78 µs  in 10 ×    382 runs
+[moonbitlang/core] bench json/from_json_bench_test.mbt:41 ("bench from_json Array[Double] n=10000") ok
+time (mean ± σ)         range (min … max) 
+  52.17 µs ± 989.48 ns    51.36 µs …  53.71 µs  in 10 ×   1959 runs
+[moonbitlang/core] bench json/from_json_bench_test.mbt:51 ("bench from_json Map[String, Int] n=1000") ok
+time (mean ± σ)         range (min … max) 
+  57.47 µs ±  82.33 ns    57.31 µs …  57.58 µs  in 10 ×   1708 runs
+[moonbitlang/core] bench lazy_list/concat_bench_test.mbt:40 ("bench LazyList build and traverse n=2048") ok
+time (mean ± σ)         range (min … max) 
+ 271.22 µs ±   1.12 µs   269.35 µs … 272.49 µs  in 10 ×    374 runs
+[moonbitlang/core] bench lazy_list/concat_bench_test.mbt:49 ("bench LazyList re-traverse a forced list n=2048") ok
+time (mean ± σ)         range (min … max) 
+  68.84 µs ± 971.92 ns    67.07 µs …  70.27 µs  in 10 ×   1407 runs
+[moonbitlang/core] bench lazy_list/concat_bench_test.mbt:57 ("bench LazyList left-nested concat, build only n=2048") ok
+time (mean ± σ)         range (min … max) 
+ 455.76 µs ±  11.96 µs   446.73 µs … 478.91 µs  in 10 ×    193 runs
+[moonbitlang/core] bench lazy_list/concat_bench_test.mbt:62 ("bench LazyList left-nested concat, build and traverse n=2048") ok
+time (mean ± σ)         range (min … max) 
+ 898.06 µs ±   6.32 µs   893.93 µs … 915.60 µs  in 10 ×    112 runs
+[moonbitlang/core] bench lazy_list/concat_bench_test.mbt:69 ("bench LazyList concat while consuming n=2048") ok
+time (mean ± σ)         range (min … max) 
+ 946.63 µs ±  14.41 µs   918.99 µs … 961.56 µs  in 10 ×     99 runs
+[moonbitlang/core] bench lexbuf/lexbuf_bench_test.mbt:47 ("bench Lexbuf retained token chunks=10000 size=1") ok
+time (mean ± σ)         range (min … max) 
+ 463.31 µs ±   1.27 µs   461.43 µs … 464.88 µs  in 10 ×    212 runs
+[moonbitlang/core] bench lexbuf/lexbuf_bench_test.mbt:52 ("bench Lexbuf retained token chunks=1250 size=8") ok
+time (mean ± σ)         range (min … max) 
+ 108.65 µs ±   2.47 µs   106.52 µs … 112.77 µs  in 10 ×    925 runs
+[moonbitlang/core] bench lexbuf/lexbuf_bench_test.mbt:57 ("bench Lexbuf retained token chunks=157 size=64") ok
+time (mean ± σ)         range (min … max) 
+  47.92 µs ± 238.35 ns    47.61 µs …  48.25 µs  in 10 ×   2083 runs
+[moonbitlang/core] bench lexbuf/lexbuf_bench_test.mbt:62 ("bench Lexbuf retained token chunks=20 size=512") ok
+time (mean ± σ)         range (min … max) 
+  42.74 µs ± 170.36 ns    42.53 µs …  43.00 µs  in 10 ×   2343 runs
+[moonbitlang/core] bench quickcheck/shrink_collection_bench_test.mbt:16 ("bench shrink Array first candidate size=10000") ok
+time (mean ± σ)         range (min … max) 
+ 491.07 ns ±   2.67 ns   488.47 ns … 495.31 ns  in 10 × 100000 runs
+[moonbitlang/core] bench quickcheck/shrink_collection_bench_test.mbt:22 ("bench shrink List first candidate size=10000") ok
+time (mean ± σ)         range (min … max) 
+ 309.95 µs ±   1.51 µs   308.44 µs … 312.52 µs  in 10 ×    323 runs
+[moonbitlang/core] bench quickcheck/generator_bench_test.mbt:16 ("bench Generator::zip_with n=1000000") ok
+time (mean ± σ)         range (min … max) 
+  22.92 ms ±  74.15 µs    22.84 ms …  23.10 ms  in 10 ×      5 runs
+[moonbitlang/core] bench quickcheck/arbitrary_string_bench_test.mbt:16 ("bench Arbitrary String size=10000 count=100") ok
+time (mean ± σ)         range (min … max) 
+   5.73 ms ±  40.35 µs     5.70 ms …   5.83 ms  in 10 ×     18 runs
+[moonbitlang/core] bench random/random_test.mbt:439 ("bench random") ok
+time (mean ± σ)         range (min … max) 
+  46.66 ms ± 291.83 µs    46.41 ms …  47.31 ms  in 10 ×      3 runs
+[moonbitlang/core] bench set/set_algebra_bench_test.mbt:26 ("bench Set::union String 10k 50% overlap") ok
+time (mean ± σ)         range (min … max) 
+   1.00 ms ±  26.11 µs   987.19 µs …   1.06 ms  in 10 ×     99 runs
+[moonbitlang/core] bench set/set_algebra_bench_test.mbt:33 ("bench Set::union Int 10k 50% overlap") ok
+time (mean ± σ)         range (min … max) 
+ 815.81 µs ±   4.23 µs   811.13 µs … 822.65 µs  in 10 ×    120 runs
+[moonbitlang/core] bench set/set_algebra_bench_test.mbt:40 ("bench Set::intersection String 10k 50% overlap") ok
+time (mean ± σ)         range (min … max) 
+ 514.28 µs ± 929.24 ns   512.53 µs … 515.84 µs  in 10 ×    197 runs
+[moonbitlang/core] bench set/set_algebra_bench_test.mbt:47 ("bench Set::difference String 10k 50% overlap") ok
+time (mean ± σ)         range (min … max) 
+ 510.57 µs ±   3.83 µs   504.53 µs … 515.97 µs  in 10 ×    193 runs
+[moonbitlang/core] bench set/set_algebra_bench_test.mbt:54 ("bench Set::is_subset String 10k true") ok
+time (mean ± σ)         range (min … max) 
+ 192.95 µs ±   1.09 µs   191.43 µs … 195.05 µs  in 10 ×    520 runs
+[moonbitlang/core] bench set/set_algebra_bench_test.mbt:61 ("bench Set == String 10k") ok
+time (mean ± σ)         range (min … max) 
+ 195.22 µs ±   1.26 µs   193.67 µs … 197.39 µs  in 10 ×    519 runs
+[moonbitlang/core] bench set/set_algebra_bench_test.mbt:68 ("bench Set == Int 10k") ok
+time (mean ± σ)         range (min … max) 
+ 115.17 µs ±   1.49 µs   112.98 µs … 117.84 µs  in 10 ×    836 runs
+[moonbitlang/core] bench set/linked_hash_set_bench_test.mbt:19 ("bench Set::add n=50000") ok
+time (mean ± σ)         range (min … max) 
+   3.39 ms ±  76.37 µs     3.31 ms …   3.53 ms  in 10 ×     30 runs
+[moonbitlang/core] bench set/linked_hash_set_bench_test.mbt:30 ("bench Set::contains n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.30 ms ±   5.55 µs     1.29 ms …   1.30 ms  in 10 ×     78 runs
+[moonbitlang/core] bench set/linked_hash_set_bench_test.mbt:47 ("bench Set::contains miss n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.36 ms ±   2.84 µs     1.36 ms …   1.37 ms  in 10 ×     73 runs
+[moonbitlang/core] bench set/linked_hash_set_bench_test.mbt:67 ("bench Set::add+remove n=50000") ok
+time (mean ± σ)         range (min … max) 
+   5.08 ms ±  12.47 µs     5.06 ms …   5.09 ms  in 10 ×     20 runs
+[moonbitlang/core] bench set/linked_hash_set_bench_test.mbt:86 ("bench Set::filter n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 654.33 µs ±   5.02 µs   647.77 µs … 662.65 µs  in 10 ×    155 runs
+[moonbitlang/core] bench set/linked_hash_set_bench_test.mbt:92 ("bench Set comprehension filter n=50000") ok
+time (mean ± σ)         range (min … max) 
+   1.19 ms ±   5.81 µs     1.18 ms …   1.20 ms  in 10 ×     85 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:16 ("reverse iter n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 387.62 µs ±   2.35 µs   384.01 µs … 392.44 µs  in 10 ×    261 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:22 ("reverse keys n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 202.88 µs ±   1.07 µs   201.43 µs … 204.18 µs  in 10 ×    494 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:28 ("reverse values n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 203.74 µs ±   3.31 µs   201.03 µs … 209.42 µs  in 10 ×    485 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:34 ("range bounds middle n=8192") ok
+time (mean ± σ)         range (min … max) 
+ 163.16 µs ±   1.36 µs   161.21 µs … 164.76 µs  in 10 ×    613 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:47 ("reverse range bounds middle n=8192") ok
+time (mean ± σ)         range (min … max) 
+ 163.48 µs ±   2.30 µs   161.24 µs … 169.31 µs  in 10 ×    607 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:60 ("range bounds unbounded n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 307.01 µs ± 715.60 ns   305.93 µs … 307.99 µs  in 10 ×    323 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:73 ("reverse range bounds unbounded n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 303.61 µs ±   1.26 µs   302.21 µs … 305.81 µs  in 10 ×    327 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:86 ("reverse iter take n=8") ok
+time (mean ± σ)         range (min … max) 
+ 451.55 ns ±   3.41 ns   447.48 ns … 457.04 ns  in 10 × 100000 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:94 ("range bounds take n=8") ok
+time (mean ± σ)         range (min … max) 
+ 441.59 ns ±   2.47 ns   438.37 ns … 446.30 ns  in 10 × 100000 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:108 ("reverse range bounds take n=8") ok
+time (mean ± σ)         range (min … max) 
+ 416.95 ns ±   6.08 ns   410.57 ns … 426.50 ns  in 10 × 100000 runs
+[moonbitlang/core] bench sorted_map/reverse_range_bench_test.mbt:122 ("forward iter n=16384 control") ok
+time (mean ± σ)         range (min … max) 
+ 422.25 µs ±   2.17 µs   419.46 µs … 425.65 µs  in 10 ×    237 runs
+[moonbitlang/core] bench sorted_map/iter_bench_test.mbt:21 ("bench sorted_map iter n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 429.64 µs ±   8.23 µs   424.88 µs … 446.23 µs  in 10 ×    235 runs
+[moonbitlang/core] bench sorted_map/iter_bench_test.mbt:27 ("bench sorted_map keys n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 247.57 µs ± 856.10 ns   246.33 µs … 249.20 µs  in 10 ×    399 runs
+[moonbitlang/core] bench sorted_map/iter_bench_test.mbt:33 ("bench sorted_map values n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 246.31 µs ± 900.85 ns   245.39 µs … 247.81 µs  in 10 ×    401 runs
+[moonbitlang/core] bench sorted_map/iter_bench_test.mbt:39 ("bench sorted_map iter take n=8") ok
+time (mean ± σ)         range (min … max) 
+ 556.41 ns ±   5.05 ns   550.80 ns … 563.22 ns  in 10 × 100000 runs
+[moonbitlang/core] bench sorted_map/iter_bench_test.mbt:47 ("bench sorted_map empty iter") ok
+time (mean ± σ)         range (min … max) 
+  57.84 ns ±   0.15 ns    57.72 ns …  58.19 ns  in 10 × 100000 runs
+[moonbitlang/core] bench sorted_map/iter_bench_test.mbt:53 ("bench sorted_map iter string keys and values n=16384") ok
+time (mean ± σ)         range (min … max) 
+ 449.64 µs ±   5.90 µs   444.68 µs … 463.73 µs  in 10 ×    225 runs
+[moonbitlang/core] bench sorted_map/iter_bench_test.mbt:64 ("bench sorted_map rev_iter n=16384 control") ok
+time (mean ± σ)         range (min … max) 
+ 385.76 µs ±   3.77 µs   382.03 µs … 395.92 µs  in 10 ×    258 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:16 ("bench SortedMap build ascending n=10000") ok
+time (mean ± σ)         range (min … max) 
+ 219.49 µs ±   6.57 µs   211.08 µs … 229.46 µs  in 10 ×    456 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:22 ("bench SortedMap build ascending n=100000") ok
+time (mean ± σ)         range (min … max) 
+   2.34 ms ±  64.49 µs     2.26 ms …   2.44 ms  in 10 ×     46 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:28 ("bench SortedMap build descending n=100000") ok
+time (mean ± σ)         range (min … max) 
+   2.29 ms ±  86.13 µs     2.19 ms …   2.44 ms  in 10 ×     45 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:34 ("bench SortedMap build shuffled n=100000") ok
+time (mean ± σ)         range (min … max) 
+  31.25 ms ± 392.00 µs    30.72 ms …  32.12 ms  in 10 ×      4 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:40 ("bench SortedMap build ascending prefix then duplicate n=100000") ok
+time (mean ± σ)         range (min … max) 
+   2.22 ms ±  23.28 µs     2.20 ms …   2.27 ms  in 10 ×     46 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:49 ("bench SortedMap build descending prefix then duplicate n=100000") ok
+time (mean ± σ)         range (min … max) 
+   2.24 ms ±  17.13 µs     2.21 ms …   2.27 ms  in 10 ×     43 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:58 ("bench SortedMap build ascending prefix then reversal n=100000") ok
+time (mean ± σ)         range (min … max) 
+   2.21 ms ±   9.18 µs     2.20 ms …   2.23 ms  in 10 ×     45 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:67 ("bench SortedMap build descending prefix then reversal n=100000") ok
+time (mean ± σ)         range (min … max) 
+   2.53 ms ±  51.86 µs     2.44 ms …   2.59 ms  in 10 ×     41 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:76 ("bench SortedMap merge disjoint n=10000+10000") ok
+time (mean ± σ)         range (min … max) 
+   3.01 ms ±  42.40 µs     2.96 ms …   3.08 ms  in 10 ×     32 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:83 ("bench SortedMap merge overlapping n=10000+10000") ok
+time (mean ± σ)         range (min … max) 
+   2.87 ms ±  28.66 µs     2.84 ms …   2.93 ms  in 10 ×     36 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:102 ("bench insertion-built merge disjoint") ok
+time (mean ± σ)         range (min … max) 
+   2.97 ms ±  58.10 µs     2.89 ms …   3.07 ms  in 10 ×     35 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:109 ("bench insertion-built merge overlapping") ok
+time (mean ± σ)         range (min … max) 
+   2.87 ms ±  89.72 µs     2.76 ms …   3.02 ms  in 10 ×     33 runs
+[moonbitlang/core] bench sorted_map/build_bench_test.mbt:116 ("bench build and merge disjoint") ok
+time (mean ± σ)         range (min … max) 
+   3.65 ms ±  17.84 µs     3.63 ms …   3.68 ms  in 10 ×     27 runs
+[moonbitlang/core] bench sorted_set/sorted_set_bench_test.mbt:22 ("bench SortedSet::to_array Int n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 376.78 µs ±   1.93 µs   374.38 µs … 379.83 µs  in 10 ×    266 runs
+[moonbitlang/core] bench sorted_set/sorted_set_bench_test.mbt:30 ("bench SortedSet::to_array Ref n=50000") ok
+time (mean ± σ)         range (min … max) 
+ 634.21 µs ±  14.75 µs   614.39 µs … 655.35 µs  in 10 ×    158 runs
+[moonbitlang/core] bench string/regex_bench_test.mbt:16 ("bench regex /aa?b/ on 1MB string") ok
+time (mean ± σ)         range (min … max) 
+   2.34 ms ±  16.74 µs     2.32 ms …   2.37 ms  in 10 ×     44 runs
+[moonbitlang/core] bench string/regex_bench_test.mbt:23 ("bench regex phone lines") ok
+time (mean ± σ)         range (min … max) 
+   2.99 µs ±  26.47 ns     2.94 µs …   3.03 µs  in 10 ×  33473 runs
+[moonbitlang/core] bench string/regex_bench_test.mbt:43 ("bench regex large pattern") ok
+time (mean ± σ)         range (min … max) 
+   1.83 ms ±  14.60 µs     1.81 ms …   1.86 ms  in 10 ×     55 runs
+[moonbitlang/core] bench string/regex_bench_test.mbt:93 ("bench regex periodic literal n=3000") ok
+time (mean ± σ)         range (min … max) 
+   2.20 s ±  17.83 ms     2.16 s …   2.22 s  in 10 ×      1 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:32 ("bench V128 i64x2_add n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.46 µs ±  20.88 ns     5.44 µs …   5.51 µs  in 10 ×  18214 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:44 ("bench V128 i32x4_add n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.49 µs ±  33.76 ns     5.45 µs …   5.55 µs  in 10 ×  18288 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:56 ("bench V128 i8x16_add n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.47 µs ±  17.66 ns     5.44 µs …   5.50 µs  in 10 ×  18125 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:68 ("bench V128 i8x16_splat n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.46 µs ±  24.33 ns     5.44 µs …   5.52 µs  in 10 ×  18393 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:79 ("bench V128 i8x16_extract_lane_u n=10000") ok
+time (mean ± σ)         range (min … max) 
+   8.75 µs ± 177.32 ns     8.55 µs …   8.99 µs  in 10 ×  11262 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:93 ("bench V128 i8x16_replace_lane n=10000") ok
+time (mean ± σ)         range (min … max) 
+  39.66 µs ± 130.66 ns    39.47 µs …  39.84 µs  in 10 ×   2509 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:108 ("bench V128 i8x16_bitmask n=10000") ok
+time (mean ± σ)         range (min … max) 
+   7.61 µs ± 135.19 ns     7.50 µs …   7.81 µs  in 10 ×  12807 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:120 ("bench V128 load/store n=10000") ok
+time (mean ± σ)         range (min … max) 
+  32.81 µs ± 179.98 ns    32.59 µs …  33.12 µs  in 10 ×   3031 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:135 ("bench V128 load8x8_u n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.48 µs ±  30.39 ns     5.44 µs …   5.53 µs  in 10 ×  18243 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:147 ("bench V128 load8x8_s n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.48 µs ±  33.93 ns     5.44 µs …   5.54 µs  in 10 ×  18239 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:159 ("bench V128 load16x4_u n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.47 µs ±  16.16 ns     5.46 µs …   5.50 µs  in 10 ×  18194 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:171 ("bench V128 load16x4_s n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.47 µs ±  22.24 ns     5.43 µs …   5.50 µs  in 10 ×  18244 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:183 ("bench V128 load32x2_u n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.54 µs ± 103.81 ns     5.46 µs …   5.73 µs  in 10 ×  18321 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:195 ("bench V128 load32x2_s n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.47 µs ±  37.07 ns     5.42 µs …   5.53 µs  in 10 ×  18331 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:207 ("bench V128 load_splat n=10000") ok
+time (mean ± σ)         range (min … max) 
+  21.90 µs ±  75.39 ns    21.77 µs …  22.00 µs  in 10 ×   4562 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:223 ("bench V128 load8_lane n=10000") ok
+time (mean ± σ)         range (min … max) 
+  39.77 µs ± 173.05 ns    39.51 µs …  40.05 µs  in 10 ×   2500 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:235 ("bench V128 load16_lane n=10000") ok
+time (mean ± σ)         range (min … max) 
+  39.78 µs ± 290.91 ns    39.51 µs …  40.43 µs  in 10 ×   2507 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:247 ("bench V128 load32_lane n=10000") ok
+time (mean ± σ)         range (min … max) 
+  39.80 µs ± 124.57 ns    39.62 µs …  40.06 µs  in 10 ×   2509 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:259 ("bench V128 load64_lane n=10000") ok
+time (mean ± σ)         range (min … max) 
+  63.05 µs ± 649.79 ns    62.58 µs …  64.77 µs  in 10 ×   1589 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:271 ("bench V128 extend i8x16 to i16x8 n=10000") ok
+time (mean ± σ)         range (min … max) 
+  10.92 µs ±  75.92 ns    10.86 µs …  11.13 µs  in 10 ×   9147 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:285 ("bench V128 extend i16x8 to i32x4 n=10000") ok
+time (mean ± σ)         range (min … max) 
+  10.95 µs ±  48.90 ns    10.87 µs …  11.02 µs  in 10 ×   9154 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:299 ("bench V128 extend i32x4 to i64x2 n=10000") ok
+time (mean ± σ)         range (min … max) 
+  10.93 µs ±  55.75 ns    10.87 µs …  11.04 µs  in 10 ×   9188 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:313 ("bench V128 all_true n=10000") ok
+time (mean ± σ)         range (min … max) 
+  18.16 µs ± 402.27 ns    17.46 µs …  18.64 µs  in 10 ×   5924 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:337 ("bench V128 bitmask all widths n=10000") ok
+time (mean ± σ)         range (min … max) 
+  16.99 µs ± 154.53 ns    16.79 µs …  17.34 µs  in 10 ×   5919 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:353 ("bench V128 swizzle n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.46 µs ±  15.01 ns     5.44 µs …   5.49 µs  in 10 ×  18218 runs
+[moonbitlang/core] bench v128/v128_bench_test.mbt:371 ("bench V128 shuffle n=10000") ok
+time (mean ± σ)         range (min … max) 
+  10.95 µs ±  35.20 ns    10.91 µs …  11.00 µs  in 10 ×   9157 runs
+[moonbitlang/core] bench v128/splat_bench_test.mbt:16 ("bench byte splat and XOR n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.46 µs ±  20.45 ns     5.43 µs …   5.49 µs  in 10 ×  18246 runs
+[moonbitlang/core] bench v128/splat_bench_test.mbt:28 ("bench UInt16 splat and XOR n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.55 µs ± 108.30 ns     5.45 µs …   5.76 µs  in 10 ×  18269 runs
+[moonbitlang/core] bench v128/byte_binary_bench_test.mbt:16 ("bench byte subtraction n=10000") ok
+time (mean ± σ)         range (min … max) 
+   5.47 µs ±  22.14 ns     5.44 µs …   5.51 µs  in 10 ×  17858 runs
+[moonbitlang/core] bench v128/byte_binary_bench_test.mbt:31 ("bench mixed byte operations n=10000") ok
+time (mean ± σ)         range (min … max) 
+  21.90 µs ±  66.78 ns    21.83 µs …  22.02 µs  in 10 ×   4544 runs
+Total tests: 688, passed: 688, failed: 0.
